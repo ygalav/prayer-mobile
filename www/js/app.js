@@ -14,13 +14,26 @@
     $scope.item = $data.selectedItem;
   });
 
-  module.controller('MasterController', function($scope, $data) {
-    $scope.items = $data.items;
+  module.controller('MasterController', function($scope, $http) {
+    $scope.items = {};
+
+      var responsePromise = $http.get("http://rest.prayer.com.ua/rest/category");
+      responsePromise.success(function(data) {
+          $scope.items=data;
+      });
+      responsePromise.error(function(data) {
+          alert("Problem loading data");
+      });
+
 
     $scope.showDetail = function(index) {
-      var selectedItem = $data.items[index];
-      $data.selectedItem = selectedItem;
-      $scope.navi.pushPage('detail.html', {title : selectedItem.title});
+      var responsePromise = $http.get("http://rest.prayer.com.ua/rest/category/"+index);
+      responsePromise.success(function(data) {
+          $scope.navi.pushPage('detail.html', {title : data.name});
+      });
+        responsePromise.error(function(data) {
+          alert("Problem loading data");
+      });
     };
   });
 
