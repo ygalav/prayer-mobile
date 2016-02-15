@@ -72,14 +72,14 @@
             </ons-toolbar>
 
             <ons-list ng-controller="MasterController">
-                <ons-list-item modifier="chevron" class="item" ng-repeat="item in items" ng-click="showDetail(item.id)">
+                <ons-list-item modifier="chevron" class="item" ng-repeat="item in items" ng-click="showDetail(item)">
                     <ons-row>
                         <ons-col width="60px">
                             <div class="item-thum"></div>
                         </ons-col>
                         <ons-col>
                             <header>
-                                <span class="item-title">{{item.name}} - {{$index}}</span>
+                                <span class="item-title">{{item.name}}</span>
                                 <span class="item-label">{{item.description}}</span>
                             </header>
                         </ons-col>
@@ -96,34 +96,24 @@
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">Details</div>
             </ons-toolbar>
-
-            <ons-list modifier="inset" style="margin-top: 10px">
-                <ons-list-item class="item">
-                    <ons-row>
-                        <ons-col width="60px">
-                            <div class="item-thum"></div>
-                        </ons-col>
-                        <ons-col>
-                            <header>
-                                <span class="item-title">{{item.name}}</span>
-                                <span class="item-label">{{item.name}}</span>
-                            </header>
-                        </ons-col>
-                    </ons-row>
-                </ons-list-item>
-
-                <ons-list-item modifier="chevron" ng-click="doSomething()">
-                    <ons-icon icon="ion-chatboxes" fixed-width="true" style="color: #ccc"></ons-icon>
-                    Add a note
-                </ons-list-item>
-            </ons-list>
+            <ons-row modifier="inset" style="margin-top: 10px">
+                <ons-col width="60px">
+                    <div class="item-thum"></div>
+                </ons-col>
+                <ons-col>
+                    <header>
+                        <span class="item-title">{{category.name}}</span>
+                        <span class="item-label">{{category.name}}</span>
+                    </header>
+                </ons-col>
+            </ons-row>
 
             <ons-list style="margin-top: 10px">
-                <ons-list-item class="item" ng-repeat="i in [1,2,3]">
+                <ons-list-item class="item" ng-repeat="pray in prays">
                     <header>
-                        <span class="item-title">Lorem ipsum dolor sit amet</span>
+                        <span class="item-title">{{pray.name}}</span>
                     </header>
-                    <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="item-desc">{{pray.description}}</p>
                 </ons-list-item>
             </ons-list>
 
