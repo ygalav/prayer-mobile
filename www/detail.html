@@ -1,0 +1,31 @@
+<ons-page class="prayitem-list-page" ng-controller="PraysListController">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">{{category.name}}</div>
+    </ons-toolbar>
+    <ons-row class="category-info" modifier="inset" style="margin-top: 10px">
+        <ons-col width="60px">
+            <div class="item-thum"></div>
+        </ons-col>
+        <ons-col>
+            <header>
+                <ons-row>
+                    <span class="item-title">{{category.name}}</span>
+                </ons-row>
+                <ons-row>
+                    <span class="item-label">Молитов: {{prays.length}}</span>
+                </ons-row>
+            </header>
+        </ons-col>
+    </ons-row>
+
+    <ons-list style="margin-top: 10px">
+        <ons-list-item class="list-row" ng-repeat="prayItem in prays" ng-click="showPrayItem(prayItem)">
+            <header>
+                <span class="item-title">{{prayItem.name}}</span>
+            </header>
+            <p class="item-desc text-content-block">{{prayItem.description}}</p>
+        </ons-list-item>
+    </ons-list>
+    <br>
+</ons-page>

@@ -1,0 +1,14 @@
+<ons-page ng-controller="PraysItemViewController">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">{{prayItem.name}}</div>
+    </ons-toolbar>
+    <ons-list>
+        <ons-list-item class="list-row" ng-repeat="pray in prayItem.prays">
+            <header>
+                <span class="item-title">{{pray.name}}</span>
+            </header>
+            <p class="item-desc text-content-block">{{pray.content}}</p>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

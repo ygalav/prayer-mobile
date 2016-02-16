@@ -28,7 +28,7 @@
         });
 
         $scope.showPrayItem = function (pray) {
-            navi.pushPage('PrayItemView.html', {prayItemId: pray.id});
+            navi.pushPage('pray-item-view.html', {prayItemId: pray.id});
         };
     });
 
