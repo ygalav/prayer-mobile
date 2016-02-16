@@ -10,13 +10,6 @@
         };
     });
 
-    module.controller('DetailController', function ($scope, Services) {
-        $scope.category = $scope.navi.getCurrentPage().options.category;
-        Services.getPraysForCategory($scope.category.id, function(data) {
-            $scope.prays = data;
-        });
-    });
-
     module.controller('MasterController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
         $scope.items = {};
         Services.getAllCategories(function(data) {
@@ -27,6 +20,24 @@
             navi.pushPage('detail.html', {category: selectedCategory});
         };
     }]);
+
+    module.controller('PraysListController', function ($scope, Services) {
+        $scope.category = $scope.navi.getCurrentPage().options.category;
+        Services.getPraysForCategory($scope.category.id, function(data) {
+            $scope.prays = data;
+        });
+
+        $scope.showPrayItem = function (pray) {
+            navi.pushPage('PrayItemView.html', {prayItemId: pray.id});
+        };
+    });
+
+    module.controller('PraysItemViewController', function ($scope, Services) {
+        var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
+        Services.getPrayItemById(prayItemId, function(data) {
+            $scope.prayItem = data;
+        });
+    });
 
     module.factory('Services', function ($http) {
         var siteUrl = 'http://rest.prayer.com.ua/rest';
@@ -46,6 +57,11 @@
 
             getPraysForCategory : function(categoryId, onSuccess, onError) {
                 var url = siteUrl + '/pray/list?category=' + categoryId;
+                doGET(url, onSuccess, onError);
+            },
+
+            getPrayItemById : function(prayItemId, onSuccess, onError) {
+                var url = siteUrl + '/pray/' + prayItemId;
                 doGET(url, onSuccess, onError);
             }
         };

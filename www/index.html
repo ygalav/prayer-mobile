@@ -90,11 +90,11 @@
     </ons-navigator>
 
     <ons-template id="detail.html">
-        <ons-page ng-controller="DetailController">
+        <ons-page ng-controller="PraysListController">
 
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">Details</div>
+                <div class="center">{{category.name}}</div>
             </ons-toolbar>
             <ons-row modifier="inset" style="margin-top: 10px">
                 <ons-col width="60px">
@@ -109,16 +109,33 @@
             </ons-row>
 
             <ons-list style="margin-top: 10px">
-                <ons-list-item class="item" ng-repeat="pray in prays">
+                <ons-list-item class="item" ng-repeat="prayItem in prays" ng-click="showPrayItem(prayItem)">
                     <header>
-                        <span class="item-title">{{pray.name}}</span>
+                        <span class="item-title">{{prayItem.name}}</span>
                     </header>
-                    <p class="item-desc">{{pray.description}}</p>
+                    <p class="item-desc">{{prayItem.description}}</p>
                 </ons-list-item>
             </ons-list>
 
             <br>
 
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="PrayItemView.html">
+        <ons-page ng-controller="PraysItemViewController">
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">{{prayItem.name}}</div>
+            </ons-toolbar>
+            <ons-list style="margin-top: 10px">
+                <ons-list-item class="item" ng-repeat="pray in prayItem.prays">
+                    <header>
+                        <span class="item-title">{{pray.name}}</span>
+                    </header>
+                    <p class="item-desc">{{pray.content}}</p>
+                </ons-list-item>
+            </ons-list>
         </ons-page>
     </ons-template>
 </body>
