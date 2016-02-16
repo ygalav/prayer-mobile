@@ -25,25 +25,25 @@
     <title>Catholic Prayer</title>
 
     <style>
-        .item {
+        .list-row {
             padding: 10px;
             line-height: 1;
         }
 
         .item-thum {
-            background-color: #ccc;
-            width: 50px;
-            height: 50px;
+            background: url('img/48x48/ic_launcher.png') 0 0;
+            width: 48px;
+            height: 48px;
             border-radius: 4px;
         }
 
         .item-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
         }
 
         .item-desc {
-            font-size: 14px;
+            font-size: 16px;
             color: #666;
             line-height: 1.3;
             margin: 4px 0 0 0;
@@ -52,8 +52,29 @@
 
         .item-label {
             font-size: 12px;
+            margin-right: 10px;
             color: #999;
             float: right;
+        }
+
+        .category-info .item-label {
+            font-size: 12px;
+            margin-right: 10px;
+            color: #998280;
+        }
+
+        .text-content-block {
+            text-align: justify;
+        }
+
+        .categories-list .item-label {
+            width: 50%;
+        }
+
+        .categories-list .item-label span{
+            width: 100%;
+            text-align: right;
+            margin-right: 15px;
         }
     </style>
 
@@ -66,21 +87,24 @@
     <!-- -->
 
     <ons-navigator var="navi">
-        <ons-page>
+        <ons-page class="categories-list-page">
             <ons-toolbar>
                 <div class="center">Catholic Prayer</div>
             </ons-toolbar>
-
-            <ons-list ng-controller="MasterController">
-                <ons-list-item modifier="chevron" class="item" ng-repeat="item in items" ng-click="showDetail(item)">
+            <ons-list class="categories-list" ng-controller="MasterController">
+                <ons-list-item modifier="chevron" class="list-row" ng-repeat="item in items" ng-click="showDetail(item)">
                     <ons-row>
                         <ons-col width="60px">
                             <div class="item-thum"></div>
                         </ons-col>
                         <ons-col>
                             <header>
-                                <span class="item-title">{{item.name}}</span>
-                                <span class="item-label">{{item.description}}</span>
+                                <ons-row>
+                                    <span class="item-title">{{item.name}}</span>
+                                </ons-row>
+                                <ons-row class="item-label">
+                                    <span>{{item.description}}</span>
+                                </ons-row>
                             </header>
                         </ons-col>
                     </ons-row>
@@ -90,35 +114,36 @@
     </ons-navigator>
 
     <ons-template id="detail.html">
-        <ons-page ng-controller="PraysListController">
-
+        <ons-page class="prayitem-list-page" ng-controller="PraysListController">
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">{{category.name}}</div>
             </ons-toolbar>
-            <ons-row modifier="inset" style="margin-top: 10px">
+            <ons-row class="category-info" modifier="inset" style="margin-top: 10px">
                 <ons-col width="60px">
                     <div class="item-thum"></div>
                 </ons-col>
                 <ons-col>
                     <header>
-                        <span class="item-title">{{category.name}}</span>
-                        <span class="item-label">{{category.name}}</span>
+                        <ons-row>
+                            <span class="item-title">{{category.name}}</span>
+                        </ons-row>
+                        <ons-row>
+                            <span class="item-label">Молитов: {{prays.length}}</span>
+                        </ons-row>
                     </header>
                 </ons-col>
             </ons-row>
 
             <ons-list style="margin-top: 10px">
-                <ons-list-item class="item" ng-repeat="prayItem in prays" ng-click="showPrayItem(prayItem)">
+                <ons-list-item class="list-row" ng-repeat="prayItem in prays" ng-click="showPrayItem(prayItem)">
                     <header>
                         <span class="item-title">{{prayItem.name}}</span>
                     </header>
-                    <p class="item-desc">{{prayItem.description}}</p>
+                    <p class="item-desc text-content-block">{{prayItem.description}}</p>
                 </ons-list-item>
             </ons-list>
-
             <br>
-
         </ons-page>
     </ons-template>
 
@@ -128,12 +153,12 @@
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">{{prayItem.name}}</div>
             </ons-toolbar>
-            <ons-list style="margin-top: 10px">
-                <ons-list-item class="item" ng-repeat="pray in prayItem.prays">
+            <ons-list>
+                <ons-list-item class="list-row" ng-repeat="pray in prayItem.prays">
                     <header>
                         <span class="item-title">{{pray.name}}</span>
                     </header>
-                    <p class="item-desc">{{pray.content}}</p>
+                    <p class="item-desc text-content-block">{{pray.content}}</p>
                 </ons-list-item>
             </ons-list>
         </ons-page>
