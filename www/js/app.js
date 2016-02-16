@@ -17,7 +17,7 @@
         });
 
         $scope.showDetail = function (selectedCategory) {
-            navi.pushPage('detail.html', {category: selectedCategory});
+            navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
         };
     }]);
 
