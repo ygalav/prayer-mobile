@@ -39,7 +39,7 @@
         });
     });
 
-    module.factory('Services', function ($http) {
+    module.factory('Services', function ($http, $timeout) {
         var siteUrl = 'http://rest.prayer.com.ua/rest';
         var doGET = function (url, onSuccess, onError) {
             var responsePromise = $http.get(url);
@@ -47,7 +47,9 @@
                 alert("Problem loading data");
             };
             onSuccess = onSuccess || function(){};
-            responsePromise.success(onSuccess);
+            $timeout(function(){
+                responsePromise.success(onSuccess);
+            },'400');
             responsePromise.error(onError);
         };
         return {
