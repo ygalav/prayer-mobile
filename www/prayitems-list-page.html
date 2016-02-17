@@ -21,9 +21,14 @@
 
     <ons-list style="margin-top: 10px">
         <ons-list-item class="list-row" ng-repeat="prayItem in prays" ng-click="showPrayItem(prayItem)">
-            <header>
-                <span class="item-title">{{prayItem.name}}</span>
-            </header>
+            <ons-row>
+                <img src="img/48x48/prays-list-row-48x48.png" alt="Pray" height="48" width="48">
+                <ons-col>
+                    <header>
+                        <span class="item-title">{{prayItem.name}}</span>
+                    </header>
+                </ons-col>
+            </ons-row>
         </ons-list-item>
     </ons-list>
     <br>
