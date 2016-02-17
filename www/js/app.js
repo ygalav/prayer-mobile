@@ -49,7 +49,7 @@
             onSuccess = onSuccess || function(){};
             $timeout(function(){
                 responsePromise.success(onSuccess);
-            },'400');
+            },'700');
             responsePromise.error(onError);
         };
         return {
