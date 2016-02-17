@@ -10,4 +10,11 @@
     <content src="index.html" />
     <access origin="*" />
     <engine name="android" spec="~4.1.1" />
+
+    <platform name="android">
+        <icon src="www/res/icon/android/ic_launcher_48x48_mdpi.png" density="mdpi" />
+        <icon src="www/res/icon/android/ic_launcher_36x36_ldpi.png" density="ldpi" />
+        <icon src="www/res/icon/android/ic_launcher_72x72_hdpi.png" density="hdpi" />
+        <icon src="www/res/icon/android/ic_launcher_96x96_xhdpi.png" density="xhdpi" />
+    </platform>
 </widget>
