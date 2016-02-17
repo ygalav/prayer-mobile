@@ -5,10 +5,16 @@
     </ons-toolbar>
     <ons-list>
         <ons-list-item class="list-row list--noborder" ng-repeat="pray in prayItem.prays">
-            <header>
-                <span class="item-title">{{pray.name}}</span>
-            </header>
-            <p class="item-desc text-content-block">{{pray.content}}</p>
+            <ons-row>
+                <ons-row>
+                    <header>
+                        <span class="item-title">{{pray.name}}</span>
+                    </header>
+                </ons-row>
+                <ons-row>
+                    <p class="item-desc text-content-block">{{pray.content}}</p>
+                </ons-row>
+            </ons-row>
         </ons-list-item>
     </ons-list>
 </ons-page>
