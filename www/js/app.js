@@ -25,6 +25,7 @@
         $scope.category = $scope.navi.getCurrentPage().options.category;
         Services.getPraysForCategory($scope.category.id, function(data) {
             $scope.prays = data;
+            $scope.isReady=true;
         });
 
         $scope.showPrayItem = function (pray) {
