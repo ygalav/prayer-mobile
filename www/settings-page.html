@@ -6,7 +6,7 @@
     </div>
     <div class="center">Налаштування</div>
 </ons-toolbar>
-<ons-list ng-controller="FirstLaunchController">
+<ons-list ng-controller="SettingsPageController">
     <ons-list-item>
         <ons-row>
             <ons-row>
@@ -18,7 +18,8 @@
                         <input type="radio" class="radio-button__input radio-button--material__input"
                                name="religion"
                                ng-model="religion"
-                               value="catholic">
+                               value="catholic"
+                               ng-change="saveReligion(religion)">
                         <div class="radio-button__checkmark radio-button--material__checkmark"></div>
                         Католик
                     </label>
@@ -26,7 +27,8 @@
                         <input type="radio" class="radio-button__input radio-button--material__input"
                                ng-model="religion"
                                name="religion"
-                               value="greek-catholic">
+                               value="greek-catholic"
+                               ng-change="saveReligion(religion)">
                         <div class="radio-button__checkmark radio-button--material__checkmark"></div>
                         Греко-Католик
                     </label>
@@ -47,17 +49,17 @@
                 <ons-col>
                     <div class="button-bar" style="width:280px;">
                         <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="UA">
+                            <input type="radio" ng-model="language" value="UA" ng-change="saveLanguage(language)">
                             <button class="button-bar__button">Україньска</button>
                         </div>
 
                         <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="EN">
+                            <input type="radio" ng-model="language" value="EN" ng-change="saveLanguage(language)">
                             <button class="button-bar__button">English</button>
                         </div>
 
                         <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="PL">
+                            <input type="radio" ng-model="language" value="PL" ng-change="saveLanguage(language)">
                             <button class="button-bar__button">Polski</button>
                         </div>
                     </div>

@@ -62,12 +62,20 @@
         });
     });
 
-		module.controller('FirstLaunchController', function ($scope) {
+		module.controller('SettingsPageController', function ($scope) {
 			$scope.religion = context.systemproperties.getValue(
 				context.systemproperties.keys.religion, 'greek-catholic'
 			);
 
 			$scope.language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+
+			$scope.saveLanguage = function(value) {
+				context.systemproperties.setValue(context.systemproperties.keys.language, value);
+			}
+
+			$scope.saveReligion = function(value) {
+				context.systemproperties.setValue(context.systemproperties.keys.religion, value);
+			}
 
 			$scope.saveSettings = function() {
 				if ($scope.language) {
@@ -103,7 +111,8 @@
         };
         return {
             getAllCategories: function (onSuccess, onError) {
-                doGET(siteUrl + '/category', onSuccess, onError);
+							var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+                doGET(siteUrl + '/category?language=' + language, onSuccess, onError);
             },
 
             getPraysForCategory : function(categoryId, onSuccess, onError) {
