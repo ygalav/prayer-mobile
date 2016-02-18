@@ -34,30 +34,12 @@
     <!-- -->
 
     <ons-navigator var="navi">
-        <ons-page class="categories-list-page">
-            <ons-toolbar>
-                <div class="center">Catholic Prayer</div>
-            </ons-toolbar>
-            <ons-list class="categories-list" ng-controller="MasterController">
-                <ons-list-item modifier="chevron" class="list-row" ng-repeat="item in items" ng-click="showDetail(item)">
-                    <ons-row>
-                        <ons-col width="60px">
-                            <div class="item-thum"></div>
-                        </ons-col>
-                        <ons-col>
-                            <header>
-                                <ons-row>
-                                    <span class="item-title">{{item.name}}</span>
-                                </ons-row>
-                                <ons-row class="item-label">
-                                    <span>{{item.description}}</span>
-                                </ons-row>
-                            </header>
-                        </ons-col>
-                    </ons-row>
-                </ons-list-item>
-            </ons-list>
-        </ons-page>
+        <ons-sliding-menu type="reveal"
+            main-page="settings-page.html"
+            menu-page="menu.html" side="left"
+            max-slide-distance="250px"
+            var="menu">
+        </ons-sliding-menu>
     </ons-navigator>
 </body>
 </html>

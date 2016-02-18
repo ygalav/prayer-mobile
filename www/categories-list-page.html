@@ -1,0 +1,29 @@
+<ons-page class="categories-list-page">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.toggleMenu()">
+                <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Catholic Prayer</div>
+    </ons-toolbar>
+    <ons-list class="categories-list" ng-controller="MasterController">
+        <ons-list-item modifier="chevron" class="list-row" ng-repeat="item in items" ng-click="showDetail(item)">
+            <ons-row>
+                <ons-col width="60px">
+                    <div class="item-thum"></div>
+                </ons-col>
+                <ons-col>
+                    <header>
+                        <ons-row>
+                            <span class="item-title">{{item.name}}</span>
+                        </ons-row>
+                        <ons-row class="item-label">
+                            <span>{{item.description}}</span>
+                        </ons-row>
+                    </header>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
