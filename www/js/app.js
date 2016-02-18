@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var module = angular.module('app', ['onsen']);
+    var module = angular.module('app', ['onsen', 'ngSanitize']);
 
     module.controller('AppController', function ($scope) {
         $scope.doSomething = function () {
