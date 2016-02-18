@@ -1,24 +1,46 @@
 (function () {
     'use strict';
+
+		var context = {
+			systemproperties: {
+				keys: {
+					firstLaunch: 'firstLaunch',
+					religion : 'religion',
+					language : 'language'
+				},
+
+				setValue: function(key, value){
+					localStorage.setItem(key, value);
+				},
+
+				getValue: function(key, defaultValue){
+					return localStorage.getItem(key) || defaultValue;
+				}
+			}
+		};
+
     var module = angular.module('app', ['onsen', 'ngSanitize']);
 
     module.controller('AppController', function ($scope) {
-        $scope.doSomething = function () {
-            setTimeout(function () {
-                ons.notification.alert({message: 'tapped'});
-            }, 100);
-        };
+			if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
+				context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
+			}
+			if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
+				context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
+			}
+			$scope.context = context;
     });
 
     module.controller('MasterController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
-        $scope.items = {};
-        Services.getAllCategories(function(data) {
-            $scope.items = data;
-        });
+			$scope.items = {};
 
-        $scope.showDetail = function (selectedCategory) {
-            navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
-        };
+			Services.getAllCategories(function(data) {
+					$scope.items = data;
+			});
+
+			$scope.showDetail = function (selectedCategory) {
+					navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
+			};
     }]);
 
     module.controller('PraysListController', function ($scope, Services) {
@@ -39,6 +61,32 @@
             $scope.prayItem = data;
         });
     });
+
+		module.controller('FirstLaunchController', function ($scope) {
+			$scope.religion = context.systemproperties.getValue(
+				context.systemproperties.keys.religion, 'greek-catholic'
+			);
+
+			$scope.language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+
+			$scope.saveSettings = function() {
+				if ($scope.language) {
+					context.systemproperties.setValue(context.systemproperties.keys.language, $scope.language);
+				} else {
+					alert('Please set Language');
+					return;
+				}
+
+				if ($scope.religion) {
+					context.systemproperties.setValue(context.systemproperties.keys.religion, $scope.religion);
+				} else {
+					alert('Please set Religion');
+					return;
+				}
+				context.systemproperties.setValue(context.systemproperties.keys.firstLaunch, false);
+				navi.popPage();
+			}
+		});
 
     module.factory('Services', function ($http, $timeout) {
         var siteUrl = 'http://rest.prayer.com.ua/rest';

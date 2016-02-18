@@ -1,0 +1,67 @@
+<ons-toolbar>
+    <div class="center">Налаштування</div>
+</ons-toolbar>
+<ons-list ng-controller="FirstLaunchController">
+    <ons-list-item>
+        <ons-row>
+            <ons-row>
+                <header>Хто я:</header>
+            </ons-row>
+            <ons-row>
+                <ons-col>
+                    <label class="radio-button radio-button--material">
+                        <input type="radio" class="radio-button__input radio-button--material__input"
+                               name="religion"
+                               ng-model="religion"
+                               value="catholic">
+                        <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+                        Католик
+                    </label>
+                    <label class="radio-button radio-button--material">
+                        <input type="radio" class="radio-button__input radio-button--material__input"
+                               ng-model="religion"
+                               name="religion"
+                               value="greek-catholic">
+                        <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+                        Греко-Католик
+                    </label>
+                </ons-col>
+            </ons-row>
+        </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+        <ons-row>
+            <ons-row>
+                <ons-col>
+                    <header>
+                        Мова молитов:
+                    </header>
+                </ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col>
+                    <div class="button-bar" style="width:280px;">
+                        <div class="button-bar__item">
+                            <input type="radio" ng-model="language" value="UA">
+                            <button class="button-bar__button">Україньска</button>
+                        </div>
+
+                        <div class="button-bar__item">
+                            <input type="radio" ng-model="language" value="EN">
+                            <button class="button-bar__button">English</button>
+                        </div>
+
+                        <div class="button-bar__item">
+                            <input type="radio" ng-model="language" value="PL">
+                            <button class="button-bar__button">Polski</button>
+                        </div>
+                    </div>
+                </ons-col>
+            </ons-row>
+        </ons-row>
+    </ons-list-item>'
+    <ons-list-item>
+        <button class="button button--material" ng-click="saveSettings()">Зберегти</button>
+    </ons-list-item>
+</ons-list>
+
