@@ -20,6 +20,24 @@
 			}
 		};
 
+	var valuesCalculator = function() {
+		var scaling_middle = 50;
+		var scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
+		var pray_title_size = 16;
+		var delta = (scaling - scaling_middle) / 50; /*delta value*/
+
+		var getValueMinusDeltaPercentage = function(value, delta) {
+			if (delta < 0) {
+				return value - (value * delta * -1);
+			}
+			else if (delta == 0) {
+				return value;
+			} else {
+				return value - (value * delta);
+			}
+		};
+	};
+
     var module = angular.module('app', ['onsen', 'ngSanitize']);
 
     module.controller('AppController', function ($scope) {
