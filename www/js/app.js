@@ -6,7 +6,8 @@
 				keys: {
 					firstLaunch: 'firstLaunch',
 					religion : 'religion',
-					language : 'language'
+					language : 'language',
+					scaling : 'scaling'
 				},
 
 				setValue: function(key, value){
@@ -68,14 +69,19 @@
 			);
 
 			$scope.language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+			$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
 
 			$scope.saveLanguage = function(value) {
 				context.systemproperties.setValue(context.systemproperties.keys.language, value);
-			}
+			};
 
 			$scope.saveReligion = function(value) {
 				context.systemproperties.setValue(context.systemproperties.keys.religion, value);
-			}
+			};
+
+			$scope.saveScaling = function(value) {
+				context.systemproperties.setValue(context.systemproperties.keys.scaling, value);
+			};
 
 			$scope.saveSettings = function() {
 				if ($scope.language) {
