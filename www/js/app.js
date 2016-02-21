@@ -20,22 +20,29 @@
 			}
 		};
 
-	var valuesCalculator = function() {
+	var calculateTextSizes = function() {
 		var scaling_middle = 50;
 		var scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
-		var pray_title_size = 16;
 		var delta = (scaling - scaling_middle) / 50; /*delta value*/
 
-		var getValueMinusDeltaPercentage = function(value, delta) {
+		var getValueMinusDeltaPercentage = function(value, delta, scalingRate) {
+			//scalingRate = scalingRate | 0.2; //TODO: Default value
+			var scalingMaximumValue = value * scalingRate;
+
 			if (delta < 0) {
-				return value - (value * delta * -1);
+				return Math.round(value - (scalingMaximumValue * delta * -1));
 			}
 			else if (delta == 0) {
 				return value;
 			} else {
-				return value - (value * delta);
+				return Math.round(value + (scalingMaximumValue * delta));
 			}
 		};
+
+		return {
+			'pray_title_font_size' : getValueMinusDeltaPercentage(18, delta, 0.2) + 'px',
+			'pray_content_font_size' : getValueMinusDeltaPercentage(16, delta, 0.2) + 'px'
+		}
 	};
 
     var module = angular.module('app', ['onsen', 'ngSanitize']);
@@ -48,6 +55,8 @@
 				context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 			}
 			$scope.context = context;
+
+			$scope.$root.textSizes = calculateTextSizes();
     });
 
     module.controller('MasterController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
@@ -99,6 +108,7 @@
 
 			$scope.saveScaling = function(value) {
 				context.systemproperties.setValue(context.systemproperties.keys.scaling, value);
+				$scope.$root.textSizes = calculateTextSizes();
 			};
 
 			$scope.saveSettings = function() {
