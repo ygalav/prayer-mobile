@@ -40,8 +40,8 @@
 		};
 
 		return {
-			'pray_title_font_size' : getValueMinusDeltaPercentage(18, delta, 0.2) + 'px',
-			'pray_content_font_size' : getValueMinusDeltaPercentage(16, delta, 0.2) + 'px'
+			'pray_title_font_size' : getValueMinusDeltaPercentage(18, delta, 0.3) + 'px',
+			'pray_content_font_size' : getValueMinusDeltaPercentage(16, delta, 0.3) + 'px'
 		}
 	};
 

@@ -68,12 +68,35 @@
         </ons-row>
     </ons-list-item>
     <ons-list-item>
-        <ons-col>
-            <span>Розмір тексту</span>
-        </ons-col>
-        <ons-col>
-            <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></range>
-        </ons-col>
+        <ons-row>
+            <ons-row>
+                <ons-col>
+                    <span>Розмір тексту</span>
+                </ons-col>
+                <ons-col>
+                    <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></range>
+                </ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-row>
+                    <ons-col>
+                        <span>Заголовок молитви:</span>
+                    </ons-col>
+                    <ons-col>
+                        <span class="item-title">Молитва: Отче Наш</span>
+                    </ons-col>
+                </ons-row>
+                <ons-row>
+                    <ons-col>
+                        <span>Текст молитви:</span>
+                    </ons-col>
+                    <ons-col>
+                        <span class="pray-context-text">Молитва: Отче наш, що є на небесах!...</span>
+                    </ons-col>
+                </ons-row>
+            </ons-row>
+        </ons-row>
+
     </ons-list-item>
     <ons-list-item>
         <button class="button button--material" ng-click="saveSettings()">Зберегти</button>
