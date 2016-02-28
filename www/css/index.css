@@ -51,3 +51,20 @@
     text-align: right;
     margin-right: 15px;
 }
+
+.settings-page-sections-list ons-list-item {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.settings-page-section-row {
+    padding-bottom: 8px;
+}
+
+.settings-page-sections-list .button-bar__button {
+    height: 40px;
+}
+
+.setting-name {
+    font-size: 22px;
+}
