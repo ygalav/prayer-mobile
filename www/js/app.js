@@ -1,24 +1,26 @@
+var context = {
+	systemproperties: {
+		keys: {
+			firstLaunch: 'firstLaunch',
+			religion: 'religion',
+			language: 'language',
+			scaling: 'scaling'
+		},
+
+		setValue: function (key, value) {
+			localStorage.setItem(key, value);
+		},
+
+		getValue: function (key, defaultValue) {
+			return localStorage.getItem(key) || defaultValue;
+		}
+	},
+
+	storage_name : 'prays-storage'
+};
+
 (function () {
     'use strict';
-
-		var context = {
-			systemproperties: {
-				keys: {
-					firstLaunch: 'firstLaunch',
-					religion : 'religion',
-					language : 'language',
-					scaling : 'scaling'
-				},
-
-				setValue: function(key, value){
-					localStorage.setItem(key, value);
-				},
-
-				getValue: function(key, defaultValue){
-					return localStorage.getItem(key) || defaultValue;
-				}
-			}
-		};
 
 	var calculateTextSizes = function() {
 		var scaling_middle = 50;
