@@ -49,7 +49,7 @@ var context = {
 		}
 	};
 
-    var module = angular.module('app', ['onsen', 'ngSanitize']);
+    var module = angular.module('prayer', ['onsen', 'ngSanitize']);
 
     module.controller('AppController', function ($scope) {
 			if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
