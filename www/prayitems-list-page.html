@@ -26,7 +26,7 @@
         <ons-list-item class="list-row" ng-repeat="prayItem in prays">
             <ons-row>
                 <label class="checkbox checkbox--list-item">
-                    <input type="checkbox" class="checkbox__input">
+                    <input type="checkbox" class="checkbox__input" ng-change="addItemToFavorites(prayItem)" ng-model="prayItem.isFavorite">
                     <div class="checkbox__checkmark
         checkbox--list-item__checkmark"></div>
                 </label>

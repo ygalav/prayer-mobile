@@ -15,7 +15,7 @@
 			$scope.$root.textSizes = calculateTextSizes();
     });
 
-    module.controller('MasterController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
+    module.controller('MasterController', ['$scope', '$http', 'Services', 'Storage', function ($scope, $http, Services) {
 			$scope.items = {};
 
 			Services.getAllCategories(function(data) {
@@ -27,7 +27,7 @@
 			};
     }]);
 
-    module.controller('PraysListController', function ($scope, Services) {
+    module.controller('PraysListController', function ($scope, Services, Storage) {
         $scope.category = $scope.navi.getCurrentPage().options.category;
         Services.getPraysForCategory($scope.category.id, function(data) {
             $scope.prays = data;
@@ -39,6 +39,7 @@
         };
 
 			$scope.addItemToFavorites = function(pray) {
+				Storage.addFavoritePray(pray);
 				console.log(pray.id + " is added to favorites");
 			}
     });

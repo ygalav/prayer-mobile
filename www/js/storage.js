@@ -7,4 +7,22 @@
 			console.log('Storage open');
 		});
 	});
+
+	module.factory('Storage', ['$rootScope', function ($rootScope) {
+		return {
+			addFavoritePray : function(pray) {
+				$rootScope.store.get(context.storage_keys.favorite_prays, function(favoritePrays) {
+					if (favoritePrays == undefined) {
+						favoritePrays = [];
+					}
+
+					favoritePrays.value.push(pray);
+						$rootScope.store.save({
+							key: context.storage_keys.favorite_prays,
+							value: favoritePrays.value
+						});
+				})
+			}
+		}
+	}]);
 })();
