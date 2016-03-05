@@ -30,8 +30,11 @@
     module.controller('PraysListController', function ($scope, Services, Storage) {
         $scope.category = $scope.navi.getCurrentPage().options.category;
         Services.getPraysForCategory($scope.category.id, function(data) {
-            $scope.prays = data;
-            $scope.isReady=true;
+					_.each(data, function(prayItem) {
+						 prayItem.isFavorite = Storage.isFavorite(prayItem);
+					});
+          $scope.prays = data;
+          $scope.isReady=true;
         });
 
         $scope.showPrayItem = function (pray) {
