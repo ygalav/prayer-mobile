@@ -17,6 +17,7 @@ var context = {
 	},
 
 	storage_keys: {
+		storage_root : 'root_storage',
 		favorite_prays: 'favorite-prays-storage'
 	}
 };
