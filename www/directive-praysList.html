@@ -1,5 +1,5 @@
 <ons-list style="margin-top: 10px">
-    <ons-list-item class="list-row" ng-repeat="prayItem in prayItemsList" ng-click="prOnItemClickFn(prayItem.id)">
+    <ons-list-item class="list-row" ng-repeat="prayItem in prayItemsList">
         <ons-row>
             <label class="checkbox checkbox--list-item" ng-show="prAddOrRemoveFavoriteFn">
                 <input type="checkbox" class="checkbox__input"
@@ -7,7 +7,7 @@
                 <div class="checkbox__checkmark
         checkbox--list-item__checkmark"></div>
             </label>
-            <ons-col style="margin-left: 10px">
+            <ons-col ng-click="prOnItemClickFn(prayItem.id)" style="margin-left: 10px">
                 <header>
                     <span class="item-title">{{prayItem.name}}</span>
                 </header>
