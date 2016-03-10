@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 	var module = angular.module('prayer');
-	module.factory('Services', function ($http, $timeout) {
+	module.factory('Services', function ($http, $timeout, Storage) {
 		var siteUrl = 'http://rest.prayer.com.ua/rest';
 		var doGET = function (url, onSuccess, onError) {
 			var responsePromise = $http.get(url);
@@ -29,6 +29,10 @@
 			getPrayItemById: function (prayItemId, onSuccess, onError) {
 				var url = siteUrl + '/pray/' + prayItemId;
 				doGET(url, onSuccess, onError);
+			},
+
+			listFavoritePrays : function() {
+				return Storage.listFavoritePrays();
 			}
 		};
 	});

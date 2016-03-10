@@ -32,6 +32,12 @@
 			},
 
 			listFavoritePrays: function () {
+				var prays = [];
+				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
+					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+					prays = favoritePrays;
+				});
+				return prays;
 			},
 
 			isFavorite: function (pray) {

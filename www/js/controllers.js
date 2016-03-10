@@ -54,6 +54,14 @@
 		});
 	});
 
+	module.controller('FavoritePraysListController', function(Services) {
+		var favoritePraysList = this;
+		favoritePraysList.favoritePrays = Services.listFavoritePrays();
+		favoritePraysList.getFavoritePray = function(pray) {
+			console.log('getFavoritePrayById called');
+		}
+	});
+
 	module.controller('SettingsPageController', function ($scope) {
 		$scope.religion = context.systemproperties.getValue(
 			context.systemproperties.keys.religion, 'greek-catholic'
@@ -101,7 +109,8 @@
 			restrict: 'E',
 			scope: {
 				prayItemsList: '=prItems',
-				prOnItemClick: '=prOnItemClick'
+				prOnItemClickFn: '=',
+				prAddOrRemoveFavoriteFn: '='
 			},
 			templateUrl: 'directive-praysList.html'
 		};

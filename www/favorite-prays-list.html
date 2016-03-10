@@ -1,0 +1,11 @@
+<ons-page class="prayitem-list-page" ng-controller="FavoritePraysListController as favoritePraysList">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.toggleMenu()">
+                <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center navigation-bar-text">Обрані Молитви</div>
+    </ons-toolbar>
+    <prays-list pr-items="favoritePraysList.favoritePrays" pr-on-item-click="favoritePraysList.getFavoritePray"/>
+</ons-page>

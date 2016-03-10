@@ -21,6 +21,6 @@
     <ons-row ng-if="!isReady">
         <div class="progress-bar progress-bar--indeterminate"></div>
     </ons-row>
-    <prays-list pr-items="prays" pr-on-item-click="showPrayItem"/>
+    <prays-list pr-items="prays" pr-on-item-click-fn="showPrayItem" pr-add-or-remove-favorite-fn="addItemToFavorites"/>
     <br>
 </ons-page>
