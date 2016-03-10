@@ -93,5 +93,17 @@
 				navi.popPage();
 			}
 		});
+
+	/*Directives*/
+
+	module.directive('praysList', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				prayItemsList: '=items'
+			},
+			templateUrl: 'directive-praysList.html'
+		};
+	});
 })();
 
