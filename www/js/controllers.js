@@ -41,9 +41,9 @@
 			navi.pushPage('pray-item-view.html', {prayItemId: pray.id});
 		};
 
-		$scope.addItemToFavorites = function (pray) {
-			Storage.addFavoritePray(pray);
-			console.log(pray.id + " is added to favorites");
+		$scope.addItemToFavorites = function (id) {
+			Services.addFavoritePray(id);
+			console.log(id + " is added to favorites");
 		}
 	});
 

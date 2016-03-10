@@ -15,7 +15,7 @@
 			}, '700');
 			responsePromise.error(onError);
 		};
-		return {
+		var services = {
 			getAllCategories: function (onSuccess, onError) {
 				var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
 				doGET(siteUrl + '/category?language=' + language, onSuccess, onError);
@@ -33,7 +33,18 @@
 
 			listFavoritePrays : function() {
 				return Storage.listFavoritePrays();
+			},
+
+			addFavoritePray : function(id) {
+				services.getPrayItemById(id, function(data) {
+					Storage.addFavoritePray(data);
+				});
+			},
+
+			getFavoritePray : function(id) {
+				return Storage.getFavoritePrayById(id);
 			}
 		};
+		return services;
 	});
 })();

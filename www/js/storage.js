@@ -40,6 +40,18 @@
 				return prays;
 			},
 
+			getFavoritePrayById : function(id) {
+				var pray = undefined;
+				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
+					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+					var prayArrayWithMatchedPrays = _.filter(favoritePrays, function (favoritePray) {
+						return favoritePray.id == pray.id
+					});
+					pray = prayArrayWithMatchedPrays[0];
+				});
+				return pray;
+			},
+
 			isFavorite: function (pray) {
 				var isFavorite = false;
 				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
