@@ -8,10 +8,11 @@
 			onError = onError || function () {
 					alert("Problem loading data");
 				};
-			onSuccess = onSuccess || function(){};
-			$timeout(function(){
+			onSuccess = onSuccess || function () {
+				};
+			$timeout(function () {
 				responsePromise.success(onSuccess);
-			},'700');
+			}, '700');
 			responsePromise.error(onError);
 		};
 		return {
@@ -20,12 +21,12 @@
 				doGET(siteUrl + '/category?language=' + language, onSuccess, onError);
 			},
 
-			getPraysForCategory : function(categoryId, onSuccess, onError) {
+			getPraysForCategory: function (categoryId, onSuccess, onError) {
 				var url = siteUrl + '/pray/list?category=' + categoryId;
 				doGET(url, onSuccess, onError);
 			},
 
-			getPrayItemById : function(prayItemId, onSuccess, onError) {
+			getPrayItemById: function (prayItemId, onSuccess, onError) {
 				var url = siteUrl + '/pray/' + prayItemId;
 				doGET(url, onSuccess, onError);
 			}
