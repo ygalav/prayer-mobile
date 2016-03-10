@@ -37,8 +37,8 @@
 			$scope.isReady = true;
 		});
 
-		$scope.showPrayItem = function (pray) {
-			navi.pushPage('pray-item-view.html', {prayItemId: pray.id});
+		$scope.showPrayItem = function (prayItemId) {
+			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId});
 		};
 
 		$scope.addItemToFavorites = function (id) {
@@ -49,16 +49,21 @@
 
 	module.controller('PraysItemViewController', function ($scope, Services) {
 		var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
-		Services.getPrayItemById(prayItemId, function (data) {
-			$scope.prayItem = data;
-		});
+		var showSaved = $scope.navi.getCurrentPage().options.showSaved;
+		if (showSaved) {
+			$scope.prayItem = Services.getFavoritePray(prayItemId);
+		} else {
+			Services.getPrayItemById(prayItemId, function (data) {
+				$scope.prayItem = data;
+			});
+		}
 	});
 
 	module.controller('FavoritePraysListController', function(Services) {
 		var favoritePraysList = this;
 		favoritePraysList.favoritePrays = Services.listFavoritePrays();
-		favoritePraysList.getFavoritePray = function(pray) {
-			console.log('getFavoritePrayById called');
+		favoritePraysList.showFavoritePray = function(prayItemId) {
+			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
 		}
 	});
 

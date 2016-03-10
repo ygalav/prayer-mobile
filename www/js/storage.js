@@ -45,7 +45,7 @@
 				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
 					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
 					var prayArrayWithMatchedPrays = _.filter(favoritePrays, function (favoritePray) {
-						return favoritePray.id == pray.id
+						return favoritePray.id == id
 					});
 					pray = prayArrayWithMatchedPrays[0];
 				});
