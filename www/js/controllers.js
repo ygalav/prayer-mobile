@@ -100,7 +100,8 @@
 		return {
 			restrict: 'E',
 			scope: {
-				prayItemsList: '=items'
+				prayItemsList: '=prItems',
+				prOnItemClick: '=prOnItemClick'
 			},
 			templateUrl: 'directive-praysList.html'
 		};
