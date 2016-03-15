@@ -1,7 +1,8 @@
 (function () {
 	'use strict';
-	var module = angular.module('prayer');
-	module.factory('Services', function ($http, $timeout, Storage) {
+	var module = angular.module('PrayerServices', []);
+
+	module.factory('PrayerHttpService', function ($http, $timeout) {
 		var siteUrl = 'http://rest.prayer.com.ua/rest';
 		var doGET = function (url, onSuccess, onError) {
 			var responsePromise = $http.get(url);
@@ -15,7 +16,7 @@
 			}, '700');
 			responsePromise.error(onError);
 		};
-		var services = {
+		return {
 			getAllCategories: function (onSuccess, onError) {
 				var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
 				doGET(siteUrl + '/category?language=' + language, onSuccess, onError);
@@ -29,22 +30,29 @@
 			getPrayItemById: function (prayItemId, onSuccess, onError) {
 				var url = siteUrl + '/pray/' + prayItemId;
 				doGET(url, onSuccess, onError);
-			},
+			}
+		};
+	});
 
-			listFavoritePrays : function() {
+	module.factory('PrayerFavoritePraysServices', ['Storage', 'PrayerHttpService', function (Storage, PrayerHttpService) {
+		return {
+			listFavoritePrays: function () {
 				return Storage.listFavoritePrays();
 			},
 
-			addFavoritePray : function(id) {
-				services.getPrayItemById(id, function(data) {
+			addFavoritePray: function (id) {
+				PrayerHttpService.getPrayItemById(id, function (data) {
 					Storage.addFavoritePray(data);
 				});
 			},
 
-			getFavoritePray : function(id) {
+			getFavoritePray: function (id) {
 				return Storage.getFavoritePrayById(id);
+			},
+
+			isFavorite: function (pray) {
+				return Storage.isFavorite(pray);
 			}
 		};
-		return services;
-	});
+	}]);
 })();

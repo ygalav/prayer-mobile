@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
-	var module = angular.module('prayer');
+	var module = angular.module('PrayerServices');
 	module.run(function ($rootScope) {
 		console.log("Running Prayer");
 		$rootScope.store = Lawnchair({adapter: 'dom', name: context.storage_keys.storage_root}, function (e) {

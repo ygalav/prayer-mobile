@@ -1,7 +1,12 @@
 (function () {
 	'use strict';
 
-	var module = angular.module('prayer');
+	var module = angular.module('PrayerControllers',
+		[
+			'onsen',
+			'ngSanitize',
+			'PrayerServices'
+		]);
 
 	module.controller('AppController', function ($scope) {
 		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
@@ -15,10 +20,10 @@
 		$scope.$root.textSizes = calculateTextSizes();
 	});
 
-	module.controller('MasterController', ['$scope', '$http', 'Services', 'Storage', function ($scope, $http, Services) {
+	module.controller('MasterController', ['$scope', 'PrayerHttpService', function ($scope, PrayerHttpService) {
 		$scope.items = {};
 
-		Services.getAllCategories(function (data) {
+		PrayerHttpService.getAllCategories(function (data) {
 			$scope.items = data;
 		});
 
@@ -27,41 +32,48 @@
 		};
 	}]);
 
-	module.controller('PraysListController', function ($scope, Services, Storage) {
-		$scope.category = $scope.navi.getCurrentPage().options.category;
-		Services.getPraysForCategory($scope.category.id, function (data) {
-			_.each(data, function (prayItem) {
-				prayItem.isFavorite = Storage.isFavorite(prayItem);
+	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
+		function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
+			$scope.category = $scope.navi.getCurrentPage().options.category;
+			PrayerHttpService.getPraysForCategory($scope.category.id, function (data) {
+				_.each(data, function (prayItem) {
+					prayItem.isFavorite = PrayerFavoritePraysServices.isFavorite(prayItem);
+				});
+				$scope.prays = data;
+				$scope.isReady = true;
 			});
-			$scope.prays = data;
-			$scope.isReady = true;
-		});
 
-		$scope.showPrayItem = function (prayItemId) {
-			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId});
-		};
+			$scope.showPrayItem = function (prayItemId) {
+				navi.pushPage('pray-item-view.html', {prayItemId: prayItemId});
+			};
 
-		$scope.addItemToFavorites = function (id) {
-			Services.addFavoritePray(id);
-			console.log(id + " is added to favorites");
-		}
-	});
+			$scope.addItemToFavorites = function (id) {
+				PrayerFavoritePraysServices.addFavoritePray(id);
+				console.log(id + " is added to favorites");
+			}
+	}]);
 
-	module.controller('PraysItemViewController', function ($scope, Services) {
-		var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
-		var showSaved = $scope.navi.getCurrentPage().options.showSaved;
-		if (showSaved) {
-			$scope.prayItem = Services.getFavoritePray(prayItemId);
-		} else {
-			Services.getPrayItemById(prayItemId, function (data) {
-				$scope.prayItem = data;
-			});
-		}
-	});
+	module.controller('PraysItemViewController',
+		[
+			'$scope',
+			'PrayerHttpService' ,
+			'PrayerFavoritePraysServices',
+			function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
+				var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
+				var showSaved = $scope.navi.getCurrentPage().options.showSaved;
+				if (showSaved) {
+					$scope.prayItem = PrayerFavoritePraysServices.getFavoritePray(prayItemId);
+				} else {
+					PrayerHttpService.getPrayItemById(prayItemId, function (data) {
+						$scope.prayItem = data;
+					});
+				}
+			}
+		]);
 
-	module.controller('FavoritePraysListController', function(Services) {
+	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
 		var favoritePraysList = this;
-		favoritePraysList.favoritePrays = Services.listFavoritePrays();
+		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 		favoritePraysList.showFavoritePray = function(prayItemId) {
 			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
 		}
@@ -120,5 +132,14 @@
 			templateUrl: 'directive-praysList.html'
 		};
 	});
+
+	module.directive('noContent', function () {
+		return {
+			restrict: 'E',
+			scope: {},
+			templateUrl: 'directive-noContent.html'
+		};
+	});
+
 })();
 
