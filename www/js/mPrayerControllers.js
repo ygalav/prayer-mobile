@@ -20,7 +20,7 @@
 		$scope.$root.textSizes = calculateTextSizes();
 	});
 
-	module.controller('MasterController', ['$scope', 'PrayerHttpService', function ($scope, PrayerHttpService) {
+	module.controller('CategoriesListController', ['$scope', 'PrayerHttpService', function ($scope, PrayerHttpService) {
 		$scope.items = {};
 
 		PrayerHttpService.getAllCategories(function (data) {
