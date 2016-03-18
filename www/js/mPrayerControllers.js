@@ -20,19 +20,18 @@
 		$scope.$root.textSizes = calculateTextSizes();
 	});
 
-	module.controller('CategoriesListController', function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
-		var categoriesListController = $scope;
+	module.controller('CategoriesListController', function (PrayerHttpService, PrayerFavoritePraysServices) {
+		var categoriesListController = this;
 		categoriesListController.items = {};
-		$scope.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
+		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 
 		PrayerHttpService.getAllCategories(
 			function (data) {
 				categoriesListController.items = data;
-				//categoriesListController.navi.replacePage('favorite-prays-list.html');
 			},
 			function() {
 				alert("Момитлка зєднання з сервером");
-				categoriesListController.navi.replacePage('favorite-prays-list.html');
+				navi.replacePage('favorite-prays-list.html');
 			}
 		);
 
@@ -40,20 +39,23 @@
 		 * if given group is the selected group, deselect it
 		 * else, select the given group
 		 */
-		$scope.categoriesShown = true;
-		$scope.toggleGroup = function() {
+		categoriesListController.categoriesShown = true;
+		categoriesListController.toggleGroup = function() {
 			console.log('Toggle Group');
-			$scope.categoriesShown = !$scope.categoriesShown;
+			categoriesListController.categoriesShown = !categoriesListController.categoriesShown;
 		};
 
-		$scope.isGroupShown = function() {
-			console.log($scope.categoriesShown);
-			return $scope.categoriesShown;
+		categoriesListController.isGroupShown = function() {
+			return categoriesListController.categoriesShown;
 		};
 
-		$scope.showDetail = function (selectedCategory) {
-			categoriesListController.navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
+		categoriesListController.showDetail = function (selectedCategory) {
+			navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
 		};
+
+		categoriesListController.showFavoritePray = function(prayItemId) {
+			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
+		}
 	});
 
 	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',

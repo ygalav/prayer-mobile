@@ -8,13 +8,16 @@
         <div class="center navigation-bar-text">Catholic Prayer</div>
     </ons-toolbar>
 
-    <ons-list ng-controller="CategoriesListController">
-        <ons-list-item ng-click="toggleGroup()" class="title, list-row" ng-class="{active:isGroupShown()}">
-            <ons-icon icon="minus-square-o" ng-if="isGroupShown()"></ons-icon>
-            <ons-icon icon="plus-square-o" ng-if="!isGroupShown()"></ons-icon>
+    <ons-list ng-controller="CategoriesListController as categoriesListController">
+        <ons-list-item ng-click="categoriesListController.toggleGroup()"
+                       class="title, list-row" ng-class="{active:categoriesListController.isGroupShown()}">
+            <ons-icon icon="minus-square-o" ng-if="categoriesListController.isGroupShown()"></ons-icon>
+            <ons-icon icon="plus-square-o" ng-if="!categoriesListController.isGroupShown()"></ons-icon>
             Категорії
         </ons-list-item>
-        <ons-list-item modifier="chevron" ng-repeat="item in items" ng-click="showDetail(item)" class="list-row" ng-show="isGroupShown()">
+        <ons-list-item modifier="chevron" ng-repeat="item in categoriesListController.items"
+                       ng-click="categoriesListController.showDetail(item)" class="list-row"
+                       ng-show="categoriesListController.isGroupShown()">
             <ons-row>
                 <ons-col width="60px">
                     <div class="item-thum"></div>
@@ -31,8 +34,8 @@
                 </ons-col>
             </ons-row>
         </ons-list-item>
-        <prays-list ng-if="favoritePrays.length > 0"
-                    pr-items="favoritePrays"
-                    pr-on-item-click-fn="showFavoritePray"></prays-list>
+        <prays-list ng-if="categoriesListController.favoritePrays.length > 0"
+                    pr-items="categoriesListController.favoritePrays"
+                    pr-on-item-click-fn="categoriesListController.showFavoritePray"></prays-list>
     </ons-list>
 </ons-page>

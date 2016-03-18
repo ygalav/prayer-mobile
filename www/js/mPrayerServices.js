@@ -35,14 +35,19 @@
 	});
 
 	module.factory('PrayerFavoritePraysServices', ['Storage', 'PrayerHttpService', function (Storage, PrayerHttpService) {
+
+		var favoritePrays = [];
+
 		return {
 			listFavoritePrays: function () {
-				return Storage.listFavoritePrays();
+				favoritePrays = Storage.listFavoritePrays();
+				return favoritePrays;
 			},
 
 			addFavoritePray: function (id) {
 				PrayerHttpService.getPrayItemById(id, function (data) {
 					Storage.addFavoritePray(data);
+					favoritePrays.push(data)
 				});
 			},
 
