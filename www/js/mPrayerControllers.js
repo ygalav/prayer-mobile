@@ -9,28 +9,52 @@
 		]);
 
 	module.controller('AppController', function ($scope) {
+		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
 		}
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
-		$scope.context = context;
-
+		appController.context = context;
 		$scope.$root.textSizes = calculateTextSizes();
 	});
 
-	module.controller('CategoriesListController', ['$scope', 'PrayerHttpService', function ($scope, PrayerHttpService) {
-		$scope.items = {};
+	module.controller('CategoriesListController', function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
+		var categoriesListController = $scope;
+		categoriesListController.items = {};
+		$scope.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 
-		PrayerHttpService.getAllCategories(function (data) {
-			$scope.items = data;
-		});
+		PrayerHttpService.getAllCategories(
+			function (data) {
+				categoriesListController.items = data;
+				//categoriesListController.navi.replacePage('favorite-prays-list.html');
+			},
+			function() {
+				alert("Момитлка зєднання з сервером");
+				categoriesListController.navi.replacePage('favorite-prays-list.html');
+			}
+		);
+
+		/*
+		 * if given group is the selected group, deselect it
+		 * else, select the given group
+		 */
+		$scope.categoriesShown = true;
+		$scope.toggleGroup = function() {
+			console.log('Toggle Group');
+			$scope.categoriesShown = !$scope.categoriesShown;
+		};
+
+		$scope.isGroupShown = function() {
+			console.log($scope.categoriesShown);
+			return $scope.categoriesShown;
+		};
 
 		$scope.showDetail = function (selectedCategory) {
-			navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
+			categoriesListController.navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
 		};
-	}]);
+	});
 
 	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
 		function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {

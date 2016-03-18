@@ -7,8 +7,14 @@
         </div>
         <div class="center navigation-bar-text">Catholic Prayer</div>
     </ons-toolbar>
-    <ons-list class="categories-list" ng-controller="CategoriesListController">
-        <ons-list-item modifier="chevron" class="list-row" ng-repeat="item in items" ng-click="showDetail(item)">
+
+    <ons-list ng-controller="CategoriesListController">
+        <ons-list-item ng-click="toggleGroup()" class="title, list-row" ng-class="{active:isGroupShown()}">
+            <ons-icon icon="minus-square-o" ng-if="isGroupShown()"></ons-icon>
+            <ons-icon icon="plus-square-o" ng-if="!isGroupShown()"></ons-icon>
+            Категорії
+        </ons-list-item>
+        <ons-list-item modifier="chevron" ng-repeat="item in items" ng-click="showDetail(item)" class="list-row" ng-show="isGroupShown()">
             <ons-row>
                 <ons-col width="60px">
                     <div class="item-thum"></div>
@@ -25,5 +31,8 @@
                 </ons-col>
             </ons-row>
         </ons-list-item>
+        <prays-list ng-if="favoritePrays.length > 0"
+                    pr-items="favoritePrays"
+                    pr-on-item-click-fn="showFavoritePray"></prays-list>
     </ons-list>
 </ons-page>

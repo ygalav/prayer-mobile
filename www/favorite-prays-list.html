@@ -7,8 +7,7 @@
         </div>
         <div class="center navigation-bar-text">Обрані Молитви</div>
     </ons-toolbar>
-    <no-content ng-if="favoritePraysList.favoritePrays.length == 0"/>
     <prays-list ng-if="favoritePraysList.favoritePrays.length > 0"
                 pr-items="favoritePraysList.favoritePrays"
-                pr-on-item-click-fn="favoritePraysList.showFavoritePray"/>
+                pr-on-item-click-fn="favoritePraysList.showFavoritePray"></prays-list>
 </ons-page>
