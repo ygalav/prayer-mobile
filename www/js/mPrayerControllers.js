@@ -5,10 +5,11 @@
 		[
 			'onsen',
 			'ngSanitize',
+			'PrayerCommons',
 			'PrayerServices'
 		]);
 
-	module.controller('AppController', function ($scope, PrayerHttpService, PrayerMenuService) {
+	module.controller('AppController', function ($scope, PrayerHttpService, PrayerMenuService, context, prTextScaling) {
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
@@ -20,7 +21,7 @@
 		PrayerHttpService.listBooks(function(data) {
 			appController.books = data;
 		});
-		$scope.$root.textSizes = calculateTextSizes();
+		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		appController.setMenuParam = PrayerMenuService.setMenuParam;
 	});
 
@@ -112,7 +113,7 @@
 		}
 	});
 
-	module.controller('SettingsPageController', function ($scope) {
+	module.controller('SettingsPageController', function ($scope, context, prTextScaling) {
 		$scope.religion = context.systemproperties.getValue(
 			context.systemproperties.keys.religion, 'greek-catholic'
 		);
@@ -130,7 +131,7 @@
 
 		$scope.saveScaling = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.scaling, value);
-			$scope.$root.textSizes = calculateTextSizes();
+			$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		};
 
 		$scope.saveSettings = function () {

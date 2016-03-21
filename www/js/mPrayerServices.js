@@ -1,8 +1,8 @@
 (function () {
 	'use strict';
-	var module = angular.module('PrayerServices', []);
+	var module = angular.module('PrayerServices', ['PrayerCommons']);
 
-	module.factory('PrayerHttpService', function ($http, $timeout) {
+	module.factory('PrayerHttpService', function ($http, $timeout, context) {
 		var siteUrl = 'http://rest.prayer.com.ua/rest';
 		var doGET = function (url, onSuccess, onError) {
 			var responsePromise = $http.get(url);
@@ -67,14 +67,14 @@
 		};
 	}]);
 
-	module.run(function ($rootScope) {
+	module.run(function ($rootScope, context) {
 		console.log("Running Prayer");
 		$rootScope.store = Lawnchair({adapter: 'dom', name: context.storage_keys.storage_root}, function (e) {
 			console.log('Storage open');
 		});
 	});
 
-	module.factory('Storage', ['$rootScope', function ($rootScope) {
+	module.factory('Storage', function ($rootScope, context) {
 
 		var getFavoritesPraysArrayFromObject = function (favoritePraysObject) {
 			if (favoritePraysObject === undefined || favoritePraysObject == null
@@ -130,6 +130,6 @@
 				return isFavorite;
 			}
 		}
-	}]);
+	});
 })();
 
