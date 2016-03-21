@@ -8,7 +8,7 @@
 			'PrayerServices'
 		]);
 
-	module.controller('AppController', function ($scope) {
+	module.controller('AppController', function ($scope, PrayerHttpService, PrayerMenuService) {
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
@@ -17,15 +17,22 @@
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
 		appController.context = context;
+		PrayerHttpService.listBooks(function(data) {
+			appController.books = data;
+		});
 		$scope.$root.textSizes = calculateTextSizes();
+		appController.setMenuParam = PrayerMenuService.setMenuParam;
 	});
 
-	module.controller('CategoriesListController', function (PrayerHttpService, PrayerFavoritePraysServices) {
+	module.controller('CategoriesListController', function (PrayerHttpService, PrayerFavoritePraysServices,
+																													PrayerMenuService) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
 		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 
-		PrayerHttpService.getAllCategories(
+		var selectedBook = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
+		selectedBook = selectedBook ? selectedBook : 1;
+		PrayerHttpService.getAllCategories(selectedBook,
 			function (data) {
 				categoriesListController.items = data;
 			},

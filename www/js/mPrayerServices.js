@@ -17,9 +17,9 @@
 			responsePromise.error(onError);
 		};
 		return {
-			getAllCategories: function (onSuccess, onError) {
-				var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
-				doGET(siteUrl + '/category?language=' + language, onSuccess, onError);
+			getAllCategories: function (bookId, onSuccess, onError) {
+				var url = siteUrl + "/books/" + bookId + "/categories";
+				doGET(url, onSuccess, onError);
 			},
 
 			getPraysForCategory: function (categoryId, onSuccess, onError) {
@@ -30,6 +30,12 @@
 			getPrayItemById: function (prayItemId, onSuccess, onError) {
 				var url = siteUrl + '/pray/' + prayItemId;
 				doGET(url, onSuccess, onError);
+			},
+
+			listBooks : function(onSuccess, onError) {
+				var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+				var url = siteUrl + '/books?language=' + language;
+				return doGET(url, onSuccess, onError);
 			}
 		};
 	});
