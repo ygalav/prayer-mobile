@@ -2,7 +2,7 @@
 	'use strict';
 	var module = angular.module('PrayerCommons', []);
 
-	module.factory('context', function() {
+	module.factory('context', function() { //TODO: Context rename to sth like prContext
 		return {
 			systemproperties: {
 				keys: {

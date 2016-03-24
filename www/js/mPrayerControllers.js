@@ -18,11 +18,20 @@
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
 		appController.context = context;
-		PrayerHttpService.listBooks(function(data) {
-			appController.books = data;
-		});
+
 		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		appController.setMenuParam = PrayerMenuService.setMenuParam;
+
+		var reloadBooksList = function() {
+			PrayerHttpService.listBooks(function(data){
+				appController.books = data;
+			});
+		};
+
+		reloadBooksList();
+		$scope.$on('updateBooksList', function(event, args) {
+			reloadBooksList();
+		});
 	});
 
 	module.controller('CategoriesListController', function (PrayerHttpService, PrayerFavoritePraysServices,
@@ -123,6 +132,7 @@
 
 		$scope.saveLanguage = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, value);
+			$scope.$emit('updateBooksList', []);
 		};
 
 		$scope.saveReligion = function (value) {
