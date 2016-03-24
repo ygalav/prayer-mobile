@@ -4,14 +4,14 @@
             <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
         </ons-toolbar-button>
     </div>
-    <div class="center navigation-bar-text">Налаштування</div>
+    <div class="center navigation-bar-text">{{appController.localization.settings}}</div>
 </ons-toolbar>
 <ons-list class="settings-page-sections-list" ng-controller="SettingsPageController">
     <ons-list-item>
         <ons-row>
             <ons-row class="settings-page-section-row">
                 <ons-col class="setting-name">
-                    <header>Хто я:</header>
+                    <header>{{appController.localization.settings_setting_who_am_i}}</header>
                 </ons-col>
                 <ons-col>
                     <div class="button-bar" style="width:280px;">
@@ -20,14 +20,14 @@
                                    ng-model="religion"
                                    value="catholic"
                                    ng-change="saveReligion(religion)">
-                            <button class="button-bar__button">Католик</button>
+                            <button class="button-bar__button">{{appController.localization.settings_setting_who_am_i_catholic}}</button>
                         </div>
                         <div class="button-bar__item">
                             <input type="radio"
                                    ng-model="religion"
                                    value="greek-catholic"
                                    ng-change="saveReligion(religion)">
-                            <button class="button-bar__button">Греко-Католик</button>
+                            <button class="button-bar__button">{{appController.localization.settings_setting_who_am_i_greek_catholic}}</button>
                         </div>
                     </div>
                 </ons-col>
@@ -39,7 +39,7 @@
             <ons-row class="settings-page-section-row">
                 <ons-col class="setting-name">
                     <header>
-                        Мова молитов:
+                        {{appController.localization.settings_setting_language}}
                     </header>
                 </ons-col>
                 <ons-col>
@@ -67,7 +67,7 @@
         <ons-row>
             <ons-row class="settings-page-sections-list">
                 <ons-col class="setting-name">
-                    <span>Розмір тексту</span>
+                    <span>{{appController.localization.settings_setting_text_size}}</span>
                 </ons-col>
                 <ons-col>
                     <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></range>
@@ -76,18 +76,18 @@
             <ons-row class="settings-page-sections-list">
                 <ons-row>
                     <ons-col>
-                        <span>Заголовок молитви:</span>
+                        <span>{{appController.localization.settings_setting_text_size_header_title}}</span>
                     </ons-col>
                     <ons-col>
-                        <span class="item-title">Молитва: Отче Наш</span>
+                        <span class="item-title">{{appController.localization.settings_setting_text_size_header_example}}</span>
                     </ons-col>
                 </ons-row>
                 <ons-row>
                     <ons-col>
-                        <span>Текст молитви:</span>
+                        <span>{{appController.localization.settings_setting_text_size_content_title}}</span>
                     </ons-col>
                     <ons-col>
-                        <span class="pray-context-text">Молитва: Отче наш, що є на небесах!...</span>
+                        <span class="pray-context-text">{{appController.localization.settings_setting_text_size_content_example}}</span>
                     </ons-col>
                 </ons-row>
             </ons-row>
@@ -95,7 +95,7 @@
 
     </ons-list-item>
     <ons-list-item>
-        <button class="button button--material" ng-click="saveSettings()">Зберегти</button>
+        <button class="button button--material" ng-click="saveSettings()">{{appController.localization.settings_save}}</button>
     </ons-list-item>
 </ons-list>
 

@@ -9,11 +9,20 @@
 			'PrayerServices'
 		]);
 
-	module.controller('AppController', function ($scope, PrayerHttpService, PrayerMenuService, context, prTextScaling) {
+	module.controller('AppController', function (
+		$scope,
+		PrayerHttpService,
+		PrayerMenuService,
+		context,
+		prTextScaling,
+		prLanguageService
+	) {
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
 		}
+		appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
+
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
@@ -29,8 +38,9 @@
 		};
 
 		reloadBooksList();
-		$scope.$on('updateBooksList', function(event, args) {
+		$scope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
+			appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
 		});
 	});
 
@@ -132,7 +142,7 @@
 
 		$scope.saveLanguage = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, value);
-			$scope.$emit('updateBooksList', []);
+			$scope.$emit('onLanguageChanged', []);
 		};
 
 		$scope.saveReligion = function (value) {

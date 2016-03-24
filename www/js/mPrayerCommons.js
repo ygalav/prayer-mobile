@@ -60,3 +60,57 @@
 	}
 	});
 })();
+
+PrayerLocalizations = {
+	en : {
+		categories_list_page_title : "Catholic Prayer",
+		categories : 'Categories',
+		settings : "Settings",
+		settings_setting_who_am_i : "I am: ",
+		settings_setting_who_am_i_catholic : "Catholic",
+		settings_setting_who_am_i_greek_catholic : "Greek-Catholic",
+		settings_setting_language : "Language:",
+		settings_setting_text_size : "Text size:",
+		settings_setting_text_size_header_title : "Pray title:",
+		settings_setting_text_size_header_example : "Pray: Our Father",
+		settings_setting_text_size_content_title : "Pray text:",
+		settings_setting_text_size_content_example : "Our Father, Who is in heaven!...",
+		settings_save : 'Save',
+		prays_list_title : 'Prays',
+		button_back : 'Back'
+	},
+	ua : {
+		categories_list_page_title : "Молитовник",
+		categories : 'Категорії',
+		settings : "Налаштування",
+		settings_setting_who_am_i : "Хто Я: ",
+		settings_setting_who_am_i_catholic : "Католик",
+		settings_setting_who_am_i_greek_catholic : "Греко-Католик",
+		settings_setting_language : "Мова молитов:",
+		settings_setting_text_size : "Розмір тексту:",
+		settings_setting_text_size_header_title : "Заголовок молитви:",
+		settings_setting_text_size_header_example : "Молитва: Отче Наш",
+		settings_setting_text_size_content_title : "Текст молитви:",
+		settings_setting_text_size_content_example : "Отче наш, що є на небесах!...",
+		settings_save : "Зберегти",
+		prays_list_title : 'Молитви',
+		button_back : 'Назад'
+	},
+	pl : {
+		categories_list_page_title : "Catholic Prayer",
+		categories : 'Categories',
+		settings : "Settings",
+		settings_setting_who_am_i : "I am: ",
+		settings_setting_who_am_i_catholic : "Catholic",
+		settings_setting_who_am_i_greek_catholic : "Greek-Catholic",
+		settings_setting_language : "Language:",
+		settings_setting_text_size : "Text size:",
+		settings_setting_text_size_header_title : "Pray title:",
+		settings_setting_text_size_header_example : "Pray: Our Father",
+		settings_setting_text_size_content_title : "Pray text:",
+		settings_setting_text_size_content_example : "Our Father, Who is in heaven!...",
+		settings_save : "Save",
+		prays_list_title : 'Prays',
+		button_back : 'Back'
+	}
+};
