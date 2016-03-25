@@ -77,6 +77,7 @@ PrayerLocalizations = {
 		settings_setting_text_size_content_example : "Our Father, Who is in heaven!...",
 		settings_save : 'Save',
 		prays_list_title : 'Prays',
+		prays_list_prays_quantity : 'Prays:',
 		button_back : 'Back'
 	},
 	ua : {
@@ -94,6 +95,7 @@ PrayerLocalizations = {
 		settings_setting_text_size_content_example : "Отче наш, що є на небесах!...",
 		settings_save : "Зберегти",
 		prays_list_title : 'Молитви',
+		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Назад'
 	},
 	pl : {
@@ -111,6 +113,7 @@ PrayerLocalizations = {
 		settings_setting_text_size_content_example : "Our Father, Who is in heaven!...",
 		settings_save : "Save",
 		prays_list_title : 'Prays',
+		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Back'
 	}
 };
