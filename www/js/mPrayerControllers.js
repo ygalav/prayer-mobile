@@ -17,10 +17,9 @@
 		prTextScaling,
 		prLanguageService
 	) {
+		prLanguageService.defineLanguage();
 		var appController = this;
-		if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
-			context.systemproperties.setValue(context.systemproperties.keys.language, 'UA');
-		}
+		prLanguageService.defineLanguage();
 		appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
 
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
@@ -30,6 +29,8 @@
 
 		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		appController.setMenuParam = PrayerMenuService.setMenuParam;
+
+
 
 		var reloadBooksList = function() {
 			PrayerHttpService.listBooks(function(data){
@@ -42,16 +43,32 @@
 			reloadBooksList();
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
 		});
+
+		function setLanguage() {
+			navigator.globalization.getPreferredLanguage(
+				function (language) {
+					appController.deviceLanguage = language.value;
+				},
+				function () {alert('Error getting language\n');}
+			);
+		}
+		setLanguage();
 	});
 
-	module.controller('CategoriesListController', function (PrayerHttpService, PrayerFavoritePraysServices,
-																													PrayerMenuService) {
+	module.controller('CategoriesListController', function (
+		PrayerHttpService,
+		PrayerFavoritePraysServices,
+		PrayerMenuService,
+		prBookService
+	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
 		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 
 		var selectedBook = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
-		selectedBook = selectedBook ? selectedBook : 1;
+
+
+		selectedBook = selectedBook ? selectedBook : prBookService.getDefaultBookIDForCurrentLanguage();
 		PrayerHttpService.getAllCategories(selectedBook,
 			function (data) {
 				categoriesListController.items = data;
@@ -132,12 +149,12 @@
 		}
 	});
 
-	module.controller('SettingsPageController', function ($scope, context, prTextScaling) {
+	module.controller('SettingsPageController', function ($scope, context, prTextScaling, prLanguageService) {
 		$scope.religion = context.systemproperties.getValue(
 			context.systemproperties.keys.religion, 'greek-catholic'
 		);
 
-		$scope.language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+		$scope.language = prLanguageService.getCurrentLanguage();
 		$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
 
 		$scope.saveLanguage = function (value) {

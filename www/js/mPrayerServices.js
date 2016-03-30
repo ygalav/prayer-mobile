@@ -2,7 +2,11 @@
 	'use strict';
 	var module = angular.module('PrayerServices', ['PrayerCommons']);
 
-	module.factory('PrayerHttpService', function ($http, $timeout, context) {
+	module.config(function($logProvider){
+		$logProvider.debugEnabled(debug.services);
+	});
+
+	module.factory('PrayerHttpService', function ($http, $timeout, context, prLanguageService) {
 		var siteUrl = 'http://rest.prayer.com.ua/rest';
 		var doGET = function (url, onSuccess, onError) {
 			var responsePromise = $http.get(url);
@@ -33,7 +37,7 @@
 			},
 
 			listBooks : function(onSuccess, onError) {
-				var language = context.systemproperties.getValue(context.systemproperties.keys.language, 'UA');
+				var language = prLanguageService.getCurrentLanguage();
 				var url = siteUrl + '/books?language=' + language;
 				return doGET(url, onSuccess, onError);
 			}
@@ -67,10 +71,9 @@
 		};
 	}]);
 
-	module.run(function ($rootScope, context) {
-		console.log("Running Prayer");
+	module.run(function ($log, $rootScope, context) {
 		$rootScope.store = Lawnchair({adapter: 'dom', name: context.storage_keys.storage_root}, function (e) {
-			console.log('Storage open');
+			$log.debug('Storage open: ' + context.storage_keys.storage_root);
 		});
 	});
 

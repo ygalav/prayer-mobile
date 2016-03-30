@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- CSP support mode (required for Windows Universal apps): https://docs.angularjs.org/api/ng/directive/ngCsp -->
-<html lang="en" ng-app="prayer" ng-csp>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -28,6 +28,7 @@
     <script src="js/mPrayerServices.js"></script>
     <script src="js/mPrayerMenuService.js"></script>
     <script src="js/services/mLanguageService.js"></script>
+    <script src="js/services/mBookService.js"></script>
     <script src="js/mPrayerControllers.js"></script>
     <script src="js/mRoot.js"></script>
 
@@ -35,7 +36,7 @@
 
 </head>
 
-<body ng-controller="AppController as appController">
+<body ng-csp ng-controller="AppController as appController">
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
 

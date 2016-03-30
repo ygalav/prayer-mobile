@@ -117,3 +117,8 @@ PrayerLocalizations = {
 		button_back : 'Back'
 	}
 };
+
+debug = {
+	services : true,
+	controllers : true
+};
