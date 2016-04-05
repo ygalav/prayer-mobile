@@ -62,7 +62,6 @@
 				},
 				function() {
 					alert("Server connection error");
-					navi.replacePage('favorite-prays-list.html');
 				}
 			);
 		};
@@ -129,14 +128,6 @@
 				}
 			}
 		]);
-
-	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
-		var favoritePraysList = this;
-		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
-		favoritePraysList.showFavoritePray = function(prayItemId) {
-			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
-		}
-	});
 
 	module.controller('SettingsPageController', function ($scope, context, prTextScaling, prLanguageService) {
 		$scope.religion = context.systemproperties.getValue(
