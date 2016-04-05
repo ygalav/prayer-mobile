@@ -17,11 +17,7 @@
 		prTextScaling,
 		prLanguageService
 	) {
-		prLanguageService.defineLanguage();
 		var appController = this;
-		prLanguageService.defineLanguage();
-		appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
-
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
@@ -30,32 +26,24 @@
 		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		appController.setMenuParam = PrayerMenuService.setMenuParam;
 
-
-
 		var reloadBooksList = function() {
 			PrayerHttpService.listBooks(function(data){
 				appController.books = data;
 			});
 		};
 
-		reloadBooksList();
 		$scope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
 		});
 
-		function setLanguage() {
-			navigator.globalization.getPreferredLanguage(
-				function (language) {
-					appController.deviceLanguage = language.value;
-				},
-				function () {alert('Error getting language\n');}
-			);
-		}
-		setLanguage();
+		prLanguageService.defineLanguage(function() {
+			$scope.$broadcast('onLanguageChanged', []);
+		});
 	});
 
 	module.controller('CategoriesListController', function (
+		$scope,
 		PrayerHttpService,
 		PrayerFavoritePraysServices,
 		PrayerMenuService,
@@ -65,19 +53,21 @@
 		categoriesListController.items = {};
 		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
 
-		var selectedBook = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
+		var displayCategories = function() {
+			var selectedBook = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
+			selectedBook = selectedBook ? selectedBook : prBookService.getDefaultBookIDForCurrentLanguage();
+			PrayerHttpService.getAllCategories(selectedBook,
+				function (data) {
+					categoriesListController.items = data;
+				},
+				function() {
+					alert("Server connection error");
+					navi.replacePage('favorite-prays-list.html');
+				}
+			);
+		};
 
-
-		selectedBook = selectedBook ? selectedBook : prBookService.getDefaultBookIDForCurrentLanguage();
-		PrayerHttpService.getAllCategories(selectedBook,
-			function (data) {
-				categoriesListController.items = data;
-			},
-			function() {
-				alert("Момитлка зєднання з сервером");
-				navi.replacePage('favorite-prays-list.html');
-			}
-		);
+		displayCategories();
 
 		/*
 		 * if given group is the selected group, deselect it
@@ -85,7 +75,6 @@
 		 */
 		categoriesListController.categoriesShown = true;
 		categoriesListController.toggleGroup = function() {
-			console.log('Toggle Group');
 			categoriesListController.categoriesShown = !categoriesListController.categoriesShown;
 		};
 

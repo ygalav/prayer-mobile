@@ -9,7 +9,7 @@
 		module.factory('prLanguageService', function($log, context) {
 		var services = {
 
-			defineLanguage : function() {
+			defineLanguage : function(callback) {
 				if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 					$log.debug("No language has been set, setting language based on device preferences");
 					navigator.globalization.getPreferredLanguage(
@@ -34,9 +34,12 @@
 									context.systemproperties.setValue(context.systemproperties.keys.language, 'EN');
 								}
 							}
+							callback();
 						},
 						function () {alert('Error getting language\n');}
 					);
+				} else {
+					callback();
 				}
 				$log.debug("Session language is: " + context.systemproperties.getValue(context.systemproperties.keys.language));
 			},
