@@ -34,12 +34,12 @@
 									context.systemproperties.setValue(context.systemproperties.keys.language, 'EN');
 								}
 							}
-							callback();
+							callback(context.systemproperties.getValue(context.systemproperties.keys.language));
 						},
 						function () {alert('Error getting language\n');}
 					);
 				} else {
-					callback();
+					callback(context.systemproperties.getValue(context.systemproperties.keys.language));
 				}
 				$log.debug("Session language is: " + context.systemproperties.getValue(context.systemproperties.keys.language));
 			},

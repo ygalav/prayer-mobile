@@ -34,11 +34,11 @@
 
 		$scope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
-			appController.localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
+			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
-		prLanguageService.defineLanguage(function() {
-			$scope.$broadcast('onLanguageChanged', []);
+		prLanguageService.defineLanguage(function(language) {
+			$scope.$broadcast('onLanguageChanged', {language : language});
 		});
 	});
 
@@ -143,7 +143,10 @@
 			context.systemproperties.keys.religion, 'greek-catholic'
 		);
 
-		$scope.language = prLanguageService.getCurrentLanguage();
+		prLanguageService.defineLanguage(function (language) {
+			$scope.language = language;
+		});
+
 		$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
 
 		$scope.saveLanguage = function (value) {

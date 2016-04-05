@@ -37,9 +37,10 @@
 			},
 
 			listBooks : function(onSuccess, onError) {
-				var language = prLanguageService.getCurrentLanguage();
-				var url = siteUrl + '/books?language=' + language;
-				return doGET(url, onSuccess, onError);
+				prLanguageService.defineLanguage(function (language) {
+					var url = siteUrl + '/books?language=' + language;
+					doGET(url, onSuccess, onError);
+				});
 			}
 		};
 	});
