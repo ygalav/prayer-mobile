@@ -50,8 +50,8 @@
 		var favoritePrays = [];
 
 		return {
-			listFavoritePrays: function () {
-				favoritePrays = Storage.listFavoritePrays();
+			listFavoritePrays: function (bookId) {
+				favoritePrays = Storage.listFavoritePrays(bookId);
 				return favoritePrays;
 			},
 
@@ -78,7 +78,7 @@
 		});
 	});
 
-	module.factory('Storage', function ($rootScope, context) {
+	module.factory('Storage', function ($rootScope, context, prLanguageService, PrayerMenuService) {
 
 		var getFavoritesPraysArrayFromObject = function (favoritePraysObject) {
 			if (favoritePraysObject === undefined || favoritePraysObject == null
@@ -93,6 +93,7 @@
 			addFavoritePray: function (pray) {
 				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
 					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+					console.log(pray);
 					favoritePrays.push(pray);
 					$rootScope.store.save({
 						key: context.storage_keys.favorite_prays,
@@ -101,11 +102,20 @@
 				});
 			},
 
-			listFavoritePrays: function () {
+			listFavoritePrays: function (bookId) {
 				var prays = [];
 				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
 					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
-					prays = favoritePrays;
+					prLanguageService.defineLanguage(function (language) {
+						prays = _.filter(favoritePrays, function (favoritePray) {
+							var isProperBook = true;
+							if (bookId) {
+								isProperBook = bookId === favoritePray.category.book.id;
+							}
+							return favoritePray.language.shortcut === language && isProperBook;
+						});
+					});
+
 				});
 				return prays;
 			},

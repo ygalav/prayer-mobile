@@ -51,12 +51,14 @@
 	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
-		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
+
+		if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
+			PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
+		}
+		var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
 
 		var displayCategories = function() {
-			var selectedBook = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
-			selectedBook = selectedBook ? selectedBook : prBookService.getDefaultBookIDForCurrentLanguage();
-			PrayerHttpService.getAllCategories(selectedBook,
+			PrayerHttpService.getAllCategories(selectedBookId,
 				function (data) {
 					categoriesListController.items = data;
 				},
@@ -67,6 +69,7 @@
 		};
 
 		displayCategories();
+		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
 
 		/*
 		 * if given group is the selected group, deselect it
