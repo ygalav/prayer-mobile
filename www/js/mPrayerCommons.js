@@ -99,22 +99,22 @@ PrayerLocalizations = {
 		button_back : 'Назад'
 	},
 	pl : {
-		categories_list_page_title : "Catholic Prayer",
-		categories : 'Categories',
-		settings : "Settings",
-		settings_setting_who_am_i : "I am: ",
-		settings_setting_who_am_i_catholic : "Catholic",
-		settings_setting_who_am_i_greek_catholic : "Greek-Catholic",
-		settings_setting_language : "Language:",
-		settings_setting_text_size : "Text size:",
-		settings_setting_text_size_header_title : "Pray title:",
-		settings_setting_text_size_header_example : "Pray: Our Father",
-		settings_setting_text_size_content_title : "Pray text:",
-		settings_setting_text_size_content_example : "Our Father, Who is in heaven!...",
-		settings_save : "Save",
+		categories_list_page_title : "Modlitewnik",
+		categories : 'Kategorie',
+		settings : "Ustawienia",
+		settings_setting_who_am_i : "Jestem: ",
+		settings_setting_who_am_i_catholic : "Katolik",
+		settings_setting_who_am_i_greek_catholic : "Greko-Katolik",
+		settings_setting_language : "Modlitwy:",
+		settings_setting_text_size : "Rozmiar czcionki:",
+		settings_setting_text_size_header_title : "Tytuł modlitwy:",
+		settings_setting_text_size_header_example : "Modlitwa: Ojcze Nasz",
+		settings_setting_text_size_content_title : "Tekst Modlitwy:",
+		settings_setting_text_size_content_example : "Ojcze nasz, któryś jest w niebie!...",
+		settings_save : "Zapisz",
 		prays_list_title : 'Prays',
-		prays_list_prays_quantity : 'Молитов:',
-		button_back : 'Back'
+		prays_list_prays_quantity : 'Modlitwy:',
+		button_back : 'Zwrocz'
 	}
 };
 
