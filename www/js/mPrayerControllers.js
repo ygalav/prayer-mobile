@@ -11,6 +11,7 @@
 
 	module.controller('AppController', function (
 		$scope,
+		$rootScope,
 		PrayerHttpService,
 		PrayerMenuService,
 		context,
@@ -32,13 +33,13 @@
 			});
 		};
 
-		$scope.$on('onLanguageChanged', function(event, args) {
+		$rootScope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
 		prLanguageService.defineLanguage(function(language) {
-			$scope.$broadcast('onLanguageChanged', {language : language});
+			$rootScope.$emit('onLanguageChanged', {language : language});
 		});
 	});
 
@@ -132,7 +133,13 @@
 			}
 		]);
 
-	module.controller('SettingsPageController', function ($scope, context, prTextScaling, prLanguageService) {
+	module.controller('SettingsPageController', function (
+		$scope,
+		$rootScope,
+		context,
+		prTextScaling,
+		prLanguageService
+	) {
 		$scope.religion = context.systemproperties.getValue(
 			context.systemproperties.keys.religion, 'greek-catholic'
 		);
@@ -145,7 +152,7 @@
 
 		$scope.saveLanguage = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, value);
-			$scope.$emit('onLanguageChanged', []);
+			$rootScope.$emit('onLanguageChanged', {language : value});
 		};
 
 		$scope.saveReligion = function (value) {
