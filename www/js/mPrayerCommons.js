@@ -78,7 +78,8 @@ PrayerLocalizations = {
 		settings_save : 'Save',
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Prays:',
-		button_back : 'Back'
+		button_back : 'Back',
+		no_internet_label : 'No internet connection'
 	},
 	ua : {
 		categories_list_page_title : "Молитовник",
@@ -96,7 +97,8 @@ PrayerLocalizations = {
 		settings_save : "Зберегти",
 		prays_list_title : 'Молитви',
 		prays_list_prays_quantity : 'Молитов:',
-		button_back : 'Назад'
+		button_back : 'Назад',
+		no_internet_label : 'Немає звязку з сервером'
 	},
 	pl : {
 		categories_list_page_title : "Modlitewnik",
@@ -114,9 +116,10 @@ PrayerLocalizations = {
 		settings_save : "Zapisz",
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Modlitwy:',
-		button_back : 'Zwrocz'
+		button_back : 'Zwrocz',
+		no_internet_label : 'Brak połączenia z internetem'
 	}
-};
+}
 
 debug = {
 	services : true,

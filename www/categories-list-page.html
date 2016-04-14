@@ -15,6 +15,12 @@
             <ons-icon icon="plus-square-o" ng-if="!categoriesListController.isGroupShown()"></ons-icon>
             {{appController.localization.categories}}
         </ons-list-item>
+        <ons-row ng-if="!categoriesListController.isReady">
+            <div class="progress-bar progress-bar--indeterminate"></div>
+        </ons-row>
+        <ons-row ng-show="categoriesListController.noInternet">
+            <span>{{appController.localization.no_internet_label}}</span>
+        </ons-row>
         <ons-list-item modifier="chevron" ng-repeat="item in categoriesListController.items"
                        ng-click="categoriesListController.showDetail(item)" class="list-row"
                        ng-show="categoriesListController.isGroupShown()">

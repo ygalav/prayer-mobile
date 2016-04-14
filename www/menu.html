@@ -1,5 +1,5 @@
 <ons-list>
-    <ons-list-item ng-repeat="book in appController.books" modifier="chevron"
+    <ons-list-item ng-repeat="book in appController.books | orderBy:'id'" modifier="chevron"
                    ng-click="appController.setMenuParam('selectedBook', book.id); menu._currentPageUrl='';
                    menu.setMainPage('categories-list-page.html', {closeMenu: true})">
         <span class="sliding-menu-item-text">{{book.name}}</span>

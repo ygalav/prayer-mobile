@@ -62,8 +62,12 @@
 			PrayerHttpService.getAllCategories(selectedBookId,
 				function (data) {
 					categoriesListController.items = data;
+					categoriesListController.isReady = true;
+
 				},
 				function() {
+					categoriesListController.isReady = true;
+					categoriesListController.noInternet = true;
 					alert("Server connection error");
 				}
 			);
