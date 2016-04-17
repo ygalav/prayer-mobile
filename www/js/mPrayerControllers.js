@@ -9,6 +9,10 @@
 			'PrayerServices'
 		]);
 
+	module.config(function($logProvider){
+		$logProvider.debugEnabled(debug.controllers);
+	});
+
 	module.controller('AppController', function (
 		$scope,
 		$rootScope,
@@ -48,7 +52,8 @@
 		PrayerHttpService,
 		PrayerFavoritePraysServices,
 		PrayerMenuService,
-		prBookService
+		prBookService,
+		$log
 	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
@@ -68,7 +73,7 @@
 				function() {
 					categoriesListController.isReady = true;
 					categoriesListController.noInternet = true;
-					alert("Server connection error");
+					$log.debug("Server connection problem");
 				}
 			);
 		};

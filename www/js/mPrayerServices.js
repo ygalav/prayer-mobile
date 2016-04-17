@@ -6,12 +6,12 @@
 		$logProvider.debugEnabled(debug.services);
 	});
 
-	module.factory('PrayerHttpService', function ($http, $timeout, context, prLanguageService) {
+	module.factory('PrayerHttpService', function ($http, $timeout, $log,context, prLanguageService) {
 		var siteUrl = 'http://rest.prayer.com.ua/rest';
 		var doGET = function (url, onSuccess, onError) {
 			var responsePromise = $http.get(url);
 			onError = onError || function () {
-					alert("Problem loading data");
+					$log.debug("Problem loading data");
 				};
 			onSuccess = onSuccess || function () {
 				};
