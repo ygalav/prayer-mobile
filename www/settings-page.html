@@ -14,22 +14,6 @@
                     <header>{{appController.localization.settings_setting_who_am_i}}</header>
                 </ons-col>
                 <ons-col>
-                    <!--<div class="button-bar" style="width:280px;">
-                        <div class="button-bar__item">
-                            <input type="radio"
-                                   ng-model="religion"
-                                   value="catholic"
-                                   ng-change="saveReligion(religion)">
-                            <button class="button-bar__button">{{appController.localization.settings_setting_who_am_i_catholic}}</button>
-                        </div>
-                        <div class="button-bar__item">
-                            <input type="radio"
-                                   ng-model="religion"
-                                   value="greek-catholic"
-                                   ng-change="saveReligion(religion)">
-                            <button class="button-bar__button">{{appController.localization.settings_setting_who_am_i_greek_catholic}}</button>
-                        </div>
-                    </div>-->
                     <ons-row>
                         <label class="radio-button">
                             <input
@@ -54,13 +38,6 @@
                             {{appController.localization.settings_setting_who_am_i_greek_catholic}}
                         </label>
                     </ons-row>
-                    <!--<ons-row>
-                        <label class="radio-button">
-                            <input type="radio" class="radio-button__input" name="religion">
-                            <div class="radio-button__checkmark"></div>
-                            Label
-                        </label>
-                    </ons-row>-->
                 </ons-col>
             </ons-row>
         </ons-row>
@@ -95,22 +72,6 @@
                             Polski
                         </label>
                     </ons-row>
-                    <!--<div class="button-bar" style="width:280px;">
-                        <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="UA" ng-change="saveLanguage(language)">
-                            <button class="button-bar__button">Українська</button>
-                        </div>
-
-                        <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="EN" ng-change="saveLanguage(language)">
-                            <button class="button-bar__button">English</button>
-                        </div>
-
-                        <div class="button-bar__item">
-                            <input type="radio" ng-model="language" value="PL" ng-change="saveLanguage(language)">
-                            <button class="button-bar__button">Polski</button>
-                        </div>
-                    </div>-->
                 </ons-col>
             </ons-row>
         </ons-row>
@@ -144,7 +105,6 @@
                 </ons-row>
             </ons-row>
         </ons-row>
-
     </ons-list-item>
     <ons-list-item>
         <button class="button button--material" ng-click="saveSettings()">{{appController.localization.settings_save}}</button>
