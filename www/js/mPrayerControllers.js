@@ -120,9 +120,16 @@
 
 			$scope.addItemToFavorites = function (id) {
 				PrayerFavoritePraysServices.addFavoritePray(id);
-				console.log(id + " is added to favorites");
 			}
 	}]);
+
+	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
+		var favoritePraysList = this;
+		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
+		favoritePraysList.showFavoritePray = function(prayItemId) {
+			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
+		}
+	});
 
 	module.controller('PraysItemViewController',
 		[

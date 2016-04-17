@@ -45,7 +45,7 @@
 		};
 	});
 
-	module.factory('PrayerFavoritePraysServices', ['Storage', 'PrayerHttpService', function (Storage, PrayerHttpService) {
+	module.factory('PrayerFavoritePraysServices', function ($log, Storage, PrayerHttpService) {
 
 		var favoritePrays = [];
 
@@ -55,11 +55,18 @@
 				return favoritePrays;
 			},
 
-			addFavoritePray: function (id) {
-				PrayerHttpService.getPrayItemById(id, function (data) {
-					Storage.addFavoritePray(data);
-					favoritePrays.push(data)
-				});
+			addFavoritePray: function (prayItemId) {
+				$log.info('Trying to add prayItem: [' + prayItemId + '] to favorites');
+				if (!Storage.isFavorite(prayItemId)) {
+					PrayerHttpService.getPrayItemById(prayItemId, function (data) {
+						Storage.addFavoritePray(data);
+						favoritePrays.push(data);
+						$log.info('[' + prayItemId + ' - ' + data.name + '] is added to favorites');
+					});
+				}
+				else {
+					$log.info('PrayItem: [' + prayItemId + '] already added to favorites');
+				}
 			},
 
 			getFavoritePray: function (id) {
@@ -67,10 +74,10 @@
 			},
 
 			isFavorite: function (pray) {
-				return Storage.isFavorite(pray);
+				return Storage.isFavorite(pray.id);
 			}
 		};
-	}]);
+	});
 
 	module.run(function ($log, $rootScope, context) {
 		$rootScope.store = Lawnchair({adapter: 'dom', name: context.storage_keys.storage_root}, function (e) {
@@ -132,12 +139,12 @@
 				return pray;
 			},
 
-			isFavorite: function (pray) {
+			isFavorite: function (prayId) {
 				var isFavorite = false;
 				$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
 					var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
 					var prayArrayWithMatchedPrays = _.filter(favoritePrays, function (favoritePray) {
-						return favoritePray.id == pray.id
+						return favoritePray.id == prayId;
 					});
 					isFavorite = prayArrayWithMatchedPrays.length > 0;
 				});

@@ -68,3 +68,7 @@
 .setting-name {
     font-size: 22px;
 }
+
+ons-list-item.menu-list-header {
+    background-color: #f9f9f9;
+}
