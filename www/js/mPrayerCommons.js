@@ -65,6 +65,8 @@ PrayerLocalizations = {
 	en : {
 		categories_list_page_title : "Catholic Prayer",
 		categories : 'Categories',
+		books : 'Books',
+		choosen_prays : 'Choosen prays',
 		settings : "Settings",
 		settings_setting_who_am_i : "I am: ",
 		settings_setting_who_am_i_catholic : "Catholic",
@@ -84,6 +86,8 @@ PrayerLocalizations = {
 	ua : {
 		categories_list_page_title : "Молитовник",
 		categories : 'Категорії',
+		books : 'Книги',
+		choosen_prays : 'Обрані Молитви',
 		settings : "Налаштування",
 		settings_setting_who_am_i : "Хто Я: ",
 		settings_setting_who_am_i_catholic : "Католик",
@@ -103,6 +107,8 @@ PrayerLocalizations = {
 	pl : {
 		categories_list_page_title : "Modlitewnik",
 		categories : 'Kategorie',
+		books : 'Książki',
+		choosen_prays : 'Moje Modlitwy',
 		settings : "Ustawienia",
 		settings_setting_who_am_i : "Jestem: ",
 		settings_setting_who_am_i_catholic : "Katolik",
@@ -119,7 +125,7 @@ PrayerLocalizations = {
 		button_back : 'Zwrocz',
 		no_internet_label : 'Brak połączenia z internetem'
 	}
-}
+};
 
 debug = {
 	services : true,

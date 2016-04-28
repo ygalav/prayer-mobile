@@ -1,6 +1,6 @@
 <ons-list>
     <ons-list-item class="menu-list-header">
-        <i>Книги</i>
+        <i>{{appController.localization.books}}</i>
     </ons-list-item>
     <ons-list-item ng-repeat="book in appController.books | orderBy:'id'" modifier="chevron"
                    ng-click="appController.setMenuParam('selectedBook', book.id); menu._currentPageUrl='';
@@ -11,7 +11,7 @@
     <ons-list-item class="menu-list-header"></ons-list-item>
 
     <ons-list-item modifier="chevron" ng-click="menu.setMainPage('favorite-prays-list.html', {closeMenu: true})">
-        <span class="sliding-menu-item-text">Обрані Молитви</span>
+        <span class="sliding-menu-item-text">{{appController.localization.choosen_prays}}</span>
     </ons-list-item>
     <ons-list-item modifier="chevron" ng-click="menu.setMainPage('settings-page.html', {closeMenu: true})">
         <span class="sliding-menu-item-text">{{appController.localization.settings}}</span>
