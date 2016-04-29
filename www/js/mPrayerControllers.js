@@ -53,7 +53,8 @@
 		PrayerFavoritePraysServices,
 		PrayerMenuService,
 		prBookService,
-		$log
+		$log,
+		prLanguageService
 	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
@@ -68,12 +69,21 @@
 				function (data) {
 					categoriesListController.items = data;
 					categoriesListController.isReady = true;
-
 				},
 				function() {
-					categoriesListController.isReady = true;
 					categoriesListController.noInternet = true;
 					$log.debug("Server connection problem");
+					if (PrayerFavoritePraysServices.hasFavoritePrays()) {
+						categoriesListController.isReady = true;
+					}
+					else {
+						var localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
+						ons.notification.alert({
+							message: localization.msg_no_internet_and_saved_prays,
+							title: localization.msg_no_internet_and_saved_prays_title,
+							modifier: 'material'
+						});
+					}
 				}
 			);
 		};

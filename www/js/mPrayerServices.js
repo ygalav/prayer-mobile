@@ -50,6 +50,16 @@
 		var favoritePrays = [];
 
 		return {
+
+			/**
+			 * Checks do we have favorite prays saved for book, if bookId is null then checks among all books
+			 * @param bookId - bookId, if is not set, then ignored
+			 * @returns {boolean} true if there are favorite books
+			 */
+			hasFavoritePrays: function (bookId) {
+				return Storage.listFavoritePrays(bookId).length > 0;
+			},
+
 			listFavoritePrays: function (bookId) {
 				favoritePrays = Storage.listFavoritePrays(bookId);
 				return favoritePrays;

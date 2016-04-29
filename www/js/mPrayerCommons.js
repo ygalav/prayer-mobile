@@ -81,7 +81,9 @@ PrayerLocalizations = {
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Prays:',
 		button_back : 'Back',
-		no_internet_label : 'No internet connection'
+		no_internet_label : 'No internet connection',
+		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
+		msg_no_internet_and_saved_prays_title : "Can't load data"
 	},
 	ua : {
 		categories_list_page_title : "Молитовник",
@@ -102,7 +104,9 @@ PrayerLocalizations = {
 		prays_list_title : 'Молитви',
 		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Назад',
-		no_internet_label : 'Немає звязку з сервером'
+		no_internet_label : 'Немає звязку з сервером',
+		msg_no_internet_and_saved_prays : "Інтернет з'єднання відсутнє, підключіться до інтернет для продовження користування молитовником",
+		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані"
 	},
 	pl : {
 		categories_list_page_title : "Modlitewnik",
@@ -123,7 +127,9 @@ PrayerLocalizations = {
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Modlitwy:',
 		button_back : 'Zwrocz',
-		no_internet_label : 'Brak połączenia z internetem'
+		no_internet_label : 'Brak połączenia z internetem',
+		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
+		msg_no_internet_and_saved_prays_title : "Can't load data"
 	}
 };
 

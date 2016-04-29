@@ -9,15 +9,15 @@
     </ons-toolbar>
 
     <ons-list ng-controller="CategoriesListController as categoriesListController">
+        <ons-row ng-if="!categoriesListController.isReady">
+            <div class="progress-bar progress-bar--indeterminate"></div>
+        </ons-row>
         <ons-list-item ng-click="categoriesListController.toggleGroup()"
                        class="title, list-row" ng-class="{active:categoriesListController.isGroupShown()}">
             <ons-icon icon="minus-square-o" ng-if="categoriesListController.isGroupShown()"></ons-icon>
             <ons-icon icon="plus-square-o" ng-if="!categoriesListController.isGroupShown()"></ons-icon>
             {{appController.localization.categories}}
         </ons-list-item>
-        <ons-row ng-if="!categoriesListController.isReady">
-            <div class="progress-bar progress-bar--indeterminate"></div>
-        </ons-row>
         <ons-row ng-show="categoriesListController.noInternet">
             <span>{{appController.localization.no_internet_label}}</span>
         </ons-row>
