@@ -61,6 +61,9 @@
 			},
 
 			listFavoritePrays: function (bookId) {
+				if (favoritePrays.length > 0) {
+					return favoritePrays;
+				}
 				favoritePrays = Storage.listFavoritePrays(bookId);
 				return favoritePrays;
 			},
@@ -80,11 +83,17 @@
 			},
 
 			getFavoritePray: function (id) {
+				//TODO: This also should use cached data
 				return Storage.getFavoritePrayById(id);
 			},
 
 			isFavorite: function (pray) {
 				return Storage.isFavorite(pray.id);
+			},
+
+			deleteAll : function (language) {
+				Storage.deleteAll(language);
+				favoritePrays = [];
 			}
 		};
 	});
