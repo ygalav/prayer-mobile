@@ -95,7 +95,10 @@
 		});
 	});
 
-	module.factory('Storage', function ($rootScope, context, prLanguageService, PrayerMenuService) {
+	/**
+	 * http://rest.prayer.com.ua/rest/pray/4 - example of pray json object
+	 */
+	module.factory('Storage', function ($rootScope, context, prLanguageService) {
 
 		var getFavoritesPraysArrayFromObject = function (favoritePraysObject) {
 			if (favoritePraysObject === undefined || favoritePraysObject == null
@@ -105,6 +108,17 @@
 				return favoritePraysObject.value
 			}
 		};
+
+		/**
+		 * @param array an {Array} object
+		 */
+		var save = function (array) {
+			$rootScope.store.save({
+				key: context.storage_keys.favorite_prays,
+				value: array
+			})
+		};
+
 
 		return {
 			addFavoritePray: function (pray) {
@@ -159,6 +173,21 @@
 					isFavorite = prayArrayWithMatchedPrays.length > 0;
 				});
 				return isFavorite;
+			},
+
+			deleteAll: function (language) {
+				if (!language) {
+					save([])
+				}
+				else {
+					$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
+						var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+						var praysExceptLanguage = _.filter(favoritePrays, function (favoritePray) {
+							return favoritePray.language.shortcut != language;
+						});
+						save(praysExceptLanguage)
+					});
+				}
 			}
 		}
 	});
