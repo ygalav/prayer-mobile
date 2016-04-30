@@ -110,6 +110,21 @@
 
 		categoriesListController.showFavoritePray = function(prayItemId) {
 			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
+		};
+
+		categoriesListController.deleteSavedPrays = function () {
+			ons.notification.confirm({
+				message: 'Are you sure you want to continue?',
+				callback: function(idx) {
+					switch (idx) {
+						case 0:
+							break;
+						case 1:
+							PrayerFavoritePraysServices.deleteAll();
+							break;
+					}
+				}
+			});
 		}
 	});
 
@@ -224,6 +239,7 @@
 	});
 
 	module.directive('noContent', function () {
+		//TODO: This directive is deprecated, consider to delete it
 		return {
 			restrict: 'E',
 			scope: {},
