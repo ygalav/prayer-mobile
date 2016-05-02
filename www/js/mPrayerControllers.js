@@ -48,13 +48,13 @@
 	});
 
 	module.controller('CategoriesListController', function (
-		$scope,
 		PrayerHttpService,
 		PrayerFavoritePraysServices,
 		PrayerMenuService,
 		prBookService,
 		$log,
-		prLanguageService
+		prLanguageService,
+		$scope
 	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
@@ -65,6 +65,7 @@
 		var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
 
 		var displayCategories = function() {
+			categoriesListController.isReady = false;
 			PrayerHttpService.getAllCategories(selectedBookId,
 				function (data) {
 					categoriesListController.items = data;
@@ -121,6 +122,8 @@
 							break;
 						case 1:
 							PrayerFavoritePraysServices.deleteAll();
+							categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+							$scope.$apply();
 							break;
 					}
 				}
