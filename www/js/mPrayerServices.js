@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
-	var module = angular.module('PrayerServices', ['PrayerCommons']);
+	var module = angular.module('PrayerServices', ['PrayerCommons', 'ngCordova.plugins.globalization']);
 
 	module.config(function($logProvider){
 		$logProvider.debugEnabled(debug.services);
@@ -61,6 +61,7 @@
 			},
 
 			listFavoritePrays: function (bookId) {
+				$log.debug("Retrieving favorite prays for book: [" + bookId + "]");
 				if (favoritePrays.length > 0) {
 					return favoritePrays;
 				}

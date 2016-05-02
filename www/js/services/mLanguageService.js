@@ -6,13 +6,12 @@
 		$logProvider.debugEnabled(debug.services);
 	});
 
-		module.factory('prLanguageService', function($log, context) {
+		module.factory('prLanguageService', function($log, context, $cordovaGlobalization) {
 		var services = {
-
 			defineLanguage : function(callback) {
 				if (!context.systemproperties.getValue(context.systemproperties.keys.language)) {
 					$log.debug("No language has been set, setting language based on device preferences");
-					navigator.globalization.getPreferredLanguage(
+					$cordovaGlobalization.getPreferredLanguage().then(
 						function (language) {
 							switch (language.value.toLowerCase()) {
 								case 'pl_PL'.toLowerCase():
