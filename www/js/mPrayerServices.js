@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
-	var module = angular.module('PrayerServices', ['PrayerCommons', 'ngCordova.plugins.globalization']);
+	var module = angular.module('PrayerServices', ['PrayerCommons']);
 
 	module.config(function($logProvider){
 		$logProvider.debugEnabled(debug.services);
