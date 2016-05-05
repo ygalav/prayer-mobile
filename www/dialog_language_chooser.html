@@ -1,0 +1,15 @@
+<ons-dialog var="dialog" cancelable="flase">
+
+    <ons-list ng-controller="languageChooserController as lcc">
+        <ons-list-item ng-click="lcc.chooseLanguage('EN')" modifier="tappable">
+            English
+        </ons-list-item>
+        <ons-list-item ng-click="lcc.chooseLanguage('UA')"  modifier="tappable">
+            Українська
+        </ons-list-item>
+        <ons-list-item ng-click="lcc.chooseLanguage('PL')"  modifier="tappable">
+            Polski
+        </ons-list-item>
+    </ons-list>
+
+</ons-dialog>

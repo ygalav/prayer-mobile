@@ -42,9 +42,24 @@
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
-		prLanguageService.defineLanguage(function(language) {
-			$rootScope.$emit('onLanguageChanged', {language : language});
-		});
+		if (prLanguageService.hasLanguageDefined()) {
+			$rootScope.$emit('onLanguageChanged', {language : prLanguageService.getCurrentLanguage()});
+		}
+		else {
+			var dialog;
+			ons.createDialog('dialog_language_chooser.html').then(
+				function(aDialog) {
+					dialog = aDialog;
+					dialog.show();
+				}
+			);
+
+			$rootScope.$on('onLanguageChosen', function (event, args) {
+				if (dialog && dialog.isShown()) {
+					dialog.hide();
+				}
+			});
+		}
 	});
 
 	module.controller('CategoriesListController', function (
@@ -53,6 +68,7 @@
 		PrayerMenuService,
 		prBookService,
 		$log,
+		$rootScope,
 		prLanguageService,
 		$scope
 	) {
@@ -62,11 +78,11 @@
 		if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
 			PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
 		}
-		var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
 
-		var displayCategories = function() {
+		var displayCategories = function(bookId) {
 			categoriesListController.isReady = false;
-			PrayerHttpService.getAllCategories(selectedBookId,
+
+			PrayerHttpService.getAllCategories(bookId,
 				function (data) {
 					categoriesListController.items = data;
 					categoriesListController.isReady = true;
@@ -89,8 +105,16 @@
 			);
 		};
 
-		displayCategories();
+		var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
+		displayCategories(selectedBookId);
 		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+
+		$rootScope.$on('onLanguageChanged', function(event, args) {
+			var bookId = prBookService.getDefaultBookIDForCurrentLanguage();
+			PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, bookId);
+			displayCategories(PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook));
+			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(bookId);
+		});
 
 		/*
 		 * if given group is the selected group, deselect it
@@ -129,6 +153,19 @@
 				}
 			});
 		}
+	});
+
+	module.controller('languageChooserController', function (
+		$rootScope,
+		prLanguageService
+	) {
+		var lcc = this;
+		lcc.chooseLanguage = function (languageCode) {
+			prLanguageService.setCurrentLanguage(languageCode);
+			$rootScope.$emit('onLanguageChanged', {language : languageCode});
+			$rootScope.$emit('onLanguageChosen', {});
+		}
+
 	});
 
 	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
