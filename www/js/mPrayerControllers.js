@@ -20,7 +20,8 @@
 		PrayerMenuService,
 		context,
 		prTextScaling,
-		prLanguageService
+		prLanguageService,
+		prBookService
 	) {
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
@@ -44,6 +45,10 @@
 
 		if (prLanguageService.hasLanguageDefined()) {
 			$rootScope.$emit('onLanguageChanged', {language : prLanguageService.getCurrentLanguage()});
+
+			if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
+				PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
+			}
 		}
 		else {
 			var dialog;
@@ -75,10 +80,6 @@
 		var categoriesListController = this;
 		categoriesListController.items = {};
 
-		if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
-			PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
-		}
-
 		var displayCategories = function(bookId) {
 			categoriesListController.isReady = false;
 
@@ -105,9 +106,11 @@
 			);
 		};
 
-		var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
-		displayCategories(selectedBookId);
-		categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+		if (prLanguageService.hasLanguageDefined()) {
+			var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
+			displayCategories(selectedBookId);
+			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+		}
 
 		$rootScope.$on('onLanguageChanged', function(event, args) {
 			var bookId = prBookService.getDefaultBookIDForCurrentLanguage();
