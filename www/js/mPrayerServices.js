@@ -49,6 +49,26 @@
 
 		var favoritePrays = [];
 
+		var filterByBookAndLanguage = function (prays, bookId, language) {
+			if (!prays) {
+				return [];
+			}
+
+			return _.filter(prays, function (pray) {
+				var isProperBook = true;
+				if (bookId) {
+					isProperBook = bookId === pray.category.book.id;
+				}
+
+				var isProperLanguage = true;
+				if (language) {
+					isProperLanguage = pray.language.shortcut === language;
+				}
+
+				return isProperLanguage && isProperBook;
+			});
+		};
+
 		return {
 
 			/**
@@ -57,25 +77,29 @@
 			 * @returns {boolean} true if there are favorite books
 			 */
 			hasFavoritePrays: function (bookId) {
-				return Storage.listFavoritePrays(bookId).length > 0;
+				return Storage.listFavoritePrays1({bookId : bookId}).length > 0;
 			},
 
-			listFavoritePrays: function (bookId) {
+			listFavoritePrays1: function (params) {
+				var bookId = params ? params.bookId : undefined;
+				var language = params ? params.language : undefined;
 				$log.debug("Retrieving favorite prays for book: [" + bookId + "]");
-				if (favoritePrays.length > 0) {
-					return favoritePrays;
+				if (favoritePrays.length == 0) {
+					favoritePrays = Storage.listFavoritePrays1();
 				}
-				favoritePrays = Storage.listFavoritePrays(bookId);
-				return favoritePrays;
+				return filterByBookAndLanguage(favoritePrays, bookId, language);
 			},
 
-			addFavoritePray: function (prayItemId) {
+			addFavoritePray: function (prayItemId, onSuccess) {
 				$log.info('Trying to add prayItem: [' + prayItemId + '] to favorites');
 				if (!Storage.isFavorite(prayItemId)) {
 					PrayerHttpService.getPrayItemById(prayItemId, function (data) {
 						Storage.addFavoritePray(data);
 						favoritePrays.push(data);
 						$log.info('[' + prayItemId + ' - ' + data.name + '] is added to favorites');
+						if (onSuccess && _.isFunction(onSuccess)) {
+							onSuccess();
+						}
 					});
 				}
 				else {

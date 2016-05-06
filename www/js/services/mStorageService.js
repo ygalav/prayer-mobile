@@ -44,20 +44,10 @@ module.factory('Storage', function ($rootScope, context, prLanguageService) {
 			});
 		},
 
-		listFavoritePrays: function (bookId) {
+		listFavoritePrays1: function () {
 			var prays = [];
 			$rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
-				var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
-				prLanguageService.defineLanguage(function (language) {
-					prays = _.filter(favoritePrays, function (favoritePray) {
-						var isProperBook = true;
-						if (bookId) {
-							isProperBook = bookId === favoritePray.category.book.id;
-						}
-						return favoritePray.language.shortcut === language && isProperBook;
-					});
-				});
-
+				prays = getFavoritesPraysArrayFromObject(favoritePraysObject);
 			});
 			return prays;
 		},

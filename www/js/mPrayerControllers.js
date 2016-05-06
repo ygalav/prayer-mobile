@@ -109,14 +109,27 @@
 		if (prLanguageService.hasLanguageDefined()) {
 			var selectedBookId = PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook);
 			displayCategories(selectedBookId);
-			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1(
+				{
+					bookId : selectedBookId
+				}
+			);
 		}
 
 		$rootScope.$on('onLanguageChanged', function(event, args) {
 			var bookId = prBookService.getDefaultBookIDForCurrentLanguage();
 			PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, bookId);
 			displayCategories(PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook));
-			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(bookId);
+			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1({bookId : bookId});
+		});
+
+		$rootScope.$on('favoritePraysListChanged', function () {
+			$log.debug('Event [favoritePraysListChanged]: Updating list of favorite prays');
+			categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1(
+				{
+					bookId : PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)
+				}
+			);
 		});
 
 		/*
@@ -149,7 +162,11 @@
 							break;
 						case 1:
 							PrayerFavoritePraysServices.deleteAll();
-							categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays(selectedBookId);
+							categoriesListController.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1(
+								{
+									bookId: selectedBookId
+								}
+							);
 							$scope.$apply();
 							break;
 					}
@@ -187,13 +204,15 @@
 			};
 
 			$scope.addItemToFavorites = function (id) {
-				PrayerFavoritePraysServices.addFavoritePray(id);
+				PrayerFavoritePraysServices.addFavoritePray(id, function () {
+					$scope.$emit('favoritePraysListChanged', {});
+				});
 			}
 	}]);
 
 	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
 		var favoritePraysList = this;
-		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays();
+		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1();
 		favoritePraysList.showFavoritePray = function(prayItemId) {
 			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
 		}
