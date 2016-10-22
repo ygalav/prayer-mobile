@@ -146,11 +146,16 @@
 		};
 
 		categoriesListController.showDetail = function (selectedCategory) {
-			navi.pushPage('prayitems-list-page.html', {category: selectedCategory});
+			navi.pushPage('prayitems-list-page.html', {data: {category: selectedCategory}});
 		};
 
 		categoriesListController.showFavoritePray = function(prayItemId) {
-			navi.pushPage('pray-item-view.html', {prayItemId: prayItemId, showSaved : true});
+			navi.pushPage('pray-item-view.html', {
+				data: {
+					prayItemId: prayItemId,
+					showSaved : true
+				}
+			});
 		};
 
 		categoriesListController.deleteSavedPrays = function () {
@@ -190,7 +195,7 @@
 
 	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
 		function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
-			$scope.category = $scope.navi.getCurrentPage().options.category;
+			$scope.category = navi.topPage.data.category;
 			PrayerHttpService.getPraysForCategory($scope.category.id, function (data) {
 				_.each(data, function (prayItem) {
 					prayItem.isFavorite = PrayerFavoritePraysServices.isFavorite(prayItem);
@@ -200,8 +205,13 @@
 			});
 
 			$scope.showPrayItem = function (prayItemId) {
-				navi.pushPage('pray-item-view.html', {prayItemId: prayItemId});
+				navi.pushPage('pray-item-view.html', {
+					data: {
+						prayItemId: prayItemId
+					}
+				});
 			};
+
 
 			$scope.addItemToFavorites = function (id) {
 				PrayerFavoritePraysServices.addFavoritePray(id, function () {
@@ -218,14 +228,15 @@
 		}
 	});
 
+	//
 	module.controller('PraysItemViewController',
 		[
 			'$scope',
 			'PrayerHttpService' ,
 			'PrayerFavoritePraysServices',
 			function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
-				var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
-				var showSaved = $scope.navi.getCurrentPage().options.showSaved;
+				var prayItemId = navi.topPage.data.prayItemId;
+				var showSaved = navi.topPage.data.showSaved;
 				if (showSaved) {
 					$scope.prayItem = PrayerFavoritePraysServices.getFavoritePray(prayItemId);
 				} else {

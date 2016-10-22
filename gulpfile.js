@@ -6,18 +6,23 @@ var browserSync = require('browser-sync');
 ////////////////////
 // build
 ////////////////////
-gulp.task('build', ['compile-stylus', 'jshint']);
+gulp.task('build', [/*'compile-stylus', 'jshint',*/ 'copy-libs']);
 
 ////////////////////
 // default
 ////////////////////
 gulp.task('default', $.taskListing.withFilters(null, 'default'));
 
+gulp.task('copy-libs', function () {
+  gulp.src(['node_modules/onsenui/css/*']).pipe(gulp.dest('www/lib/onsen/css/'))
+  gulp.src(['node_modules/onsenui/js/*']).pipe(gulp.dest('www/lib/onsen/js/'))
+});
+
 ////////////////////
 // compile-stylus
 ////////////////////
-gulp.task('compile-stylus', function() {
-  return gulp.src([__dirname + '/www/lib/onsen/stylus/*-theme.styl'])
+/*gulp.task('compile-stylus', function() {
+  return gulp.src([__dirname + '/www/lib/onsen/stylus/!*-theme.styl'])
     .pipe(plumber())
     .pipe($.stylus({errors: true, define: {mylighten: mylighten}}))
     .pipe($.autoprefixer('> 1%', 'last 2 version', 'ff 12', 'ie 8', 'opera 12', 'chrome 12', 'safari 12', 'android 2'))
@@ -37,48 +42,48 @@ gulp.task('compile-stylus', function() {
     }
     throw new Error('mylighten() first argument must be color.');
   }
-});
+});*/
 
 ////////////////////
 // jshint
 ////////////////////
-gulp.task('jshint', function() {
-  return gulp.src([__dirname + '/www/*.js', __dirname + '/www/js/**/*.js'])
+/*gulp.task('jshint', function() {
+  return gulp.src([__dirname + '/www/!*.js', __dirname + '/www/js/!**!/!*.js'])
     .pipe(plumber())
     .pipe($.cached('jshint'))
     .pipe($.jshint())
     .pipe(jshintNotify())
     .pipe($.jshint.reporter('jshint-stylish'));
-});
+});*/
 
 ////////////////////
 // typescript
 ////////////////////
-gulp.task('typescript', function() {
+/*gulp.task('typescript', function() {
   var proj = ts.createProject("scripts/tsconfig.json");
-  var result = gulp.src("scripts/**/*.ts").pipe(ts(proj));
+  var result = gulp.src("scripts/!**!/!*.ts").pipe(ts(proj));
 
   return result.js.pipe(gulp.dest("www/scripts"));
-});
+});*/
 
 ////////////////////
 // serve
 ////////////////////
 gulp.task('serve', ['build', 'browser-sync'], function() {
-  gulp.watch(
-    [__dirname + '/www/lib/onsen/stylus/**/*.styl'],
+  /*gulp.watch(
+    [__dirname + '/www/lib/onsen/stylus/!**!/!*.styl'],
     {debounceDelay: 400},
     ['compile-stylus']
-  );
+  );*/
 
-  gulp.watch(
-    [__dirname + '/www/*.js', __dirname + '/www/js/**/*.js'],
+  /*gulp.watch(
+    [__dirname + '/www/!*.js', __dirname + '/www/js/!**!/!*.js'],
     {debounceDelay: 400},
     ['jshint']
-  );
+  );*/
 
   gulp.watch(
-    [__dirname + '/www/**/*.*'],
+    [__dirname + '/www/!**/!*.*'],
     {debounceDelay: 400},
     ['prepare-cordova']
   );
@@ -122,7 +127,7 @@ function plumber() {
   return $.plumber({errorHandler: $.notify.onError()});
 }
 
-function jshintNotify() {
+/*function jshintNotify() {
   return $.notify(function(file) {
     if (file.jshint.success) {
       return false;
@@ -134,4 +139,4 @@ function jshintNotify() {
 
     return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
   });
-}
+}*/

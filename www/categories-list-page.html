@@ -42,7 +42,8 @@
         </ons-list-item>
         <prays-list ng-if-start="categoriesListController.favoritePrays.length > 0"
                     pr-items="categoriesListController.favoritePrays"
-                    pr-on-item-click-fn="categoriesListController.showFavoritePray"></prays-list>
+                    pr-on-item-click-fn="categoriesListController.showFavoritePray">
+        </prays-list>
         <ons-list-item ng-if-end="categoriesListController.favoritePrays.length > 0">
             <ons-button ng-click="categoriesListController.deleteSavedPrays()" modifier="large" class="login-button button--large--quiet">
                 <ons-icon icon="fa-minus-circle" size="20px"></ons-icon>
