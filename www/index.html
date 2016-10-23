@@ -66,15 +66,12 @@
         }
 
     </style>
-
-    <ons-navigator var="navi">
-        <ons-sliding-menu type="reveal"
-            main-page="categories-list-page.html"
-            menu-page="menu.html" side="left"
-            max-slide-distance="55%"
-            swipe-target-width="150"
-            var="menu">
-        </ons-sliding-menu>
-    </ons-navigator>
+        <ons-splitter>
+            <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable page="menu.html"></ons-splitter-side>
+            <ons-splitter-content id="content" >
+                <ons-navigator var="navi" page="categories-list-page.html">
+                </ons-navigator>
+            </ons-splitter-content>
+        </ons-splitter>
 </body>
 </html>

@@ -3,8 +3,8 @@
         <i>{{appController.localization.books}}</i>
     </ons-list-item>
     <ons-list-item ng-repeat="book in appController.books | orderBy:'id'" modifier="chevron"
-                   ng-click="appController.setMenuParam('selectedBook', book.id); menu._currentPageUrl='';
-                   menu.setMainPage('categories-list-page.html', {closeMenu: true})">
+                   ng-click="appController.setMenuParam('selectedBook', book.id);
+                   navi.pushPage('categories-list-page.html'); appController.closeMenu()">
         <span class="sliding-menu-item-text">{{book.name}}</span>
     </ons-list-item>
 

@@ -65,6 +65,14 @@
 				}
 			});
 		}
+
+		appController.openMenu = function () {
+			menu.open();
+		};
+
+		appController.closeMenu = function () {
+			menu.close();
+		}
 	});
 
 	module.controller('CategoriesListController', function (
