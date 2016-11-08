@@ -203,16 +203,18 @@
 
 	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
 		function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
-			$scope.category = navi.topPage.data.category;
-			PrayerHttpService.getPraysForCategory($scope.category.id, function (data) {
+			var praysListController = this;
+			praysListController.prays={};
+			praysListController.category = navi.topPage.data.category;
+			PrayerHttpService.getPraysForCategory(praysListController.category.id, function (data) {
 				_.each(data, function (prayItem) {
 					prayItem.isFavorite = PrayerFavoritePraysServices.isFavorite(prayItem);
 				});
-				$scope.prays = data;
-				$scope.isReady = true;
+				praysListController.prays = data;
+				praysListController.isReady = true;
 			});
 
-			$scope.showPrayItem = function (prayItemId) {
+			praysListController.showPrayItem = function (prayItemId) {
 				navi.pushPage('pray-item-view.html', {
 					data: {
 						prayItemId: prayItemId
@@ -221,7 +223,7 @@
 			};
 
 
-			$scope.addItemToFavorites = function (id) {
+			praysListController.addItemToFavorites = function (id) {
 				PrayerFavoritePraysServices.addFavoritePray(id, function () {
 					$scope.$emit('favoritePraysListChanged', {});
 				});

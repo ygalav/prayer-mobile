@@ -1,7 +1,7 @@
-<ons-page class="prayitem-list-page" ng-controller="PraysListController">
+<ons-page class="prayitem-list-page" ng-controller="PraysListController as praysListController">
     <ons-toolbar>
         <div class="left"><ons-back-button>{{appController.localization.button_back}}</ons-back-button></div>
-        <div class="center navigation-bar-text">{{category.name}}</div>
+        <div class="center navigation-bar-text">{{praysListController.category.name}}</div>
     </ons-toolbar>
     <ons-row class="category-info" modifier="inset" style="margin-top: 10px">
         <ons-col width="60px">
@@ -10,17 +10,20 @@
         <ons-col>
             <header>
                 <ons-row>
-                    <span class="item-title">{{category.name}}</span>
+                    <span class="item-title">{{praysListController.category.name}}</span>
                 </ons-row>
                 <ons-row>
-                    <span class="item-label">{{appController.localization.prays_list_prays_quantity}} {{prays.length}}</span>
+                    <span class="item-label">{{appController.localization.prays_list_prays_quantity}} {{praysListController.prays.length}}</span>
                 </ons-row>
             </header>
         </ons-col>
     </ons-row>
-    <ons-row ng-if="!isReady">
+    <ons-row ng-if="!praysListController.isReady">
         <div class="progress-bar progress-bar--indeterminate"></div>
     </ons-row>
-    <prays-list pr-items="prays" pr-on-item-click-fn="showPrayItem" pr-add-or-remove-favorite-fn="addItemToFavorites"/>
+    <prays-list
+            pr-items="praysListController.prays"
+            pr-on-item-click-fn="praysListController.showPrayItem"
+            pr-add-or-remove-favorite-fn="praysListController.addItemToFavorites"/>
     <br>
 </ons-page>
