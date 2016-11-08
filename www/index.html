@@ -37,7 +37,7 @@
 
 </head>
 
-<body ng-csp ng-controller="AppController as appController">
+<body ng-csp ng-controller="AppController as appController" class="body-margin-top">
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
 
@@ -69,11 +69,11 @@
 
     <ons-navigator var="navi">
         <ons-sliding-menu type="reveal"
-            main-page="categories-list-page.html"
-            menu-page="menu.html" side="left"
-            max-slide-distance="55%"
-            swipe-target-width="150"
-            var="menu">
+                          main-page="categories-list-page.html"
+                          menu-page="menu.html" side="left"
+                          max-slide-distance="55%"
+                          swipe-target-width="150"
+                          var="menu">
         </ons-sliding-menu>
     </ons-navigator>
 </body>
