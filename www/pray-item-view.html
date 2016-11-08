@@ -6,13 +6,13 @@
     <ons-list>
         <ons-list-item class="list-row list--noborder" ng-repeat="pray in prayItem.prays">
             <ons-row>
-                <ons-row>
+                <ons-row ng-if="showTitle(pray)">
                     <header>
                         <span class="item-title">{{pray.name}}</span>
                     </header>
                 </ons-row>
                 <ons-row>
-                    <section ng-bind-html="pray.content" class="pray-context-text text-content-block"></section>
+                    <section ng-bind-html="pray.content" class="pray-context-text text-content-block" style="{{getPrayStyle(pray)}}"></section>
                 </ons-row>
             </ons-row>
         </ons-list-item>

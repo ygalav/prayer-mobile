@@ -233,6 +233,31 @@
 						$scope.prayItem = data;
 					});
 				}
+
+				$scope.showTitle = function (pray) {
+					if (pray == undefined) {
+						return false;
+					}
+					return !(
+						pray.style == 'COLORED_NO_TITLE' ||
+						pray.style == 'NO_TITLE' ||
+						pray.style == 'HTML_NO_TITLE' ||
+						pray.style == 'ITALIC_NO_TITLE'
+					);
+				};
+
+				$scope.getPrayStyle = function (pray) {
+					if (pray == undefined) {
+						return '';
+					}
+					if (pray.style == 'COLORED' || pray.style == 'COLORED_NO_TITLE') {
+						return 'color : red;'
+					}
+					else if (pray.style == 'ITALIC' || pray.style == 'ITALIC_NO_TITLE') {
+						return 'font-style: italic;'
+					}
+					return '';
+				}
 			}
 		]);
 
