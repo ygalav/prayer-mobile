@@ -219,11 +219,7 @@
 	});
 
 	module.controller('PraysItemViewController',
-		[
-			'$scope',
-			'PrayerHttpService' ,
-			'PrayerFavoritePraysServices',
-			function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
+			function ($scope, PrayerHttpService, PrayerFavoritePraysServices, prTextScaling, context) {
 				var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
 				var showSaved = $scope.navi.getCurrentPage().options.showSaved;
 				if (showSaved) {
@@ -257,9 +253,14 @@
 						return 'font-style: italic;'
 					}
 					return '';
-				}
-			}
-		]);
+				};
+
+				$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
+				$scope.saveScaling = function (value) {
+					prTextScaling.saveScaling(value);
+					$scope.$root.textSizes = prTextScaling.calculateTextSizes();
+				};
+			});
 
 	module.controller('SettingsPageController', function (
 		$scope,
@@ -276,8 +277,6 @@
 			$scope.language = language;
 		});
 
-		$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
-
 		$scope.saveLanguage = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.language, value);
 			$rootScope.$emit('onLanguageChanged', {language : value});
@@ -285,11 +284,6 @@
 
 		$scope.saveReligion = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, value);
-		};
-
-		$scope.saveScaling = function (value) {
-			context.systemproperties.setValue(context.systemproperties.keys.scaling, value);
-			$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		};
 
 		$scope.saveSettings = function () {
@@ -312,7 +306,6 @@
 	});
 
 	/*Directives*/
-
 	module.directive('praysList', function () {
 		return {
 			restrict: 'E',
@@ -322,15 +315,6 @@
 				prAddOrRemoveFavoriteFn: '='
 			},
 			templateUrl: 'directive-praysList.html'
-		};
-	});
-
-	module.directive('noContent', function () {
-		//TODO: This directive is deprecated, consider to delete it
-		return {
-			restrict: 'E',
-			scope: {},
-			templateUrl: 'directive-noContent.html'
 		};
 	});
 

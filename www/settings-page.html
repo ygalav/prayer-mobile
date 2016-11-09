@@ -76,41 +76,8 @@
             </ons-row>
         </ons-row>
     </ons-list-item>
-    <ons-list-item>
-        <ons-row>
-            <ons-row class="settings-page-sections-list">
-                <ons-col class="setting-name">
-                    <span>{{appController.localization.settings_setting_text_size}}</span>
-                </ons-col>
-                <ons-col>
-                    <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></range>
-                </ons-col>
-            </ons-row>
-            <ons-row class="settings-page-sections-list">
-                <ons-row>
-                    <ons-col>
-                        <span>{{appController.localization.settings_setting_text_size_header_title}}</span>
-                    </ons-col>
-                    <ons-col>
-                        <span class="item-title">{{appController.localization.settings_setting_text_size_header_example}}</span>
-                    </ons-col>
-                </ons-row>
-                <ons-row>
-                    <ons-col>
-                        <span>{{appController.localization.settings_setting_text_size_content_title}}</span>
-                    </ons-col>
-                    <ons-col>
-                        <span class="pray-context-text">{{appController.localization.settings_setting_text_size_content_example}}</span>
-                    </ons-col>
-                </ons-row>
-            </ons-row>
-        </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-        <button class="button button--material" ng-click="saveSettings()">{{appController.localization.settings_save}}</button>
-        <!--<span class="toolbar-button&#45;&#45;quiet navigation-bar__line-height">
-            <i class="ion-android-star" style="font-size:20px;"></i>
-        </span>-->
-    </ons-list-item>
+    <!--<ons-list-item>
+        <button class="button button&#45;&#45;material" ng-click="saveSettings()">{{appController.localization.settings_save}}</button>
+    </ons-list-item>-->
 </ons-list>
 

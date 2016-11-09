@@ -56,6 +56,10 @@
 				'menu_item_font_size': getValueMinusDeltaPercentage(18, delta, 0.4),
 				'navigation_bar_font_size': getValueMinusDeltaPercentage(18, delta, 0.4)
 			}
+		},
+
+		saveScaling : function (value) {
+			context.systemproperties.setValue(context.systemproperties.keys.scaling, value);
 		}
 	}
 	});

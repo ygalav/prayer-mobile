@@ -4,6 +4,16 @@
         <div class="center navigation-bar-text">{{prayItem.name}}</div>
     </ons-toolbar>
     <ons-list>
+        <ons-list-item>
+            <ons-row class="settings-page-sections-list">
+                <ons-col class="setting-name">
+                    <span>{{appController.localization.settings_setting_text_size}}</span>
+                </ons-col>
+                <ons-col>
+                    <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></range>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
         <ons-list-item class="list-row list--noborder" ng-repeat="pray in prayItem.prays">
             <ons-row>
                 <ons-row ng-if="showTitle(pray)">
