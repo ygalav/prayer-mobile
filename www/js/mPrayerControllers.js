@@ -21,7 +21,8 @@
 		context,
 		prTextScaling,
 		prLanguageService,
-		prBookService
+		prBookService,
+		prAdService
 	) {
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
@@ -31,6 +32,10 @@
 
 		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 		appController.setMenuParam = PrayerMenuService.setMenuParam;
+
+		appController.showBannerAd = function(show) {
+			prAdService.showBannerAd(show);
+		};
 
 		var reloadBooksList = function() {
 			PrayerHttpService.listBooks(function(data){
@@ -74,8 +79,9 @@
 		prBookService,
 		$log,
 		$rootScope,
+		$scope,
 		prLanguageService,
-		$scope
+		prAdService
 	) {
 		var categoriesListController = this;
 		categoriesListController.items = {};
@@ -104,6 +110,7 @@
 					}
 				}
 			);
+			prAdService.showBannerAd(true);
 		};
 
 		if (prLanguageService.hasLanguageDefined()) {
@@ -188,8 +195,12 @@
 
 	});
 
-	module.controller('PraysListController', ['$scope', 'PrayerHttpService' , 'PrayerFavoritePraysServices',
-		function ($scope, PrayerHttpService, PrayerFavoritePraysServices) {
+	module.controller('PraysListController', function (
+		$scope,
+		PrayerHttpService,
+		PrayerFavoritePraysServices,
+		prAdService
+	) {
 			$scope.category = $scope.navi.getCurrentPage().options.category;
 			PrayerHttpService.getPraysForCategory($scope.category.id, function (data) {
 				_.each(data, function (prayItem) {
@@ -199,6 +210,7 @@
 				$scope.isReady = true;
 			});
 
+			prAdService.showBannerAd(true);
 			$scope.showPrayItem = function (prayItemId) {
 				navi.pushPage('pray-item-view.html', {prayItemId: prayItemId});
 			};
@@ -208,7 +220,7 @@
 					$scope.$emit('favoritePraysListChanged', {});
 				});
 			}
-	}]);
+	});
 
 	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
 		var favoritePraysList = this;
@@ -219,7 +231,14 @@
 	});
 
 	module.controller('PraysItemViewController',
-			function ($scope, PrayerHttpService, PrayerFavoritePraysServices, prTextScaling, context) {
+			function (
+				$scope,
+				PrayerHttpService,
+				PrayerFavoritePraysServices,
+				prTextScaling,
+				context,
+				prAdService
+			) {
 				var prayItemId = $scope.navi.getCurrentPage().options.prayItemId;
 				var showSaved = $scope.navi.getCurrentPage().options.showSaved;
 				if (showSaved) {
@@ -260,6 +279,7 @@
 					prTextScaling.saveScaling(value);
 					$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 				};
+				prAdService.showBannerAd(false);
 			});
 
 	module.controller('SettingsPageController', function (
@@ -317,6 +337,5 @@
 			templateUrl: 'directive-praysList.html'
 		};
 	});
-
 })();
 

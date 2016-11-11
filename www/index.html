@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <!-- Cordova reference -->
+    <script src="cordova.js"></script>
 
     <!-- JS dependencies (order matters!) -->
     <script src="lib/underscore/underscore-min.js"></script>
@@ -30,6 +32,7 @@
     <script src="js/mPrayerMenuService.js"></script>
     <script src="js/services/mLanguageService.js"></script>
     <script src="js/services/mBookService.js"></script>
+    <script src="js/services/mAdService.js"></script>
     <script src="js/mPrayerControllers.js"></script>
     <script src="js/mRoot.js"></script>
 
@@ -38,8 +41,6 @@
 </head>
 
 <body ng-csp ng-controller="AppController as appController" class="body-margin-top">
-    <!-- Cordova reference -->
-    <script src="cordova.js"></script>
 
     <style>
         .item-title {

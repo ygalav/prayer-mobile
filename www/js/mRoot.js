@@ -21,9 +21,41 @@ angular.element(document).ready(function () {
 			console.log("Deviceready event has fired, bootstrapping AngularJS.");
 			console.log(navigator.globalization);
 			angular.bootstrap(document.body, ['prayer']);
+			loadAds();
 		}, false);
 	} else {
 		console.log("Running in browser, bootstrapping AngularJS now.");
 		angular.bootstrap(document.body, ['prayer']);
 	}
 });
+
+function loadAds() {
+	var isAndroid = (/(android)/i.test(navigator.userAgent));
+	var adPublisherIds = {
+		ios: {
+			banner: 'ca-app-pub-6587607434956727/8586926499'
+		},
+		android: {
+			banner: 'ca-app-pub-6587607434956727/7609720897'
+		}
+	};
+
+	var admobid;
+	if (isAndroid) {
+		alert("android");
+		admobid = adPublisherIds.android;
+	} else {
+		admobid = adPublisherIds.ios;
+	}
+
+	if (window.admob) {
+		// Set AdMobAds options:
+		admob.setOptions({
+			publisherId:admobid.banner,
+			autoShowBanner: true,
+			autoShowInterstitial: false
+		});
+		// Start showing banners (atomatic when autoShowBanner is set to true)
+		admob.createBannerView();
+	}
+}
