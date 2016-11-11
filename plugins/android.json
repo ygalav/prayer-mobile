@@ -9,7 +9,14 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ygalav.catholicprayer"
+        },
+        "cordova-admob": {
+            "PACKAGE_NAME": "com.ygalav.catholicprayer"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-connectivity-monitor": {
+            "PACKAGE_NAME": "com.ygalav.catholicprayer"
+        }
+    }
 }
