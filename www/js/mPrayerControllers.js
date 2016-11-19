@@ -24,10 +24,16 @@
 		prBookService,
 		prAdService
 	) {
+		localStorage.clear();
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');
 		}
+
+		if (!context.systemproperties.getValue(context.systemproperties.keys.showAds)) {
+			context.systemproperties.setValue(context.systemproperties.keys.showAds, true);
+		}
+
 		appController.context = context;
 
 		$scope.$root.textSizes = prTextScaling.calculateTextSizes();
@@ -292,6 +298,12 @@
 		$scope.religion = context.systemproperties.getValue(
 			context.systemproperties.keys.religion, 'greek-catholic'
 		);
+
+		$scope.showAds = context.systemproperties.getValue(context.systemproperties.keys.showAds, true) === 'true';
+
+		$scope.$watch('showAds', function (newValue, oldValue, scope) {
+			context.systemproperties.setValue(context.systemproperties.keys.showAds, newValue);
+		});
 
 		prLanguageService.defineLanguage(function (language) {
 			$scope.language = language;

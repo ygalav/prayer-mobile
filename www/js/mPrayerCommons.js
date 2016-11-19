@@ -9,7 +9,8 @@
 					firstLaunch: 'firstLaunch',
 					religion: 'religion',
 					language: 'language',
-					scaling: 'scaling'
+					scaling: 'scaling',
+					showAds: 'showAds'
 				},
 
 				setValue: function (key, value) {

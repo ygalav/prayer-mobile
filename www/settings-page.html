@@ -83,8 +83,19 @@
             </ons-row>
         </ons-row>
     </ons-list-item>
-    <!--<ons-list-item>
-        <button class="button button&#45;&#45;material" ng-click="saveSettings()">{{appController.localization.settings_save}}</button>
-    </ons-list-item>-->
+    <ons-list-item>
+        <ons-row>
+            <ons-row class="settings-page-section-row">
+                <ons-col class="setting-name">
+                    <header>
+                        Turn Off Ads
+                    </header>
+                </ons-col>
+                <ons-col>
+                    <ons-switch ng-model="showAds"></ons-switch>
+                </ons-col>
+            </ons-row>
+        </ons-row>
+    </ons-list-item>
 </ons-list>
 
