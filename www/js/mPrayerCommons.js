@@ -85,6 +85,7 @@ PrayerLocalizations = {
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Prays:',
 		button_back : 'Back',
+		button_delete_all_saved_prays : 'Delete All Saved prays',
 		no_internet_label : 'No internet connection',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
@@ -108,6 +109,7 @@ PrayerLocalizations = {
 		prays_list_title : 'Молитви',
 		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Назад',
+		button_delete_all_saved_prays : 'Видалити всі обрані Молитви',
 		no_internet_label : 'Немає звязку з сервером',
 		msg_no_internet_and_saved_prays : "Інтернет з'єднання відсутнє, підключіться до інтернет для продовження користування молитовником",
 		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані"
@@ -131,9 +133,35 @@ PrayerLocalizations = {
 		prays_list_title : 'Prays',
 		prays_list_prays_quantity : 'Modlitwy:',
 		button_back : 'Zwrocz',
+		button_delete_all_saved_prays : 'Usuń wszystkie zapisane Modlitwy',
 		no_internet_label : 'Brak połączenia z internetem',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
+	},
+
+	ru : {
+		categories_list_page_title : "Молитвенник",
+		categories : 'Категории',
+		books : 'Книги',
+		choosen_prays : 'Избранные Молитвы',
+		settings : "Настройки",
+		settings_setting_who_am_i : "Кто Я: ",
+		settings_setting_who_am_i_catholic : "Католик",
+		settings_setting_who_am_i_greek_catholic : "Греко-Католик",
+		settings_setting_language : "Язык молитв:",
+		settings_setting_text_size : "Размер шрифта:",
+		settings_setting_text_size_header_title : "Заголовок молитвы:",
+		settings_setting_text_size_header_example : "Молитва: Отче Наш",
+		settings_setting_text_size_content_title : "Текст молитвы:",
+		settings_setting_text_size_content_example : "Отче наш, Иже еси́ на небесе́х!...",
+		settings_save : "Сохранить",
+		prays_list_title : 'Молитвы',
+		prays_list_prays_quantity : 'Молитов:',
+		button_back : 'Назад',
+		button_delete_all_saved_prays : 'Удалить все избранные молитвы',
+		no_internet_label : 'Нет связи с сервером',
+		msg_no_internet_and_saved_prays : "Интернет соединение отсутствует, подключитесь к интернет для продолжения пользования молитвенником",
+		msg_no_internet_and_saved_prays_title : "Невозможно загрузить данные"
 	}
 };
 

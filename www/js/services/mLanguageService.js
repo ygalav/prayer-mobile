@@ -37,6 +37,9 @@
 				else if (language === 'EN') {
 					return PrayerLocalizations.en;
 				}
+				else if (language === 'RU') {
+					return PrayerLocalizations.ru;
+				}
 				else {
 					return PrayerLocalizations.ua;
 				}
