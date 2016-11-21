@@ -24,7 +24,7 @@
 		prBookService,
 		prAdService
 	) {
-		localStorage.clear();
+		//localStorage.clear();
 		var appController = this;
 		if (!context.systemproperties.getValue(context.systemproperties.keys.religion)) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, 'greek-catholic');

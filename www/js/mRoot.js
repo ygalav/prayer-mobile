@@ -21,13 +21,26 @@ angular.element(document).ready(function () {
 			console.log("Deviceready event has fired, bootstrapping AngularJS.");
 			console.log(navigator.globalization);
 			angular.bootstrap(document.body, ['prayer']);
-			loadAds();
+
+			if (isShowAds()) {
+				loadAds();
+			}
+
 		}, false);
 	} else {
 		console.log("Running in browser, bootstrapping AngularJS now.");
 		angular.bootstrap(document.body, ['prayer']);
 	}
 });
+
+function isShowAds() {
+	var showAdsPropertyVal = localStorage.getItem('showAds');
+
+	if (!showAdsPropertyVal) {
+		return true; //First launch, vale not set
+	}
+	return String(showAdsPropertyVal) === 'true';
+}
 
 function loadAds() {
 	var isAndroid = (/(android)/i.test(navigator.userAgent));
