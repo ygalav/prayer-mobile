@@ -97,7 +97,20 @@
                 </ons-col>
             </ons-row>
         </ons-row>
-        <!--TODO: Button to clear all data is needed here that will execute "localStorage.clear()"-->
+    </ons-list-item>
+    <ons-list-item>
+        <ons-row>
+            <ons-row>
+                <div class="left">
+                    <ons-button modifier="large" ng-click="showClearDataDialog()">{{appController.localization.button_delete_all_data}}</ons-button>
+                </div>
+            </ons-row>
+            <ons-row>
+                <div>
+                    <span class="list__item__subtitle"><br>{{appController.localization.tip_delete_all_data}}.</span>
+                </div>
+            </ons-row>
+        </ons-row>
     </ons-list-item>
 </ons-list>
 

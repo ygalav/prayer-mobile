@@ -62,6 +62,10 @@
 			}
 		}
 		else {
+			$rootScope.defineLanguage();
+		}
+
+		$rootScope.defineLanguage = function () {
 			var dialog;
 			ons.createDialog('dialog_language_chooser.html').then(
 				function(aDialog) {
@@ -316,6 +320,22 @@
 
 		$scope.saveReligion = function (value) {
 			context.systemproperties.setValue(context.systemproperties.keys.religion, value);
+		};
+
+		$scope.showClearDataDialog = function () {
+			var localization = prLanguageService.getLocalizationBundleForLanguage(prLanguageService.getCurrentLanguage());
+			ons.notification.confirm({
+				message: localization.tip_delete_all_data + "?",
+				title: localization.button_delete_all_data,
+				callback : function (value) {
+				if (value == 1) {
+					$scope.showAds = true; //TODO: showAds, religion and language defaults should be extracted somewhere
+					//TODO: After we reset everything, we need to reset all defaults, probably make sense to
+					// TODO: make this as part of $rootScope or have some event handler on appController to be sure it executes every time we need it
+					localStorage.clear();
+					$rootScope.defineLanguage();
+				}
+			}});
 		};
 
 		$scope.saveSettings = function () {

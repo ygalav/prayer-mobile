@@ -87,6 +87,8 @@ PrayerLocalizations = {
 		prays_list_prays_quantity : 'Prays:',
 		button_back : 'Back',
 		button_delete_all_saved_prays : 'Delete All Saved prays',
+		button_delete_all_data : 'Delete stored data',
+		tip_delete_all_data : 'Erase all settings. Delete all saved prays and settings',
 		no_internet_label : 'No internet connection',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
@@ -111,6 +113,8 @@ PrayerLocalizations = {
 		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Назад',
 		button_delete_all_saved_prays : 'Видалити всі обрані Молитви',
+		button_delete_all_data : 'Видалити збережені дані',
+		tip_delete_all_data : 'Видалити всі збережені налаштування молитовника. Будуть видалені збережені молитви та налаштування',
 		no_internet_label : 'Немає звязку з сервером',
 		msg_no_internet_and_saved_prays : "Інтернет з'єднання відсутнє, підключіться до інтернет для продовження користування молитовником",
 		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані"
@@ -135,6 +139,8 @@ PrayerLocalizations = {
 		prays_list_prays_quantity : 'Modlitwy:',
 		button_back : 'Zwrocz',
 		button_delete_all_saved_prays : 'Usuń wszystkie zapisane Modlitwy',
+		button_delete_all_data : 'Usuń dane i ustawieńia',
+		tip_delete_all_data : 'Usuń wszystkie dane i ustawienia z modlitewnika. Spowoduje usunięcie wszystkich zapisanych modlitew i ustawień',
 		no_internet_label : 'Brak połączenia z internetem',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
@@ -160,6 +166,8 @@ PrayerLocalizations = {
 		prays_list_prays_quantity : 'Молитов:',
 		button_back : 'Назад',
 		button_delete_all_saved_prays : 'Удалить все избранные молитвы',
+		button_delete_all_data : 'Удалить сохраненные данные',
+		tip_delete_all_data : 'Удалить все данные и настройки из молитвенника. Будут удалены все сохраненные молитвы и настройки',
 		no_internet_label : 'Нет связи с сервером',
 		msg_no_internet_and_saved_prays : "Интернет соединение отсутствует, подключитесь к интернет для продолжения пользования молитвенником",
 		msg_no_internet_and_saved_prays_title : "Невозможно загрузить данные"
