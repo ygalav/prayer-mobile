@@ -55,6 +55,7 @@
 				'pray_title_font_size': getValueMinusDeltaPercentage(18, delta, 0.6) + 'px',
 				'pray_content_font_size': getValueMinusDeltaPercentage(16, delta, 0.6) + 'px',
 				'menu_item_font_size': getValueMinusDeltaPercentage(18, delta, 0.4),
+				'menu_item_settings_font_size': getValueMinusDeltaPercentage(16, delta, 0.4),
 				'navigation_bar_font_size': getValueMinusDeltaPercentage(18, delta, 0.4)
 			}
 		},
