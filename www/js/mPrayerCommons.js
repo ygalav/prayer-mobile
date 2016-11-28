@@ -91,6 +91,7 @@ PrayerLocalizations = {
 		button_delete_all_saved_prays : 'Delete All Saved prays',
 		button_delete_all_data : 'Delete stored data',
 		tip_delete_all_data : 'Erase all settings. Delete all saved prays and settings',
+		settings_tip_why_show_ads : 'By showing ads you support prayer in all its financial needs for application support. Thank You!',
 		no_internet_label : 'No internet connection',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
@@ -118,6 +119,7 @@ PrayerLocalizations = {
 		button_delete_all_saved_prays : 'Видалити всі обрані Молитви',
 		button_delete_all_data : 'Видалити збережені дані',
 		tip_delete_all_data : 'Видалити всі збережені налаштування молитовника. Будуть видалені збережені молитви та налаштування',
+		settings_tip_why_show_ads : 'Дозволивши показ реклами в Молитовнику ви допомагаєте розробникам покривати всі супутні витрати на обслуговування додатку, а також сприяєте його розвитку. Дякуємо Вам!',
 		no_internet_label : 'Немає звязку з сервером',
 		msg_no_internet_and_saved_prays : "Інтернет з'єднання відсутнє, підключіться до інтернет для продовження користування молитовником",
 		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані"
@@ -145,6 +147,7 @@ PrayerLocalizations = {
 		button_delete_all_saved_prays : 'Usuń wszystkie zapisane Modlitwy',
 		button_delete_all_data : 'Usuń dane i ustawieńia',
 		tip_delete_all_data : 'Usuń wszystkie dane i ustawienia z modlitewnika. Spowoduje usunięcie wszystkich zapisanych modlitew i ustawień',
+		settings_tip_why_show_ads : 'By showing ads you support prayer in all its financial needs for application support. Thank You!',
 		no_internet_label : 'Brak połączenia z internetem',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
 		msg_no_internet_and_saved_prays_title : "Can't load data"
@@ -173,6 +176,7 @@ PrayerLocalizations = {
 		button_delete_all_saved_prays : 'Удалить все избранные молитвы',
 		button_delete_all_data : 'Удалить сохраненные данные',
 		tip_delete_all_data : 'Удалить все данные и настройки из молитвенника. Будут удалены все сохраненные молитвы и настройки',
+		settings_tip_why_show_ads: 'Позволив показ рекламы в Молитвеннике вы помогаете разработчикам покрывать все сопутствующие расходы на обслуживание приложения, а также способствуете его развитию. Спасибо Вам!',
 		no_internet_label : 'Нет связи с сервером',
 		msg_no_internet_and_saved_prays : "Интернет соединение отсутствует, подключитесь к интернет для продолжения пользования молитвенником",
 		msg_no_internet_and_saved_prays_title : "Невозможно загрузить данные"
