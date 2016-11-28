@@ -54,17 +54,6 @@
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
-		if (prLanguageService.hasLanguageDefined()) {
-			$rootScope.$emit('onLanguageChanged', {language : prLanguageService.getCurrentLanguage()});
-
-			if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
-				PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
-			}
-		}
-		else {
-			$rootScope.defineLanguage();
-		}
-
 		$rootScope.defineLanguage = function () {
 			var dialog;
 			ons.createDialog('dialog_language_chooser.html').then(
@@ -79,6 +68,17 @@
 					dialog.hide();
 				}
 			});
+		}
+
+		if (prLanguageService.hasLanguageDefined()) {
+			$rootScope.$emit('onLanguageChanged', {language : prLanguageService.getCurrentLanguage()});
+
+			if (! PrayerMenuService.getMenuParam(PrayerMenuService._selectedBook)) {
+				PrayerMenuService.setMenuParam(PrayerMenuService._selectedBook, prBookService.getDefaultBookIDForCurrentLanguage());
+			}
+		}
+		else {
+			$rootScope.defineLanguage();
 		}
 	});
 
