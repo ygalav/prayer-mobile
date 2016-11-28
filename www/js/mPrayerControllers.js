@@ -68,7 +68,7 @@
 					dialog.hide();
 				}
 			});
-		}
+		};
 
 		if (prLanguageService.hasLanguageDefined()) {
 			$rootScope.$emit('onLanguageChanged', {language : prLanguageService.getCurrentLanguage()});
