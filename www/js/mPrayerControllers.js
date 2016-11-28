@@ -259,10 +259,17 @@
 					});
 				}
 
-				$scope.showTitle = function (pray) {
+				$scope.showTitle = function (pray, prayItem) {
 					if (pray == undefined) {
 						return false;
 					}
+
+					if (prayItem != undefined) {
+						if (pray.name == prayItem.name) {
+							return false;
+						}
+					}
+
 					return !(
 						pray.style == 'COLORED_NO_TITLE' ||
 						pray.style == 'NO_TITLE' ||
