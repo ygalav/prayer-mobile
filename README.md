@@ -17,12 +17,8 @@ This document describes the minimum information required to develop an app using
 2. Install Gulp globally
 
     $ npm install -g gulp
-
-3. Run `gulp serve` and run the web server
-
-    $ gulp serve
-
-You should see running app on browser and you can start to develop your app with Onsen UI.
+    
+3. Run `gulp prepare` to copy dependencies
 
 ### Directory Layout
 
@@ -46,6 +42,4 @@ You should see running app on browser and you can start to develop your app with
 
 ## Gulp Tasks
 
- * `gulp serve` - Running the app for development.
- * `gulp build` - Build several files for project.
- * `gulp jshint` - Generate [jshint](https://github.com/jshint/jshint) report.
+ * `gulp prepare` - Copies dependencies to proper directory.

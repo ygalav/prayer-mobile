@@ -10,15 +10,15 @@
 
     <!-- JS dependencies (order matters!) -->
     <script src="lib/underscore/underscore-min.js"></script>
-    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="lib/onsenui/js/onsenui.js"></script>
     <script src="lib/lawnchair/lawnchair-0.6.1.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-sanitize.js"></script>
-    <script src="lib/onsen/js/angular-onsenui.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.js"></script>
 
     <!-- CSS dependencies -->
-    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
-    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/accordion.css" />
 
@@ -76,13 +76,20 @@
     </style>
 
     <ons-navigator var="navi">
-        <ons-sliding-menu type="reveal"
+        <!--<ons-sliding-menu type="reveal"
                           main-page="categories-list-page.html"
                           menu-page="menu.html" side="left"
                           max-slide-distance="55%"
                           swipe-target-width="150"
                           var="menu">
-        </ons-sliding-menu>
+        </ons-sliding-menu>-->
+
+        <!--https://onsen.io/v2/api/js/ons-splitter.html-->
+        <ons-splitter>
+            <ons-splitter-side var="menu" page="menu.html" side="left" width="150px" collapse swipeable>
+            </ons-splitter-side>
+            <ons-splitter-content id="content" page="categories-list-page.html"></ons-splitter-content>
+        </ons-splitter>
     </ons-navigator>
 </body>
 </html>

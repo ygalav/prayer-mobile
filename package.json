@@ -1,10 +1,9 @@
 {
-  "name": "onsenapp",
-  "version": "0.0.0",
+  "name": "catholic-prayer",
+  "version": "2.3.0",
   "private": true,
   "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -23,7 +22,10 @@
     "gulp-typescript": "^2.9.2",
     "jshint-stylish": "^1.0.1",
     "run-sequence": "^1.0.2",
+    "lawnchair": "^0.6.1"
+  },
 
-    "lawnchair" : "^0.6.1"
+  "dependencies": {
+    "onsenui": "^2.8.3"
   }
 }

@@ -64,7 +64,7 @@
 			);
 
 			$rootScope.$on('onLanguageChosen', function (event, args) {
-				if (dialog && dialog.isShown()) {
+				if (dialog && dialog.visible) {
 					dialog.hide();
 				}
 			});

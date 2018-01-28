@@ -1,19 +1,19 @@
 <ons-page ng-controller="PraysItemViewController">
+    <ons-toolbar>
+        <ons-row class="settings-page-sections-list">
+            <ons-col>
+                <ons-back-button ng-click="appController.showBannerAd(true)">Назад</ons-back-button>
+            </ons-col>
+            <ons-col width="70%">
+                <div style="float: right">
+                    <span style="font-size: 12px">A</span>
+                    <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></ons-range>
+                    <span style="font-size: 20px">A</span>&nbsp;
+                </div>
+            </ons-col>
+        </ons-row>
+    </ons-toolbar>
     <ons-list>
-        <ons-list-item>
-            <ons-row class="settings-page-sections-list">
-                <ons-col>
-                    <ons-back-button ng-click="appController.showBannerAd(true)">Назад</ons-back-button>
-                </ons-col>
-                <ons-col width="70%">
-                    <div style="float: right">
-                        <span style="font-size: 12px">A</span>
-                        <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></ons-range>
-                        <span style="font-size: 20px">A</span>&nbsp;
-                    </div>
-                </ons-col>
-            </ons-row>
-        </ons-list-item>
         <ons-list-item style="border-bottom: none" hidden>
             <ons-row>
                 <ons-col style="text-align: center;">
