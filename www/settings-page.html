@@ -1,120 +1,122 @@
-<ons-toolbar>
-    <div class="left">
-        <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
-        </ons-toolbar-button>
-    </div>
-    <div class="center navigation-bar-text">{{appController.localization.settings}}</div>
-</ons-toolbar>
-<ons-list class="settings-page-sections-list" ng-controller="SettingsPageController">
-    <ons-list-item>
-        <ons-row>
-            <ons-row class="settings-page-section-row">
-                <ons-col class="setting-name">
-                    <header>{{appController.localization.settings_setting_who_am_i}}</header>
-                </ons-col>
-                <ons-col>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input
-                                    type="radio"
-                                    class="radio-button__input"
-                                    ng-model="religion"
-                                    value="catholic"
-                                    ng-change="saveReligion(religion)">
-                            <div class="radio-button__checkmark"></div>
-                            {{appController.localization.settings_setting_who_am_i_catholic}}
-                        </label>
-                    </ons-row>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input
-                                    type="radio"
-                                    class="radio-button__input"
-                                    ng-model="religion"
-                                    value="greek-catholic"
-                                    ng-change="saveReligion(religion)">
-                            <div class="radio-button__checkmark"></div>
-                            {{appController.localization.settings_setting_who_am_i_greek_catholic}}
-                        </label>
-                    </ons-row>
-                </ons-col>
-            </ons-row>
-        </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-        <ons-row>
-            <ons-row class="settings-page-section-row">
-                <ons-col class="setting-name">
-                    <header>
-                        {{appController.localization.settings_setting_language}}
-                    </header>
-                </ons-col>
-                <ons-col>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input type="radio" class="radio-button__input" ng-model="language" value="UA" ng-change="saveLanguage(language)">
-                            <div class="radio-button__checkmark"></div>
-                            Українська
-                        </label>
-                    </ons-row>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input type="radio" class="radio-button__input" ng-model="language" value="EN" ng-change="saveLanguage(language)">
-                            <div class="radio-button__checkmark"></div>
-                            English
-                        </label>
-                    </ons-row>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input type="radio" class="radio-button__input" ng-model="language" value="PL" ng-change="saveLanguage(language)">
-                            <div class="radio-button__checkmark"></div>
-                            Polski
-                        </label>
-                    </ons-row>
-                    <ons-row>
-                        <label class="radio-button">
-                            <input type="radio" class="radio-button__input" ng-model="language" value="RU" ng-change="saveLanguage(language)">
-                            <div class="radio-button__checkmark"></div>
-                            Русский
-                        </label>
-                    </ons-row>
-                </ons-col>
-            </ons-row>
-        </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-        <ons-row>
-            <ons-row class="settings-page-section-row">
-                <ons-col class="setting-name">
-                    <header>
-                        {{appController.localization.settings_button_ads_switch}}
-                    </header>
-                </ons-col>
-                <ons-col>
-                    <ons-switch ng-model="showAds"></ons-switch>
-                </ons-col>
-            </ons-row>
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.toggle()">
+                <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center navigation-bar-text">{{appController.localization.settings}}</div>
+    </ons-toolbar>
+    <ons-list class="settings-page-sections-list" ng-controller="SettingsPageController">
+        <ons-list-item>
             <ons-row>
-                <div>
-                    <span class="list__item__subtitle"><br>{{appController.localization.settings_tip_why_show_ads}}</span>
-                </div>
+                <ons-row class="settings-page-section-row">
+                    <ons-col class="setting-name">
+                        <header>{{appController.localization.settings_setting_who_am_i}}</header>
+                    </ons-col>
+                    <ons-col>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input
+                                        type="radio"
+                                        class="radio-button__input"
+                                        ng-model="religion"
+                                        value="catholic"
+                                        ng-change="saveReligion(religion)">
+                                <div class="radio-button__checkmark"></div>
+                                {{appController.localization.settings_setting_who_am_i_catholic}}
+                            </label>
+                        </ons-row>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input
+                                        type="radio"
+                                        class="radio-button__input"
+                                        ng-model="religion"
+                                        value="greek-catholic"
+                                        ng-change="saveReligion(religion)">
+                                <div class="radio-button__checkmark"></div>
+                                {{appController.localization.settings_setting_who_am_i_greek_catholic}}
+                            </label>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
             </ons-row>
-        </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-        <ons-row>
+        </ons-list-item>
+        <ons-list-item>
             <ons-row>
-                <div class="left">
-                    <ons-button modifier="large" ng-click="showClearDataDialog()">{{appController.localization.button_delete_all_data}}</ons-button>
-                </div>
+                <ons-row class="settings-page-section-row">
+                    <ons-col class="setting-name">
+                        <header>
+                            {{appController.localization.settings_setting_language}}
+                        </header>
+                    </ons-col>
+                    <ons-col>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input type="radio" class="radio-button__input" ng-model="language" value="UA" ng-change="saveLanguage(language)">
+                                <div class="radio-button__checkmark"></div>
+                                Українська
+                            </label>
+                        </ons-row>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input type="radio" class="radio-button__input" ng-model="language" value="EN" ng-change="saveLanguage(language)">
+                                <div class="radio-button__checkmark"></div>
+                                English
+                            </label>
+                        </ons-row>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input type="radio" class="radio-button__input" ng-model="language" value="PL" ng-change="saveLanguage(language)">
+                                <div class="radio-button__checkmark"></div>
+                                Polski
+                            </label>
+                        </ons-row>
+                        <ons-row>
+                            <label class="radio-button">
+                                <input type="radio" class="radio-button__input" ng-model="language" value="RU" ng-change="saveLanguage(language)">
+                                <div class="radio-button__checkmark"></div>
+                                Русский
+                            </label>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
             </ons-row>
+        </ons-list-item>
+        <ons-list-item>
             <ons-row>
-                <div>
-                    <span class="list__item__subtitle"><br>{{appController.localization.tip_delete_all_data}}.</span>
-                </div>
+                <ons-row class="settings-page-section-row">
+                    <ons-col class="setting-name">
+                        <header>
+                            {{appController.localization.settings_button_ads_switch}}
+                        </header>
+                    </ons-col>
+                    <ons-col>
+                        <ons-switch ng-model="showAds"></ons-switch>
+                    </ons-col>
+                </ons-row>
+                <ons-row>
+                    <div>
+                        <span class="list__item__subtitle"><br>{{appController.localization.settings_tip_why_show_ads}}</span>
+                    </div>
+                </ons-row>
             </ons-row>
-        </ons-row>
-    </ons-list-item>
-</ons-list>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-row>
+                <ons-row>
+                    <div class="left">
+                        <ons-button modifier="large" ng-click="showClearDataDialog()">{{appController.localization.button_delete_all_data}}</ons-button>
+                    </div>
+                </ons-row>
+                <ons-row>
+                    <div>
+                        <span class="list__item__subtitle"><br>{{appController.localization.tip_delete_all_data}}.</span>
+                    </div>
+                </ons-row>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
 

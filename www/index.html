@@ -75,21 +75,36 @@
 
     </style>
 
-    <ons-navigator var="navi">
-        <!--<ons-sliding-menu type="reveal"
-                          main-page="categories-list-page.html"
-                          menu-page="menu.html" side="left"
-                          max-slide-distance="55%"
-                          swipe-target-width="150"
-                          var="menu">
-        </ons-sliding-menu>-->
+    <ons-splitter>
+        <ons-splitter-side id="menu" var="menu" side="left" width="150px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item ng-if-start="appController.books" class="menu-list-header">
+                        <i>{{appController.localization.books}}</i>
+                    </ons-list-item>
+                    <ons-list-item ng-if-end="appController.books" ng-repeat="book in appController.books | orderBy:'id'" modifier="nodivider"
+                                   ng-click="appController.setMenuParam('selectedBook', book.id); menu._currentPageUrl='';
+                   navi.pushPage('categories-list-page.html', appController.closeMenu())">
+                        <span class="sliding-menu-item-text">{{book.name}}</span>
+                    </ons-list-item>
 
-        <!--https://onsen.io/v2/api/js/ons-splitter.html-->
-        <ons-splitter>
-            <ons-splitter-side var="menu" page="menu.html" side="left" width="150px" collapse swipeable>
-            </ons-splitter-side>
-            <ons-splitter-content id="content" page="categories-list-page.html"></ons-splitter-content>
-        </ons-splitter>
-    </ons-navigator>
+                    <ons-list-item modifier="chevron" ng-click="navi.pushPage('favorite-prays-list.html', appController.closeMenu())">
+                        <span class="sliding-menu-item-text">{{appController.localization.choosen_prays}}</span>
+                    </ons-list-item>
+                    <ons-list-item class="menu-list-header" modifier="chevron" ng-click="navi.pushPage('settings-page.html', appController.closeMenu())">
+                        <span class="sliding-menu-settings-item-text ">{{appController.localization.settings}}</span>
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="homePage.html">
+        </ons-splitter-content>
+    </ons-splitter>
+
+    <ons-template id="homePage.html">
+        <ons-page id="homePage">
+            <ons-navigator var="navi" id="navi" page="categories-list-page.html"></ons-navigator>
+        </ons-page>
+    </ons-template>
 </body>
 </html>

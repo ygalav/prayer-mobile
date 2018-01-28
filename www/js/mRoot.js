@@ -72,3 +72,5 @@ function loadAds() {
 		admob.createBannerView();
 	}
 }
+
+
