@@ -49,7 +49,7 @@
 
 		var favoritePrays = [];
 
-		var filterByBookAndLanguage = function (prays, bookId, language) {
+		var filterByBookAndLanguage = function (prays, bookId, languageShortcut) {
 			if (!prays) {
 				return [];
 			}
@@ -61,8 +61,8 @@
 				}
 
 				var isProperLanguage = true;
-				if (language) {
-					isProperLanguage = pray.language.shortcut === language;
+				if (languageShortcut) {
+					isProperLanguage = pray.language.shortcut === languageShortcut;
 				}
 
 				return isProperLanguage && isProperBook;
@@ -70,6 +70,10 @@
 		};
 
 		return {
+
+			getFavoritePrays : function () {
+				return (favoritePrays && favoritePrays.length > 0) ? favoritePrays : []
+            },
 
 			/**
 			 * Checks do we have favorite prays saved for book, if bookId is null then checks among all books
@@ -80,16 +84,58 @@
 				return Storage.listFavoritePrays1({bookId : bookId}).length > 0;
 			},
 
+            /**
+			 * @Deprecated
+			 * Is used to retrieve prays from the local storage
+             * @param params [bookId - books id, language - languages shortcut]
+             */
 			listFavoritePrays1: function (params) {
 				var bookId = params ? params.bookId : undefined;
-				var language = params ? params.language : undefined;
+				var languageShortcut = params ? params.language : undefined; //Language shortcut
 				$log.debug("Retrieving favorite prays for book: [" + bookId + "]");
-				if (favoritePrays.length == 0) {
+				if (this.getFavoritePrays().length === 0) {
 					favoritePrays = Storage.listFavoritePrays1();
 				}
-				return filterByBookAndLanguage(favoritePrays, bookId, language);
+				return filterByBookAndLanguage(favoritePrays, bookId, languageShortcut);
 			},
 
+            /**
+             * @Deprecated
+             * Is used to retrieve prays from the local storage
+             * @param params [bookId - books id, language - languages shortcut]
+             * @param callback - callback function what to do with this, takes list of prays as an argument
+             */
+            listFavoritePraysWithCallback: function (params, callback) {
+                var bookId = params ? params.bookId : undefined;
+                var languageShortcut = params ? params.language : undefined; //Language shortcut
+
+				$log.debug("Retrieving favorite prays for book: [" + bookId + "]");
+                if (this.getFavoritePrays().length === 0) {
+                    Storage.listFavoritePraysWithCallback(function (prays) {
+						favoritePrays = prays;
+						callback(filterByBookAndLanguage(favoritePrays, bookId, languageShortcut))
+                    });
+                }
+                else {
+                	callback(filterByBookAndLanguage(favoritePrays, bookId, languageShortcut))
+				}
+            },
+
+			toggleFavoritePray: function (prayItemId, onSuccess) {
+                $log.info('Trying to toggle prayItem: [' + prayItemId + '] to favorites');
+                if (!Storage.isFavorite(prayItemId)) {
+                	this.addFavoritePray(prayItemId, onSuccess)
+                }
+                else {
+                	//TODO: Here we implementing remove
+				}
+            },
+
+            /**
+			 * Deprecated
+             * @param prayItemId
+             * @param onSuccess
+             */
 			addFavoritePray: function (prayItemId, onSuccess) {
 				$log.info('Trying to add prayItem: [' + prayItemId + '] to favorites');
 				if (!Storage.isFavorite(prayItemId)) {

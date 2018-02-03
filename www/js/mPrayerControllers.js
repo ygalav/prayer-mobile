@@ -18,6 +18,7 @@
 		$rootScope,
 		PrayerHttpService,
 		PrayerMenuService,
+        PrayerFavoritePraysServices,
 		context,
 		prTextScaling,
 		prLanguageService,
@@ -49,8 +50,15 @@
 			});
 		};
 
+		var reloadFavoritePrays = function (language) {
+			PrayerFavoritePraysServices.listFavoritePraysWithCallback({language: language}, function (prays) {
+                appController.favoritePrays = prays
+            })
+        };
+
 		$rootScope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
+			reloadFavoritePrays(args.language);
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
