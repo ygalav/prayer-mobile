@@ -9,10 +9,10 @@ module.run(function ($log, $rootScope, context) {
 /**
  * http://rest.prayer.com.ua/rest/pray/4 - example of pray json object
  */
-module.factory('Storage', function ($rootScope, context, prLanguageService) {
+module.factory('Storage', function ($rootScope, $log,  context, prLanguageService) {
 
 	var getFavoritesPraysArrayFromObject = function (favoritePraysObject) {
-		if (favoritePraysObject === undefined || favoritePraysObject == null
+		if (favoritePraysObject === undefined || favoritePraysObject === null
 			|| favoritePraysObject.value === undefined) {
 			return [];
 		} else {
@@ -43,6 +43,23 @@ module.factory('Storage', function ($rootScope, context, prLanguageService) {
 				});
 			});
 		},
+
+		removeFromFavorite: function (id, callback) {
+			$log.debug('Removing pray [' + id + '] from favorites');
+            $rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
+                var favoritePrays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+                $log.debug('Total prays stored as favorite:', favoritePrays.length);
+                var filteredPrays = _.filter(favoritePrays, function (favoritePray) {
+                    return favoritePray.id !== id
+                });
+                save(filteredPrays);
+                $log.debug('Prays left after removing:', filteredPrays.length);
+                if (callback && _.isFunction(callback)) {
+                    $log.debug('Performing onremove callback');
+                    callback();
+                }
+            });
+        },
 
 		listFavoritePrays1: function () {
 			var prays = [];

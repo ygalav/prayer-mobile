@@ -223,6 +223,8 @@
 
 	module.controller('PraysListController', function (
 		$scope,
+		$rootScope,
+		$log,
 		PrayerHttpService,
 		PrayerFavoritePraysServices,
 		prAdService
@@ -242,8 +244,9 @@
 			};
 
 			$scope.addItemToFavorites = function (id) {
-				PrayerFavoritePraysServices.addFavoritePray(id, function () {
-					$scope.$emit('favoritePraysListChanged', {});
+				PrayerFavoritePraysServices.toggleFavoritePray(id, function () {
+					$log.debug("Emitting favoritePraysListChanged event");
+					$rootScope.$emit('favoritePraysListChanged', {});
 				});
 			}
 	});

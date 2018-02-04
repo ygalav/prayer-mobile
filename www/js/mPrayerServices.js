@@ -124,34 +124,25 @@
 			toggleFavoritePray: function (prayItemId, onSuccess) {
                 $log.info('Trying to toggle prayItem: [' + prayItemId + '] to favorites');
                 if (!Storage.isFavorite(prayItemId)) {
-                	this.addFavoritePray(prayItemId, onSuccess)
+                    PrayerHttpService.getPrayItemById(prayItemId, function (data) {
+                        Storage.addFavoritePray(data);
+                        favoritePrays.push(data);
+                        $log.info('[' + prayItemId + ' - ' + data.name + '] is added to favorites');
+                        if (onSuccess && _.isFunction(onSuccess)) {
+                            onSuccess();
+                        }
+                    });
                 }
                 else {
-                	//TODO: Here we implementing remove
+                	var favorites = this.getFavoritePrays();
+                	Storage.removeFromFavorite(prayItemId, function () {
+                        favoritePrays = _.filter(favorites, function (favoritePray) {
+                            return favoritePray.id !== prayItemId
+                        });
+                        onSuccess();
+                    })
 				}
             },
-
-            /**
-			 * Deprecated
-             * @param prayItemId
-             * @param onSuccess
-             */
-			addFavoritePray: function (prayItemId, onSuccess) {
-				$log.info('Trying to add prayItem: [' + prayItemId + '] to favorites');
-				if (!Storage.isFavorite(prayItemId)) {
-					PrayerHttpService.getPrayItemById(prayItemId, function (data) {
-						Storage.addFavoritePray(data);
-						favoritePrays.push(data);
-						$log.info('[' + prayItemId + ' - ' + data.name + '] is added to favorites');
-						if (onSuccess && _.isFunction(onSuccess)) {
-							onSuccess();
-						}
-					});
-				}
-				else {
-					$log.info('PrayItem: [' + prayItemId + '] already added to favorites');
-				}
-			},
 
 			getFavoritePray: function (id) {
 				//TODO: This also should use cached data
