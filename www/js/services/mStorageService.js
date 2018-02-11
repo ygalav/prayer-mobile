@@ -69,11 +69,13 @@ module.factory('Storage', function ($rootScope, $log,  context, prLanguageServic
 			return prays;
 		},
 
-        listFavoritePraysWithCallback: function (callback) {
-            var prays = [];
-            $rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
-                prays = getFavoritesPraysArrayFromObject(favoritePraysObject);
-                callback(prays)
+        listFavoritePrays: function () {
+			return new Promise(function (resolve, reject) {
+                var prays = [];
+                $rootScope.store.get(context.storage_keys.favorite_prays, function (favoritePraysObject) {
+                    prays = getFavoritesPraysArrayFromObject(favoritePraysObject);
+                    resolve(prays);
+                });
             });
         },
 

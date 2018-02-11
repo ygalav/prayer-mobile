@@ -7,6 +7,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
+    <script src="lib/es6-promise.min.js"></script>
 
     <!-- JS dependencies (order matters!) -->
     <script src="lib/underscore/underscore-min.js"></script>
@@ -88,7 +89,7 @@
                         <span class="sliding-menu-item-text">{{book.name}}</span>
                     </ons-list-item>
 
-                    <ons-list-item modifier="chevron" ng-if="appController.favoritePrays.length > 0" ng-click="navi.pushPage('favorite-prays-list.html', appController.closeMenu())">
+                    <ons-list-item modifier="chevron" ng-click="navi.pushPage('favorite-prays-list.html', appController.closeMenu())">
                         <span class="sliding-menu-item-text">{{appController.localization.choosen_prays}}</span>
                     </ons-list-item>
                     <ons-list-item class="menu-list-header" modifier="chevron" ng-click="navi.pushPage('settings-page.html', appController.closeMenu())">

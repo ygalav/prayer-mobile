@@ -105,20 +105,22 @@
              * @param params [bookId - books id, language - languages shortcut]
              * @param callback - callback function what to do with this, takes list of prays as an argument
              */
-            listFavoritePraysWithCallback: function (params, callback) {
+            listFavoritePrays: function (params) {
                 var bookId = params ? params.bookId : undefined;
                 var languageShortcut = params ? params.language : undefined; //Language shortcut
 
-				$log.debug("Retrieving favorite prays for book: [" + bookId + "]");
+                $log.debug("Retrieving favorite prays for book: [" + bookId + "]");
                 if (this.getFavoritePrays().length === 0) {
-                    Storage.listFavoritePraysWithCallback(function (prays) {
-						favoritePrays = prays;
-						callback(filterByBookAndLanguage(favoritePrays, bookId, languageShortcut))
+                	return Storage.listFavoritePrays().then(function (prays) {
+                        favoritePrays = prays;
+                        return filterByBookAndLanguage(favoritePrays, bookId, languageShortcut)
                     });
                 }
                 else {
-                	callback(filterByBookAndLanguage(favoritePrays, bookId, languageShortcut))
-				}
+                	return new Promise(function (resolve, reject) {
+						return resolve(filterByBookAndLanguage(favoritePrays, bookId, languageShortcut))
+                    });
+                }
             },
 
 			toggleFavoritePray: function (prayItemId, onSuccess) {

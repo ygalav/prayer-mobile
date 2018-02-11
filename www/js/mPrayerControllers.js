@@ -50,15 +50,8 @@
 			});
 		};
 
-		var reloadFavoritePrays = function (language) {
-			PrayerFavoritePraysServices.listFavoritePraysWithCallback({language: language}, function (prays) {
-                appController.favoritePrays = prays
-            })
-        };
-
 		$rootScope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
-			reloadFavoritePrays(args.language);
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
 		});
 
@@ -253,10 +246,18 @@
 
 	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
 		var favoritePraysList = this;
-		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1();
+		favoritePraysList.favoritePrays = [];
+        PrayerFavoritePraysServices.listFavoritePrays().then(function (prays) {
+            favoritePraysList.favoritePrays = prays;
+        });
+
 		favoritePraysList.showFavoritePray = function(prayItemId) {
 			navi.pushPage('pray-item-view.html', { data : {prayItemId: prayItemId, showSaved : true } } );
-		}
+		};
+
+		favoritePraysList.getBack = function () {
+			navi.popPage();
+        }
 	});
 
 	module.controller('PraysItemViewController',
@@ -279,32 +280,32 @@
 				}
 
 				$scope.showTitle = function (pray, prayItem) {
-					if (pray == undefined) {
+					if (pray === undefined) {
 						return false;
 					}
 
-					if (prayItem != undefined) {
-						if (pray.name == prayItem.name) {
+					if (prayItem !== undefined) {
+						if (pray.name === prayItem.name) {
 							return false;
 						}
 					}
 
 					return !(
-						pray.style == 'COLORED_NO_TITLE' ||
-						pray.style == 'NO_TITLE' ||
-						pray.style == 'HTML_NO_TITLE' ||
-						pray.style == 'ITALIC_NO_TITLE'
+						pray.style === 'COLORED_NO_TITLE' ||
+						pray.style === 'NO_TITLE' ||
+						pray.style === 'HTML_NO_TITLE' ||
+						pray.style === 'ITALIC_NO_TITLE'
 					);
 				};
 
 				$scope.getPrayStyle = function (pray) {
-					if (pray == undefined) {
+					if (pray === undefined) {
 						return '';
 					}
-					if (pray.style == 'COLORED' || pray.style == 'COLORED_NO_TITLE') {
+					if (pray.style === 'COLORED' || pray.style === 'COLORED_NO_TITLE') {
 						return 'color : red;'
 					}
-					else if (pray.style == 'ITALIC' || pray.style == 'ITALIC_NO_TITLE') {
+					else if (pray.style === 'ITALIC' || pray.style === 'ITALIC_NO_TITLE') {
 						return 'font-style: italic;'
 					}
 					return '';
