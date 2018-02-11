@@ -313,6 +313,11 @@
 					$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 				};
 				prAdService.showBannerAd(false);
+
+                $scope.popPage = function () {
+                    navi.popPage();
+                    appController.showBannerAd(true)
+                };
 			});
 
 	module.controller('SettingsPageController', function (
