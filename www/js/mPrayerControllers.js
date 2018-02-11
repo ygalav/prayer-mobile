@@ -244,13 +244,9 @@
 			}
 	});
 
-	module.controller('FavoritePraysListController', function(PrayerFavoritePraysServices) {
+	module.controller('FavoritePraysListController', function($scope, $log, PrayerFavoritePraysServices) {
 		var favoritePraysList = this;
-		favoritePraysList.favoritePrays = [];
-        PrayerFavoritePraysServices.listFavoritePrays().then(function (prays) {
-            favoritePraysList.favoritePrays = prays;
-        });
-
+		favoritePraysList.favoritePrays = PrayerFavoritePraysServices.listFavoritePrays1();
 		favoritePraysList.showFavoritePray = function(prayItemId) {
 			navi.pushPage('pray-item-view.html', { data : {prayItemId: prayItemId, showSaved : true } } );
 		};
