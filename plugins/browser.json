@@ -1,19 +1,22 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-admob": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     },
-    "config_munge": {
-        "files": {}
-    },
-    "installed_plugins": {
-        "cordova-admob": {
-            "PACKAGE_NAME": "com.ygalav.catholicprayer"
-        }
-    },
-    "dependent_plugins": {
-        "cordova-connectivity-monitor": {
-            "PACKAGE_NAME": "com.ygalav.catholicprayer"
-        }
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
+  },
+  "dependent_plugins": {
+    "cordova-connectivity-monitor": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    }
+  }
 }

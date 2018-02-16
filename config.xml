@@ -45,4 +45,5 @@
         <splash height="1242" src="www/res/screen/ios/Default-Landscape-736h.png" width="2208" />
         <preference name="BackupWebStorage" value="local" />
     </platform>
+    <engine name="browser" spec="^5.0.3" />
 </widget>
