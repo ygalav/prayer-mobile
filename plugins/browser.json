@@ -12,6 +12,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-libgoogleadmobads": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {

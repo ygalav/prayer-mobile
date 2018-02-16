@@ -1,0 +1,113 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-libgoogleadmobads",
+        "scope": null,
+        "escapedName": "cordova-libgoogleadmobads",
+        "name": "cordova-libgoogleadmobads",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/yuriihalavai/projects/prayer/prayer-mobile"
+    ]
+  ],
+  "_from": "cordova-libgoogleadmobads@latest",
+  "_id": "cordova-libgoogleadmobads@7.13.1",
+  "_inCache": true,
+  "_location": "/cordova-libgoogleadmobads",
+  "_nodeVersion": "4.4.2",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-libgoogleadmobads-7.13.1.tgz_1477672553495_0.15066411416046321"
+  },
+  "_npmUser": {
+    "name": "appfeel",
+    "email": "info@appfeel.com"
+  },
+  "_npmVersion": "3.10.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-libgoogleadmobads",
+    "scope": null,
+    "escapedName": "cordova-libgoogleadmobads",
+    "name": "cordova-libgoogleadmobads",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-libgoogleadmobads/-/cordova-libgoogleadmobads-7.13.1.tgz",
+  "_shasum": "0dc190d13ee61a70740218602922b5f90a892e44",
+  "_shrinkwrap": null,
+  "_spec": "cordova-libgoogleadmobads",
+  "_where": "/Users/yuriihalavai/projects/prayer/prayer-mobile",
+  "author": {
+    "name": "AppFeel"
+  },
+  "bugs": {
+    "url": "https://github.com/appfeel/google-iosadmobads/issues"
+  },
+  "cordova": {
+    "id": "cordova-libgoogleadmobads",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "iOS Google AdMob Ads library base dependency for other plugins",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "0dc190d13ee61a70740218602922b5f90a892e44",
+    "tarball": "https://registry.npmjs.org/cordova-libgoogleadmobads/-/cordova-libgoogleadmobads-7.13.1.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "5af5f246de193afe8544d2162afa5727c2d53396",
+  "homepage": "https://github.com/appfeel/google-iosadmobads#readme",
+  "keywords": [
+    "ad",
+    "ads",
+    "admob",
+    "google",
+    "advertising",
+    "advertisment",
+    "publicity",
+    "earn",
+    "win",
+    "play",
+    "services",
+    "iad",
+    "flurry",
+    "monetization",
+    "money",
+    "appfeel",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "appfeel",
+      "email": "info@appfeel.com"
+    }
+  ],
+  "name": "cordova-libgoogleadmobads",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appfeel/google-iosadmobads.git"
+  },
+  "scripts": {},
+  "version": "7.13.1"
+}
