@@ -1,10 +1,10 @@
 {
   "config_ios" : {
-    "CFBundleDisplayName": "Молитовник УГКЦ і РКЦ",
-    "CFBundleName": "Молитовник УГКЦ і РКЦ"
+    "CFBundleDisplayName": "Молитовник",
+    "CFBundleName": "Молитовник"
   },
   "config_android" : {
-    "app_name": "Молитовник УГКЦ і РКЦ"
+    "app_name": "Молитовник"
   },
   "app" : {
 
