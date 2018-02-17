@@ -1,0 +1,12 @@
+{
+  "config_ios" : {
+    "CFBundleDisplayName": "Katolicki Modlitewnik",
+    "CFBundleName": "Katolicki Modlitewnik"
+  },
+  "config_android" : {
+    "app_name": "Katolicki Modlitewnik"
+  },
+  "app" : {
+
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "config_ios" : {
+    "CFBundleDisplayName": "Catholic Prayer",
+    "CFBundleName": "Catholic Prayer"
+  },
+  "config_android" : {
+    "app_name": "Catholic Prayer"
+  },
+  "app" : {
+
+  }
+}
