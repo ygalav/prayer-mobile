@@ -15,6 +15,9 @@
     },
     "cordova-libgoogleadmobads": {
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-plugin-localization-strings": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {

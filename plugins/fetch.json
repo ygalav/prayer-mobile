@@ -30,5 +30,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-localization-strings": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

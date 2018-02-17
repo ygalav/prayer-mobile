@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+        "spec": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:kelvinhokk/cordova-plugin-localization-strings.git",
+          "sshUrl": "git+ssh://git@github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+          "httpsUrl": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+          "gitUrl": "git://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+          "shortcut": "github:kelvinhokk/cordova-plugin-localization-strings",
+          "directUrl": "https://raw.githubusercontent.com/kelvinhokk/cordova-plugin-localization-strings/master/package.json"
+        }
+      },
+      "/Users/yuriihalavai/projects/prayer/prayer-mobile"
+    ]
+  ],
+  "_from": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+  "_id": "cordova-plugin-localization-strings@2.0.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-localization-strings",
+  "_phantomChildren": {
+    "graceful-fs": "4.1.11",
+    "klaw": "1.3.1"
+  },
+  "_requested": {
+    "raw": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+    "spec": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:kelvinhokk/cordova-plugin-localization-strings.git",
+      "sshUrl": "git+ssh://git@github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+      "httpsUrl": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+      "gitUrl": "git://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+      "shortcut": "github:kelvinhokk/cordova-plugin-localization-strings",
+      "directUrl": "https://raw.githubusercontent.com/kelvinhokk/cordova-plugin-localization-strings/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git#33c2b966c519d6245cb2f79315b8f9b967de2e4c",
+  "_shasum": "a7541d7027a67bcd42cf5b6ea61bb4b9cf045fff",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+  "_where": "/Users/yuriihalavai/projects/prayer/prayer-mobile",
+  "bugs": {
+    "url": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git/issues"
+  },
+  "dependencies": {
+    "fs-extra": "^1.0.0",
+    "iconv-lite": "^0.4.15",
+    "lodash": "^4.17.2",
+    "xcode": "^0.9.0",
+    "xml-writer": "^1.6.0",
+    "xml2js": "^0.4.17"
+  },
+  "description": "Cordova Plugin for handling localization strings on InfoPlist.strings and Localizable.strings on iOS, strings.xml on Android",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ],
+  "gitHead": "33c2b966c519d6245cb2f79315b8f9b967de2e4c",
+  "homepage": "https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization",
+    "strings.xml",
+    "InfoPlist.strings",
+    "Localizable.strings"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-localization-strings",
+  "optionalDependencies": {},
+  "readme": "# Cordova Localization String Plugin\n\nThis plugin helps you to manage string files that you need natively, namely on Localizable.strings and InfoPlist.strings on iOS, and strings.xml on Android.\n\nThis plugin also lets you localize your app name on both iOS and Android.\n\n\n## How to Use\n\n    \nInstall the plugin by fetching the dependencies\n\n    $ cordova plugin add https://github.com/kelvinhokk/cordova-plugin-localization-strings.git --fetch\n    \n\nModify your project root to have the following structure:\n\n```\nCordova Project Root\n  |\n  |__ translations\n           |\n           |__ app\n                |\n                |__  en.json\n                |__  es.json\n                |__  ja.json\n                \n```\n\nA JSON file may look like this  (Note: Breaking change from 1.0.0 onwards - new JSON format).\n```\n{\n  \"config_ios\" : {\n    \"NSCameraUsageDescription\": \"Take pictures\",\n    \"CFBundleDisplayName\": \"Some App Name\",\n    \"CFBundleName\": \"Some App Name\"\n  },\n  \"config_android\" : {\n    \"app_name\": \"Some App Name\"\n  },\n  \"app\" : {\n    \"HAVE_MAIL_TITLE\": \"You have mail.\",\n    \"HAVE_MAIL_MSG\": \"%1$@ has you a message titled \\\\\\\"%2$@\\\\\\\"\"\n  }\n}\n\n\n```\nBy default, the language for the Localizable.strings, InfoPlist.strings or strings.xml is taken from the filename.  \n\nFor example, if the filename is es.json,  the language is hence \"es\", and the plugin will create \"/Resources/es.lproj/Localizable.strings\" or \"/values-es/strings.xml\".\n\nInstall iOS or Android platform\n\n    cordova platform add ios\n    cordova platform add android\n    \nRun the code\n\n    cordova prepare ios \n\n#### Platform Specific Localizations\n\nThere are some platform specific localizations which differ for Android and iOS, for example for Android:\n- zh-rCN\n- zh-rHK\n- zh-rTW\n                                                   \nand for iOS:\n- zh-Hans\n- zh-Hans-CN\n- zh-Hant\n- zh-Hant-TW\n\nIn this case, you can use the locale in the json file to specify the platform localizations as in the following examples.  \n\nN.B.  The \"locale\" key is optional (if platform localization is not required).\n\nzh-Hans.json\n```\n{\n\t\"locale\": {\n\t\t\"ios\": [\"zh-Hans\"],\n\t\t\"android\": [\"zh-rCN\"]\n\t},\n\t\"config_ios\": {\n\t\t\"NSCameraUsageDescription\": \"扫描二维码\",\n\t\t\"CFBundleDisplayName\": \"应用程序名称\",\n\t\t\"CFBundleName\": \"应用程序名称\"\n\t},\n\t\"config_android\": {\n\t\t\"app_name\": \"应用程序名称\"\n\t},\n\t\"app\": {\n\t\t\"HAVE_MAIL_TITLE\": \"你收到了邮件\",\n\t\t\"HAVE_MAIL_MSG\": \"％1$@给您发送了封邮件，标题为\\\\\\\"％2$@\\\\\\\"\"\n\t}\n}\n\n```\n\nzh-Hant.json\n```\n{\n\t\"locale\": {\n\t\t\"ios\": [\"zh-Hant\"],\n\t\t\"android\": [\"zh-rTW\", \"zh-rHK\"]\n\t},\n\t\"config_ios\": {\n\t\t\"NSCameraUsageDescription\": \"掃描二維碼\",\n\t\t\"CFBundleDisplayName\": \"應用程序名稱\",\n\t\t\"CFBundleName\": \"應用程序名稱\"\n\t},\n\t\"config_android\": {\n\t\t\"app_name\": \"應用程序名稱\"\n\t},\n\t\"app\": {\n\t\t\"HAVE_MAIL_TITLE\": \"你收到了郵件\",\n\t\t\"HAVE_MAIL_MSG\": \"％1$@給您發送了封郵件，標題為\\\\\\\"％2$@\\\\\\\"\"\n\t}\n}\n```\n\n## Dependencies\n\nThis plugin relies on node-xcode >= 0.9.0, node >= 5.0.0, cordova >= 6.0.0.\n\nDo remember to install the other dependencies via the --fetch when installing the plugin.\n\n## Use Cases\n\nTypically in a Cordova application, localization is performed on the javascript layer.  There are several libraries to do help do so like angular-translate on ionic 1 and ngx-translate on ionic 2, with the help of plugins like cordova-plugin-globalization to retrieved the locale or preferred language natively.\n\nThis plugin helps in native localization in the following use cases:\n\n### Localizing App Name\n\nThe plugin will help to localize your app name if you require it to be named differently in different languages.  Use the following json file format.\n\n```\n{\n  \"config_ios\" : {\n    \"CFBundleDisplayName\": \"Some App Name\",\n    \"CFBundleName\": \"Some App Name\"\n  },\n  \"config_android\" : {\n    \"app_name\": \"Some App Name\"\n  }\n}\n\n```\n### Localizing iOS Permissions\n\nThis plugin will help in localize the iOS permission descriptions, for example NSCameraUsageDescription.  A full list of iOS permissions and other infoPlist strings that can be found here. (https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html \"CocoaKeys\")\n\nExample usage:\n\n```\n{\n  \"config_ios\" : {\n    \"NSCameraUsageDescription\": \"Take pictures\",\n    \"NSLocationUsageDescription\": \"Need Location for Some Purpose\",\n  }\n}\n\n```\n\n### Push notifications messages \n\nTypically, there are 2 main ways push notifications can be localised:\n* your app saves your user's selected language on the server, and pushes a localised string in the push notification to your user.\n* your server pushes a key to the phone, and the app displays a localised version based on the key in the localization bundle, as determined from the user's phone OS's languauge.\n\nThis plugin helps in the latter approach.\n\nMore information about the respective string localizations and formatting here:\n\n* Storing Localized Content in Your App Bundle (https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CreatingtheNotificationPayload.html#//apple_ref/doc/uid/TP40008194-CH10-SW9)\n* Formatting strings (https://developer.android.com/guide/topics/resources/string-resource.html#FormattingAndStyling)\n\n\nExample usage:\n\n```\n{\n  \"app\" : {\n    \"HAVE_MAIL_TITLE\": \"You have mail.\",\n    \"HAVE_INVITE_MSG\": \"%1$@ has invited you to game room %2$@\"\n  }\n}\n\n```\n\nThe plugin will automatically generate Localizable.strings file using the following entry on iOS:\n```\n\"HAVE_MAIL_TITLE\" = \"You have mail.\";\n\"HAVE_INVITE_MSG\" = \"%1$@ has invited you to game room %2$@\";\n```\n\nAnd on Android, the respective locale's strings.xml:\n```\n<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<resources>\n    <string name=\"HAVE_MAIL_TITLE\">You have mail.</string>\n    <string name=\"HAVE_INVITE_MSG\">%1$s has invited you to game room %2$s</string>\n</resources>\n```\n\n## Details (iOS)\n\nThe plugin reads the assumed directory structure.  The plugin reads from all the fields in config_ios and writes into the InfoPlist.strings, which will be placed in the respective locale.lproj directory.   The rest of the strings in \"app\" will be placed in the Localizable.strings file and placed in the locale directory. \n\n## Details (Android)\n\nThe plugin reads the assumed directory structure, the plugin will combine all properties in \"config_android\" and \"app\", and inserted into the strings.xml of the locale's  /res/val-locale/strings.xml \n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git"
+  },
+  "version": "2.0.0"
+}

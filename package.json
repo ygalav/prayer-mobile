@@ -28,6 +28,7 @@
     "cordova-browser": "^5.0.3",
     "cordova-ios": "^4.5.4",
     "cordova-libgoogleadmobads": "^7.13.1",
+    "cordova-plugin-localization-strings": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
     "onsenui": "^2.8.3"
   },
   "cordova": {
@@ -36,7 +37,8 @@
       "ios"
     ],
     "plugins": {
-      "cordova-libgoogleadmobads": {}
+      "cordova-libgoogleadmobads": {},
+      "cordova-plugin-localization-strings": {}
     }
   }
 }
