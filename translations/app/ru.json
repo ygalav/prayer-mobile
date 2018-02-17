@@ -1,0 +1,12 @@
+{
+  "config_ios" : {
+    "CFBundleDisplayName": "Молитвослов",
+    "CFBundleName": "Молитвослов"
+  },
+  "config_android" : {
+    "app_name": "Молитвослов"
+  },
+  "app" : {
+
+  }
+}
