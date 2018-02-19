@@ -1,7 +1,11 @@
 <!--TODO: This list should be shown only if items exists -->
 <ons-list style="margin-top: 10px">
-    <ons-list-header>{{appController.localization.prays_list_title}}</ons-list-header>
-    <ons-list-item class="list-row" ng-repeat="prayItem in prayItemsList">
+    <ons-list-item>
+        <div class="right">
+            <ons-search-input ng-model="filterPrays"></ons-search-input>
+        </div>
+    </ons-list-item>
+    <ons-list-item class="list-row" ng-repeat="prayItem in prayItemsList | filter:{name:filterPrays}">
         <ons-row>
             <label class="checkbox checkbox--list-item" ng-show="prAddOrRemoveFavoriteFn">
                 <input type="checkbox" class="checkbox__input"

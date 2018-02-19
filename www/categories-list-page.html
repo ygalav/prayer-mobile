@@ -12,15 +12,11 @@
         <ons-row ng-if="!categoriesListController.isReady">
             <div class="progress-bar progress-bar--indeterminate"></div>
         </ons-row>
-        <ons-list-item ng-class="{active:categoriesListController.isGroupShown()}">
-            <div class="left">
-                <ons-icon icon="minus-square-o" ng-if="categoriesListController.isGroupShown()"></ons-icon>
-                <ons-icon icon="plus-square-o" ng-if="!categoriesListController.isGroupShown()"></ons-icon>
-            </div>
-
-            <div class="right">
-                <ons-search-input ng-model="filterCategory"></ons-search-input>
-            </div>
+        <ons-list-item modifier="nodivider" ng-click="categoriesListController.toggleGroup()"
+                       class="title, list-row" ng-class="{active:categoriesListController.isGroupShown()}">
+            <ons-icon icon="minus-square-o" ng-if="categoriesListController.isGroupShown()"></ons-icon>
+            <ons-icon icon="plus-square-o" ng-if="!categoriesListController.isGroupShown()"></ons-icon>
+            {{appController.localization.categories}}
         </ons-list-item>
         <ons-row ng-show="categoriesListController.noInternet">
             <span>{{appController.localization.no_internet_label}}</span>
