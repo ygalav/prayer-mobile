@@ -1,17 +1,12 @@
 <ons-page ng-controller="PraysItemViewController">
-    <ons-toolbar>
-        <ons-row class="settings-page-sections-list">
-            <ons-col>
+    <ons-toolbar class="settings-page-sections-list">
+            <div class="left">
+                <!--TODO: localize btn-->
                 <ons-back-button ng-click="popPage()">Назад</ons-back-button>
-            </ons-col>
-            <ons-col width="70%">
-                <div style="float: right">
-                    <span style="font-size: 12px">A</span>
-                    <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></ons-range>
-                    <span style="font-size: 20px">A</span>&nbsp;
-                </div>
-            </ons-col>
-        </ons-row>
+            </div>
+            <div class="right">
+                <ons-icon icon="ion-grid" class="menu-icon" size="30px" ng-click="prayItemViewPopover.show($event)"></ons-icon>
+            </div>
     </ons-toolbar>
     <ons-list>
         <ons-list-item style="border-bottom: none" hidden>
@@ -36,4 +31,21 @@
             </ons-row>
         </ons-list-item>
     </ons-list>
+    <ons-popover direction="down" var="prayItemViewPopover" cancelable>
+        <div style="padding: 10px; text-align: center;">
+            <ons-list>
+                <ons-list-item modifier="nodivider">
+                    <div class="left">
+                        <span style="font-size: 12px">A</span>
+                        <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></ons-range>
+                        <span style="font-size: 20px">A</span>&nbsp;
+                    </div>
+                </ons-list-item>
+                <!--TODO: rm comment if not needed-->
+                <!--<ons-list-item>
+                    <ons-button ng-click="prayItemViewPopover.hide()">Close</ons-button>
+                </ons-list-item>-->
+            </ons-list>
+        </div>
+    </ons-popover>
 </ons-page>

@@ -76,3 +76,11 @@
 ons-list-item.menu-list-header {
     background-color: #f9f9f9;
 }
+
+.menu-icon {
+    color: #0076ff;
+}
+
+.right .menu-icon {
+    margin-right: 20px;
+}
