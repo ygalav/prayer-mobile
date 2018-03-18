@@ -95,7 +95,11 @@ PrayerLocalizations = {
 		settings_tip_why_show_ads : 'By showing ads you support prayer in all its financial needs for application support. Thank You!',
 		no_internet_label : 'No internet connection',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
-		msg_no_internet_and_saved_prays_title : "Can't load data"
+		msg_no_internet_and_saved_prays_title : "Can't load data",
+
+        pray_item_view_item_settings_btn_close : "Close",
+        pray_item_view_item_settings_header_table_of_contents : "Table of Contents",
+        pray_item_view_item_settings_header_change_font_size : "Change Font Size"
 	},
 	ua : {
 		categories_list_page_title : "Молитовник",
@@ -124,7 +128,12 @@ PrayerLocalizations = {
 		settings_tip_why_show_ads : 'Дозволивши показ реклами в Молитовнику ви допомагаєте розробникам покривати всі супутні витрати на обслуговування додатку, а також сприяєте його розвитку. Дякуємо Вам!',
 		no_internet_label : 'Немає звязку з сервером',
 		msg_no_internet_and_saved_prays : "Інтернет з'єднання відсутнє, підключіться до інтернет для продовження користування молитовником",
-		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані"
+		msg_no_internet_and_saved_prays_title : "Неможливо завантажити дані",
+
+		pray_item_view_item_settings_btn_close : "Закрити",
+		pray_item_view_item_settings_header_table_of_contents : "Зміст Молитви",
+		pray_item_view_item_settings_header_change_font_size : "Змінити розмір тексту"
+
 	},
 	pl : {
 		categories_list_page_title : "Modlitewnik",
@@ -153,7 +162,11 @@ PrayerLocalizations = {
 		settings_tip_why_show_ads : 'By showing ads you support prayer in all its financial needs for application support. Thank You!',
 		no_internet_label : 'Brak połączenia z internetem',
 		msg_no_internet_and_saved_prays : "You do not have saved prays and internet connection does not exist, please connect to the internet to continue using Prayer",
-		msg_no_internet_and_saved_prays_title : "Can't load data"
+		msg_no_internet_and_saved_prays_title : "Can't load data",
+
+        pray_item_view_item_settings_btn_close : "Zamknij",
+        pray_item_view_item_settings_header_table_of_contents : "Treść",
+        pray_item_view_item_settings_header_change_font_size : "Zmień rozmiar tekstu"
 	},
 
 	ru : {
@@ -183,7 +196,11 @@ PrayerLocalizations = {
 		settings_tip_why_show_ads: 'Позволив показ рекламы в Молитвеннике вы помогаете разработчикам покрывать все сопутствующие расходы на обслуживание приложения, а также способствуете его развитию. Спасибо Вам!',
 		no_internet_label : 'Нет связи с сервером',
 		msg_no_internet_and_saved_prays : "Интернет соединение отсутствует, подключитесь к интернет для продолжения пользования молитвенником",
-		msg_no_internet_and_saved_prays_title : "Невозможно загрузить данные"
+		msg_no_internet_and_saved_prays_title : "Невозможно загрузить данные",
+
+        pray_item_view_item_settings_btn_close : "Закрыть",
+        pray_item_view_item_settings_header_table_of_contents : "Содержание",
+        pray_item_view_item_settings_header_change_font_size : "Изменить Размер Шрифта"
 	}
 };
 
