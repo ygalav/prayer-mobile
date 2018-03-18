@@ -259,6 +259,7 @@
 	module.controller('PraysItemViewController',
 			function (
 				$scope,
+				$log,
 				PrayerHttpService,
 				PrayerFavoritePraysServices,
 				prTextScaling,
@@ -308,10 +309,40 @@
 				};
 
 				$scope.scaling = context.systemproperties.getValue(context.systemproperties.keys.scaling, 50);
+
+				$scope.showPraySettings = function (prayItem) {
+                    ons.createDialog('dialog_pray_settings.html', {parentScope: $scope}).then(
+                        function(aDialog) {
+                            aDialog
+								.show({options : {prayItem : prayItem}})
+								.then(function (dialog) {$scope.praySettingsDialog = dialog});
+                        }
+                    );
+                };
+
 				$scope.saveScaling = function (value) {
 					prTextScaling.saveScaling(value);
 					$scope.$root.textSizes = prTextScaling.calculateTextSizes();
 				};
+
+				$scope.scrollToItem = function (id) {
+					if (id !== undefined) {
+                        var targetId = 'item-' + id;
+                        var elem = document.getElementById(targetId).scrollIntoView();
+                        if (elem !== undefined) {
+                            elem.scrollIntoView();
+                        }
+                        else {
+                            $log.error('No element found for ID ' + targetId);
+                        }
+					}
+					else {
+                        $log.error('No id when scrolling from table of contents to pray');
+                    }
+
+                    $scope.praySettingsDialog.hide();
+                };
+
 				prAdService.showBannerAd(false);
 
                 $scope.popPage = function () {

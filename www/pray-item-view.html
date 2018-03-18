@@ -1,11 +1,11 @@
-<ons-page ng-controller="PraysItemViewController">
+<ons-page ng-controller="PraysItemViewController" class="pray-item-view">
     <ons-toolbar class="settings-page-sections-list">
             <div class="left">
                 <!--TODO: localize btn-->
                 <ons-back-button ng-click="popPage()">Назад</ons-back-button>
             </div>
             <div class="right">
-                <ons-icon icon="ion-grid" class="menu-icon" size="30px" ng-click="prayItemViewPopover.show($event)"></ons-icon>
+                <ons-icon icon="ion-grid" class="menu-icon" size="30px" ng-click="showPraySettings()"></ons-icon>
             </div>
     </ons-toolbar>
     <ons-list>
@@ -18,7 +18,7 @@
                 </ons-col>
             </ons-row>
         </ons-list-item>
-        <ons-list-item class="list-row list--noborder" ng-repeat="pray in prayItem.prays">
+        <ons-list-item class="list-row list--noborder" ng-repeat="pray in prayItem.prays" id="item-{{pray.id}}">
             <ons-row>
                 <ons-row ng-if="showTitle(pray, prayItem)">
                     <header>
@@ -31,21 +31,4 @@
             </ons-row>
         </ons-list-item>
     </ons-list>
-    <ons-popover direction="down" var="prayItemViewPopover" cancelable>
-        <div style="padding: 10px; text-align: center;">
-            <ons-list>
-                <ons-list-item modifier="nodivider">
-                    <div class="left">
-                        <span style="font-size: 12px">A</span>
-                        <ons-range ng-model="scaling" ng-change="saveScaling(scaling)" modifier="material" value="70"></ons-range>
-                        <span style="font-size: 20px">A</span>&nbsp;
-                    </div>
-                </ons-list-item>
-                <!--TODO: rm comment if not needed-->
-                <!--<ons-list-item>
-                    <ons-button ng-click="prayItemViewPopover.hide()">Close</ons-button>
-                </ons-list-item>-->
-            </ons-list>
-        </div>
-    </ons-popover>
 </ons-page>
