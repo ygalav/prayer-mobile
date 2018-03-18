@@ -20,6 +20,7 @@ angular.element(document).ready(function () {
 		document.addEventListener('deviceready', function () {
 			console.log("Deviceready event has fired, bootstrapping AngularJS.");
 			console.log(navigator.globalization);
+            ons.disableAutoStatusBarFill(); //This line removes strange margin in the top for iOS.
 			angular.bootstrap(document.body, ['prayer']);
 
 			if (isShowAds()) {
