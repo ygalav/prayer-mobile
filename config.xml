@@ -51,4 +51,7 @@
     <plugin name="cordova-plugin-localization-strings" spec="~1.1.1" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="ios" spec="^4.5.4" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="praycatholic" />
+    </plugin>
 </widget>

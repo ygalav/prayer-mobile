@@ -18,6 +18,10 @@
     },
     "cordova-plugin-localization-strings": {
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "praycatholic",
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {
