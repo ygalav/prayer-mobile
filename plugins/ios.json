@@ -22,6 +22,9 @@
     "cordova-plugin-customurlscheme": {
       "URL_SCHEME": "praycatholic",
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-plugin-google-analytics": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {

@@ -54,4 +54,5 @@
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="praycatholic" />
     </plugin>
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
 </widget>
