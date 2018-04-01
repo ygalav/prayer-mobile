@@ -48,5 +48,13 @@
     "variables": {
       "URL_SCHEME": "praycatholic"
     }
+  },
+  "cordova-plugin-firebase": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebase@0.1.25"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
