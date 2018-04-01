@@ -7,6 +7,12 @@ This document describes the minimum information required to develop an app using
 
  * Node.js - [Install Node.js](http://nodejs.org)
  * Cordova - Install by `npm install cordova`
+ * Git Crypt for encrypted content, see https://github.com/lorenwest/node-config/wiki/Securing-Production-Config-Files
+
+
+## Getting code
+ * ``git clone ...``
+ * ``git-crypt unlock`` to unlock secured files 
 
 ## Development Instructions
 
