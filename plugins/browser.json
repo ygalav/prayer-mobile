@@ -25,6 +25,9 @@
     },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-plugin-app-launcher": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {
