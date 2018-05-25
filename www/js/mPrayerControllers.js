@@ -23,7 +23,8 @@
 		prTextScaling,
 		prLanguageService,
 		prBookService,
-		prAdService
+		prAdService,
+		prDSLauncherService
 	) {
 		//localStorage.clear();
 		var appController = this;
@@ -53,6 +54,7 @@
 		$rootScope.$on('onLanguageChanged', function(event, args) {
 			reloadBooksList();
 			appController.localization = prLanguageService.getLocalizationBundleForLanguage(args.language);
+			appController.showDSLink = args.language === LANGUAGE_CODES.Ukrainian ;
 		});
 
 		$rootScope.defineLanguage = function () {
@@ -88,7 +90,41 @@
 
         appController.closeMenu = function () {
             menu.close();
-        }
+        };
+
+        appController.dsApp = {
+
+            openDSApp: function () {
+                prDSLauncherService.launchDSAppIfAllowed().then(function () {
+                    //ignore
+                }).catch(function () {
+                    ons.createDialog('dialog_install-ds-app.html', {parentScope: $scope}).then(
+                        function (aDialog) {
+                            aDialog
+                                .show()
+                                .then(function (dialog) {
+                                    appController.dsApp.dialog = dialog
+                                });
+                        }
+                    );
+                })
+            },
+
+			closeDSAppDialog: function () {
+				if(appController.dsApp.dialog !== undefined) {
+                    appController.dsApp.dialog.hide();
+				}
+            },
+
+			openDSAppInAppStore: function () {
+                window.open(CONFIGURATION.DSCAL_APP_STORE_LINK, "_system");
+                appController.dsApp.dialog.hide();
+            }
+
+		}
+
+
+
 	});
 
 	module.controller('CategoriesListController', function (
