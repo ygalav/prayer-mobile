@@ -1,15 +1,17 @@
 <ons-dialog cancelable>
+    <div class="ons-dialog-container">
+        <div class="ons-dialog-title">
+            <header>
+                <span>Встановити ДС календар</span>
+            </header>
+        </div>
+        <div>
+            <span>Схоже ви ще не встановити Дивен Світ Календар, чи бажаєте встановити?</span>
+        </div>
+        <div class="alert-dialog-footer">
+            <button class="alert-dialog-button" ng-click="appController.dsApp.openDSAppInAppStore()">Так</button>
+            <button class="alert-dialog-button" ng-click="appController.dsApp.closeDSAppDialog()">Ні, не бажаю</button>
+        </div>
+    </div>
 
-    <div class="ons-dialog-title">
-        <header>
-            <span>Встановити ДС календар</span>
-        </header>
-    </div>
-    <div>
-        <span>Схоже ви ще не встановити Дивен Світ Календар, чи бажаєте встановити?</span>
-    </div>
-    <div class="alert-dialog-footer">
-        <button class="alert-dialog-button" ng-click="appController.dsApp.openDSAppInAppStore()">Так</button>
-        <button class="alert-dialog-button" ng-click="appController.dsApp.closeDSAppDialog()">Ні, не бажаю</button>
-    </div>
 </ons-dialog>
