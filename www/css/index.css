@@ -84,3 +84,12 @@ ons-list-item.menu-list-header {
 .right .menu-icon {
     margin-right: 20px;
 }
+
+.ons-dialog-container {
+    /*top, right, bottom, left*/
+    padding: 10px 10px 3px;
+}
+
+.ons-dialog-body-container {
+    padding: 10px;
+}

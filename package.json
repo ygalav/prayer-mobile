@@ -28,6 +28,7 @@
     "cordova-browser": "^5.0.3",
     "cordova-ios": "^4.5.4",
     "cordova-libgoogleadmobads": "^7.13.1",
+    "cordova-plugin-app-launcher": "git+https://github.com/nchutchind/cordova-plugin-app-launcher.git",
     "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-firebase": "^0.1.25",
     "cordova-plugin-localization-strings": "git+https://github.com/kelvinhokk/cordova-plugin-localization-strings.git",
@@ -44,7 +45,8 @@
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "praycatholic"
       },
-      "cordova-plugin-firebase": {}
+      "cordova-plugin-firebase": {},
+      "cordova-plugin-app-launcher": {}
     }
   }
 }

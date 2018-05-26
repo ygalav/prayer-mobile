@@ -56,5 +56,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-app-launcher": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/nchutchind/cordova-plugin-app-launcher"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

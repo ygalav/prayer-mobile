@@ -35,6 +35,7 @@
     <script src="js/services/mLanguageService.js"></script>
     <script src="js/services/mBookService.js"></script>
     <script src="js/services/mAdService.js"></script>
+    <script src="js/services/mAppLauncherService.js"></script>
     <script src="js/mPrayerControllers.js"></script>
     <script src="js/mRoot.js"></script>
 
@@ -89,7 +90,9 @@
                    navi.pushPage('categories-list-page.html', appController.closeMenu())">
                         <span class="sliding-menu-item-text">{{book.name}}</span>
                     </ons-list-item>
-
+                    <ons-list-item  modifier="chevron" ng-if="appController.showDSLink" ng-click="appController.dsApp.openDSApp()">
+                        <span class="sliding-menu-item-text">{{appController.localization.menu_item_ds_cal}}</span>
+                    </ons-list-item>
                     <ons-list-item modifier="chevron" ng-click="navi.pushPage('favorite-prays-list.html', appController.closeMenu())">
                         <span class="sliding-menu-item-text">{{appController.localization.choosen_prays}}</span>
                     </ons-list-item>
