@@ -108,6 +108,7 @@ PrayerLocalizations = {
 		choosen_prays : 'Обрані Молитви',
         chosen_prays_empty : 'Немає збережених молитв',
 		settings : "Налаштування",
+		menu_item_ds_cal : "ДивенСвіт Календар УГКЦ",
 		settings_setting_who_am_i : "Хто Я: ",
 		settings_setting_who_am_i_catholic : "Католик",
 		settings_setting_who_am_i_greek_catholic : "Греко-Католик",
@@ -132,7 +133,11 @@ PrayerLocalizations = {
 
 		pray_item_view_item_settings_btn_close : "Закрити",
 		pray_item_view_item_settings_header_table_of_contents : "Зміст Молитви",
-		pray_item_view_item_settings_header_change_font_size : "Змінити розмір тексту"
+		pray_item_view_item_settings_header_change_font_size : "Змінити розмір тексту",
+        ds_modal_install_app_title : "Встановити ДС календар",
+        ds_modal_install_app_message : "Схоже ви ще не встановити Дивен Світ Календар, чи бажаєте встановити?",
+		ds_modal_install_app_yes : "Так",
+		ds_modal_install_app_no : "Ні, не бажаю"
 
 	},
 	pl : {

@@ -89,3 +89,7 @@ ons-list-item.menu-list-header {
     /*top, right, bottom, left*/
     padding: 10px 10px 3px;
 }
+
+.ons-dialog-body-container {
+    padding: 10px;
+}
