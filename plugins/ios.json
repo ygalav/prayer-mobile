@@ -28,6 +28,9 @@
     },
     "cordova-plugin-app-launcher": {
       "PACKAGE_NAME": "com.ygalav.catholicprayer"
+    },
+    "cordova-plugin-queries-schemes": {
+      "PACKAGE_NAME": "com.ygalav.catholicprayer"
     }
   },
   "dependent_plugins": {

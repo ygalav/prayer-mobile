@@ -1,0 +1,106 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-queries-schemes",
+        "scope": null,
+        "escapedName": "cordova-plugin-queries-schemes",
+        "name": "cordova-plugin-queries-schemes",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/yuriihalavai/projects/prayer/prayer-mobile"
+    ]
+  ],
+  "_from": "cordova-plugin-queries-schemes@latest",
+  "_id": "cordova-plugin-queries-schemes@0.1.5",
+  "_inCache": true,
+  "_location": "/cordova-plugin-queries-schemes",
+  "_nodeVersion": "0.12.13",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-queries-schemes-0.1.5.tgz_1473344473875_0.7068922491744161"
+  },
+  "_npmUser": {
+    "name": "rjhilgefort",
+    "email": "rjhilgefort@gmail.com"
+  },
+  "_npmVersion": "3.8.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-queries-schemes",
+    "scope": null,
+    "escapedName": "cordova-plugin-queries-schemes",
+    "name": "cordova-plugin-queries-schemes",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-queries-schemes/-/cordova-plugin-queries-schemes-0.1.5.tgz",
+  "_shasum": "8b3eb94609ba8754431bf187b6962b9a54dc59ef",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-queries-schemes",
+  "_where": "/Users/yuriihalavai/projects/prayer/prayer-mobile",
+  "author": {
+    "name": "Rob Hilgefort",
+    "email": "rjhilgefort@gmail.com",
+    "url": "http://rob.hilgefort.me"
+  },
+  "bugs": {
+    "url": "https://github.com/rjhilgefort/cordova-plugin-queries-schemes/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-queries-schemes",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova / PhoneGap Plugin to work arround Apple's iOS9 requirement that URL Schemes be declared and submitted to Apple (via Info.plist file).",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8b3eb94609ba8754431bf187b6962b9a54dc59ef",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-queries-schemes/-/cordova-plugin-queries-schemes-0.1.5.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "ab946fc07f929bf808785964a38e2485c8166302",
+  "homepage": "https://github.com/rjhilgefort/cordova-plugin-queries-schemes#readme",
+  "keywords": [
+    "cordova",
+    "ios",
+    "app",
+    "queries",
+    "url",
+    "schemes",
+    "lsapplicationqueriesschemes",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "rjhilgefort",
+      "email": "rjhilgefort@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-queries-schemes",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjhilgefort/cordova-plugin-queries-schemes.git"
+  },
+  "scripts": {},
+  "version": "0.1.5"
+}
