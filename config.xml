@@ -52,9 +52,8 @@
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="praycatholic" />
     </plugin>
-    <plugin name="cordova-plugin-firebase" spec="^0.1.25" />
     <plugin name="cordova-plugin-app-launcher" spec="https://github.com/nchutchind/cordova-plugin-app-launcher" />
+    <plugin name="cordova-plugin-queries-schemes" spec="^0.1.5" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="ios" spec="^4.5.4" />
-    <plugin name="cordova-plugin-queries-schemes" spec="^0.1.5" />
 </widget>
