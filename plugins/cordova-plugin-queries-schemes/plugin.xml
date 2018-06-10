@@ -16,28 +16,12 @@
         <array>
           <string>fb</string>
           <string>twitter</string>
-          <string>gplus</string>
-          <string>pintrest</string>
           <string>instagram</string>
           <string>youtube</string>
           <string>vnd.youtube</string>
-          <string>yelp</string>
-          <string>linkedin</string>
-          <string>tumblr</string>
-          <string>whatsapp</string>
-          <string>snapchat</string>
           <string>comgooglemaps</string>
-          <string>amazon</string>
-          <string>skype</string>
-          <string>googledrive</string>
           <string>itms-apps</string>
           <string>tel</string>
-          <string>mailto</string>
-          <string>uber</string>
-          <string>lyft</string>
-          <string>sumupmerchant</string>
-          <string>yammer</string>
-          <string>salesforce</string>
           <string>dscal</string>
         </array>
       </config-file>
