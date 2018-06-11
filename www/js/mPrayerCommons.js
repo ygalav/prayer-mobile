@@ -133,12 +133,7 @@ PrayerLocalizations = {
 
 		pray_item_view_item_settings_btn_close : "Закрити",
 		pray_item_view_item_settings_header_table_of_contents : "Зміст Молитви",
-		pray_item_view_item_settings_header_change_font_size : "Змінити розмір тексту",
-        ds_modal_install_app_title : "Встановити ДС календар",
-        ds_modal_install_app_message : "Схоже ви ще не встановити Дивен Світ Календар, чи бажаєте встановити?",
-		ds_modal_install_app_yes : "Так",
-		ds_modal_install_app_no : "Ні, не бажаю"
-
+		pray_item_view_item_settings_header_change_font_size : "Змінити розмір тексту"
 	},
 	pl : {
 		categories_list_page_title : "Modlitewnik",

@@ -93,9 +93,8 @@
         };
 
         appController.dsApp = {
-
             openDSApp: function () {
-                prDSLauncherService.launchDSAppIfAllowed().catch(function () {
+                var onError = function () {
                     ons.createDialog('dialog_install-ds-app.html', {parentScope: $scope}).then(
                         function (aDialog) {
                             aDialog
@@ -105,7 +104,12 @@
                                 });
                         }
                     );
-                })
+                };
+
+                prDSLauncherService.launchApp({
+                    url : CONFIGURATION.DSCAL_APP_URL_SCHEME_HOME_LINK,
+                    appId : CONFIGURATION.DSCAL_APP_STORE_ID
+                });
             },
 
 			closeDSAppDialog: function () {
