@@ -95,9 +95,7 @@
         appController.dsApp = {
 
             openDSApp: function () {
-                prDSLauncherService.launchDSAppIfAllowed().then(function () {
-                    //ignore
-                }).catch(function () {
+                prDSLauncherService.launchDSAppIfAllowed().catch(function () {
                     ons.createDialog('dialog_install-ds-app.html', {parentScope: $scope}).then(
                         function (aDialog) {
                             aDialog
@@ -117,7 +115,7 @@
             },
 
 			openDSAppInAppStore: function () {
-                window.open(CONFIGURATION.DSCAL_APP_STORE_LINK, "_system");
+                prDSLauncherService.launchAppOnAppStore(CONFIGURATION.DSCAL_APP_STORE_ID);
                 appController.dsApp.dialog.hide();
             }
 

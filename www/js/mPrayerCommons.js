@@ -215,7 +215,8 @@ debug = {
 };
 
 CONFIGURATION = {
-	DSCAL_APP_STORE_LINK : "https://itunes.apple.com/us/app/id920044446?mt=8",
+	DSCAL_APP_STORE_LINK : "https://itunes.apple.com/us/app/id920044446",
+	DSCAL_APP_STORE_ID : "id920044446",
 	DSCAL_APP_URL_SCHEME_HOME_LINK : "dscal://"
 };
 
