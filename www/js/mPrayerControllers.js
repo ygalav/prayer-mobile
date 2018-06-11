@@ -92,41 +92,20 @@
             menu.close();
         };
 
-        appController.dsApp = {
-            openDSApp: function () {
-                var onError = function () {
-                    ons.createDialog('dialog_install-ds-app.html', {parentScope: $scope}).then(
-                        function (aDialog) {
-                            aDialog
-                                .show()
-                                .then(function (dialog) {
-                                    appController.dsApp.dialog = dialog
-                                });
-                        }
-                    );
-                };
+        appController.launcher = {
+        	goToFBGroup: function () {
+                prDSLauncherService.launchApp({
+                    url : CONFIGURATION.FB_PAGE_URL_SCHEME_ID
+                });
+            },
 
+            openDSApp: function () {
                 prDSLauncherService.launchApp({
                     url : CONFIGURATION.DSCAL_APP_URL_SCHEME_HOME_LINK,
                     appId : CONFIGURATION.DSCAL_APP_STORE_ID
                 });
-            },
-
-			closeDSAppDialog: function () {
-				if(appController.dsApp.dialog !== undefined) {
-                    appController.dsApp.dialog.hide();
-				}
-            },
-
-			openDSAppInAppStore: function () {
-                prDSLauncherService.launchAppOnAppStore(CONFIGURATION.DSCAL_APP_STORE_ID);
-                appController.dsApp.dialog.hide();
             }
-
-		}
-
-
-
+		};
 	});
 
 	module.controller('CategoriesListController', function (

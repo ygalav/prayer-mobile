@@ -109,6 +109,7 @@ PrayerLocalizations = {
         chosen_prays_empty : 'Немає збережених молитв',
 		settings : "Налаштування",
 		menu_item_ds_cal : "ДивенСвіт Календар УГКЦ",
+		menu_item_apps_header : "Інші Додатки",
 		settings_setting_who_am_i : "Хто Я: ",
 		settings_setting_who_am_i_catholic : "Католик",
 		settings_setting_who_am_i_greek_catholic : "Греко-Католик",
@@ -212,7 +213,8 @@ debug = {
 CONFIGURATION = {
 	DSCAL_APP_STORE_LINK : "https://itunes.apple.com/us/app/id920044446",
 	DSCAL_APP_STORE_ID : "id920044446",
-	DSCAL_APP_URL_SCHEME_HOME_LINK : "dscal://"
+	DSCAL_APP_URL_SCHEME_HOME_LINK : "dscal://",
+	FB_PAGE_URL_SCHEME_ID : 'fb://prayerUGCC'
 };
 
 LANGUAGE_CODES = {

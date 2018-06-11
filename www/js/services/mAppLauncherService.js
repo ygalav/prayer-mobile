@@ -25,7 +25,7 @@
         return {
             launchApp : function (options) {
                 var urlScheme = options.url;
-                var appId  = options.appId;
+                var appId  = options.appId || null;
                 var successCanLaunch = function(data) {
                     window.plugins.launcher.launch({
                         uri : urlScheme
@@ -35,6 +35,9 @@
                     uri: urlScheme,
                     successCallback : successCanLaunch,
                     errorCallback : function () {
+                        if (appId === null) {
+                            return;
+                        }
                         launchAppOnAppStore(appId)
                     }
                 });

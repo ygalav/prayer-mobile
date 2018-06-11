@@ -81,6 +81,17 @@
     <ons-splitter>
         <ons-splitter-side id="menu" var="menu" side="left" width="150px" collapse swipeable>
             <ons-page>
+                <ons-row ng-if="appController.showDSLink">
+                    <i>{{appController.localization.menu_item_apps_header}}</i>
+                </ons-row>
+                <ons-row ng-if="appController.showDSLink">
+                    <ons-col width="48px" style="margin-left: 5px;" ng-click="appController.launcher.openDSApp()">
+                        <div class="external-link-icon_ds"></div>
+                    </ons-col>
+                    <ons-col width="48px" style="margin-left: 5px;" ng-click="appController.launcher.goToFBGroup()">
+                        <div class="external-link-icon_fb"></div>
+                    </ons-col>
+                </ons-row>
                 <ons-list>
                     <ons-list-item ng-if-start="appController.books" class="menu-list-header">
                         <i>{{appController.localization.books}}</i>
@@ -90,9 +101,9 @@
                    navi.pushPage('categories-list-page.html', appController.closeMenu())">
                         <span class="sliding-menu-item-text">{{book.name}}</span>
                     </ons-list-item>
-                    <ons-list-item  modifier="chevron" ng-if="appController.showDSLink" ng-click="appController.dsApp.openDSApp()">
+                    <!--<ons-list-item  modifier="chevron" ng-if="appController.showDSLink" ng-click="appController.dsApp.openDSApp()">
                         <span class="sliding-menu-item-text">{{appController.localization.menu_item_ds_cal}}</span>
-                    </ons-list-item>
+                    </ons-list-item>-->
                     <ons-list-item modifier="chevron" ng-click="navi.pushPage('favorite-prays-list.html', appController.closeMenu())">
                         <span class="sliding-menu-item-text">{{appController.localization.choosen_prays}}</span>
                     </ons-list-item>

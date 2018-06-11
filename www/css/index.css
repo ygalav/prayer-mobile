@@ -93,3 +93,16 @@ ons-list-item.menu-list-header {
 .ons-dialog-body-container {
     padding: 10px;
 }
+
+.external-link-icon_ds {
+    background: url('../img/48x48/ds_ico.jpeg') 0 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+}
+.external-link-icon_fb {
+    background: url('../img/48x48/facebook_ico.png') 0 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+}
