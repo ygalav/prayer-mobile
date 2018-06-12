@@ -22,7 +22,7 @@
             <span>{{appController.localization.no_internet_label}}</span>
         </ons-row>
 
-        <ons-list-item modifier="chevron" ng-repeat="item in categoriesListController.items | filter:filterCategory"
+        <ons-list-item modifier="chevron" ng-repeat="item in categoriesListController.items"
                        ng-click="categoriesListController.showDetail(item)" class="list-row"
                        ng-show="categoriesListController.isGroupShown()">
             <ons-row>
