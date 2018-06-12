@@ -329,19 +329,8 @@
 
 				$scope.praySettings = {
                     showPraySettingsDialog : function (prayItem) {
-                        ons.createDialog('dialog_pray_settings.html', {parentScope: $scope}).then(
-                            function (aDialog) {
-                                aDialog
-                                    .show({options: {prayItem: prayItem}})
-                                    .then(function (dialog) {
-                                        $scope.praySettingsDialog = dialog
-                                    });
-                            }
-                        );
-                    },
-
-					closePraySettingsDialog : function () {
-                        $scope.praySettingsDialog.hide();
+                    	menu.load('table-of-contents.html');
+						menu.toggle();
                     },
 
 
@@ -364,8 +353,7 @@
                         else {
                             $log.error('No id when scrolling from table of contents to pray');
                         }
-
-                        $scope.praySettingsDialog.hide();
+                        menu.toggle();
                     }
 
 				};
@@ -374,6 +362,7 @@
 
                 $scope.popPage = function () {
                     navi.popPage();
+                    menu.load('menu.html');
                     appController.showBannerAd(true)
                 };
 			});
